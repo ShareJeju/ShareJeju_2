@@ -4443,12 +4443,12 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 	background-color: rgb(255,255,255);
 }
 
-@media ( min-width :768px) {
+/* @media ( min-width :768px) {
 	.navbar {
 		border-radius: 4px
 	}
 }
-
+ */
 @media ( min-width :768px) {
 	.navbar-header {
 		float: left
