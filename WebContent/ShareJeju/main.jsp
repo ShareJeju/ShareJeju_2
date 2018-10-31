@@ -38,26 +38,26 @@
 
 		
 		
-<!-- 	
-		<div id="featured">
+	
+<!-- 		<div id="featured">
 			<div class="container">
 				회색화면 쓸사람만 쓰시오
 			</div>
-		</div> -->
+		</div>
 
-	<!-- Main -->
+	Main
 		<div id="main">
 			<div id="content" class="container">
-				<!-- tweet 명언등등 -->
+				tweet 명언등등
 			</div>
 		</div>
 
-	<!-- Tweet -->
+	Tweet
 		<div id="tweet">
 			<div class="container">
-				<!-- tweet 명언등등 -->
+				tweet 명언등등
 			</div>
-		</div>
+		</div> -->
 
 	<!-- Footer -->
 		<div id="footer">

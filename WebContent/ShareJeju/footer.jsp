@@ -18,6 +18,6 @@
 						<li><a href="#" class="fa fa-dribbble"><span>Pinterest</span></a></li>
 						<li><a href="#" class="fa fa-tumblr"><span>Google+</span></a></li>
 					</ul>
-				</section>
+	</section>
 </body>
 </html>
