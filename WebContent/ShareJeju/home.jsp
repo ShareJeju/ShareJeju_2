@@ -23,7 +23,7 @@
 	<div id="main_home">
 		<div id="content" class="container_home">
 
-			<jsp:include page="header.jsp"></jsp:include>
+			<jsp:include page="home_header.jsp"></jsp:include>
 
 			<div class="row" style="background-color:white; width:100%; margin: 0px auto; padding-right:50px">
 				<jsp:include page="home/review.jsp"></jsp:include>			

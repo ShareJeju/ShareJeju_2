@@ -18,6 +18,7 @@
 			<li id="licenter_rogo"><a href="#">로고</a></li>
 			<li id="licenter_tasty"><a href="#">맛집</a></li>
 			<li id="licenter_hotels"><a href="#">숙소</a></li>
+			<li id="licenter_login"><a href="#">로그인</a></li>
 			<li id="licenter_MY">
 			    <div class="dropdown">
 				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
