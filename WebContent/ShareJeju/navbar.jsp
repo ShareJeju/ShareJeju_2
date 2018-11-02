@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">	
 		<ul class="nav navbar-nav">
 			<!-- 이유는 모르겠으나 이미지를 설정하는 걸로만 위치가 잡힌다
@@ -18,15 +18,16 @@
 			<li id="licenter_rogo"><a href="#">로고</a></li>
 			<li id="licenter_tasty"><a href="#">맛집</a></li>
 			<li id="licenter_hotels"><a href="#">숙소</a></li>
-			<li id="licenter_login"><a href="#">로그인</a></li>
+			<li id="licenter_login"><a href="login.jsp">로그인</a></li>
 			<li id="licenter_MY">
 			    <div class="dropdown">
 				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    <img src = "images/menu.png" width="45px" height="30px" margin-top="5em">
 				  </a>
 				  <div class="dropdown-menu" >
-				    <a class="dropdown-item" href="mypage/mypage.jsp">마이페이지</a><br>
-				    <a class="dropdown-item" href="mypage/join.jsp">회원가입</a><br>
+				    <a class="dropdown-item" href="my_mp.jsp">마이페이지</a><br>
+				    <a class="dropdown-item" href="my_wl.jsp">찜/좋아요</a><br>
+				    <a class="dropdown-item" href="join.jsp">회원가입</a><br>
 				    <a class="dropdown-item" href="#">로그아웃</a><br>
 				  </div>
 				</div>
