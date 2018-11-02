@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container_home" style="margin-left:-50px; margin-top:-30px" >
-		<div class="col-sm-2">
+	<div class="container" style="margin-left:-80px; margin-top:-20px" >
+		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic01.jpg" width=100% height=270>
+				<a href="#"> <img src="images/pic03.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임<br>태그
@@ -18,9 +18,9 @@
 			</div>
 		</div>
 
-		<div class="col-sm-2">
+		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic02.jpg" width=100% height=270>
+				<a href="#"> <img src="images/pic04.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임<br>태그
@@ -28,9 +28,9 @@
 			</div>
 		</div>
 
-		<div class="col-sm-2">
+		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic01.jpg" width=100% height=270>
+				<a href="#"> <img src="images/pic03.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임 <br>태그
@@ -38,9 +38,9 @@
 			</div>
 		</div>
 
-		<div class="col-sm-2">
+		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic02.jpg" width=100% height=270>
+				<a href="#"> <img src="images/pic04.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목닉네임 <br>태그
@@ -48,25 +48,7 @@
 			</div>
 		</div>
 
-		<div class="col-sm-2">
-			<div class="panel">
-				<a href="#"> <img src="images/pic01.jpg" width=100% height=270>
-				</a>
-				<div class="panel-heading" style="text-align: right">
-					제목닉네임 <br>태그
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-sm-2">
-			<div class="panel">
-				<a href="#"> <img src="images/pic04.jpg" width=100% height=270>
-				</a>
-				<div class="panel-heading" style="text-align: right">
-					제목닉네임 <br>태그
-				</div>
-			</div>
-		</div>
+	
 	</div>
 
 </body>

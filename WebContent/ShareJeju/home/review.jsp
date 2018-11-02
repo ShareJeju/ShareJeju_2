@@ -8,10 +8,10 @@
 </head>
 
 <body>
-	<div class="container_home" style="margin-top:50px" >
-		<div class="col-sm-2">
+	<div class="container" style="margin-top: 50px">
+		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic03.jpg" width=100% height=270>
+				<a href="#"> <img src="images/pic03.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임<br>태그
@@ -19,9 +19,9 @@
 			</div>
 		</div>
 
-		<div class="col-sm-2">
+		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic04.jpg" width=100% height=270>
+				<a href="#"> <img src="images/pic04.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임<br>태그
@@ -29,9 +29,9 @@
 			</div>
 		</div>
 
-		<div class="col-sm-2">
+		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic03.jpg" width=100% height=270>
+				<a href="#"> <img src="images/pic03.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임 <br>태그
@@ -39,29 +39,9 @@
 			</div>
 		</div>
 
-		<div class="col-sm-2">
+		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic04.jpg" width=100% height=270>
-				</a>
-				<div class="panel-heading" style="text-align: right">
-					제목닉네임 <br>태그
-				</div>
-			</div>
-		</div>
-
-		<div class="col-sm-2">
-			<div class="panel">
-				<a href="#"> <img src="images/pic04.jpg" width=100% height=270>
-				</a>
-				<div class="panel-heading" style="text-align: right">
-					제목닉네임 <br>태그
-				</div>
-			</div>
-		</div>
-		
-		<div class="col-sm-2">
-			<div class="panel">
-				<a href="#"> <img src="images/pic04.jpg" width=100% height=270>
+				<a href="#"> <img src="images/pic04.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목닉네임 <br>태그

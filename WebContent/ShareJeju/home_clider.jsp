@@ -16,7 +16,7 @@
 $(function(){
    $('.bxslider').bxSlider({
       mode:'fade',
-      /* auto:true, */
+      auto:true,
       captions:true
    });
 });
@@ -30,19 +30,19 @@ $(function(){
 .img{
     position: relative;
     background-image: url(images/pic02.jpg);                                                               
-    height: 500px;
+    height: 450px;
     background-size: cover;
 }
 .img-cover{
    position: absolute;
-   height: 500px;
+   height: 450px;
    width: 100%;
    background-color: rgba(0, 0, 0, 0.4);                                                                 
    z-index:1;
 }
 .img .content{
      position: absolute;
-     top:50%;
+     top:55%;
      left:50%;
      transform: translate(-50%, -50%);                                                                   
      font-size:5rem;
@@ -86,7 +86,7 @@ $(function(){
 }
  .bx-wrapper img {
     max-width: 100%;
-    height:500px;
+    height:450px;
 } 
 
 

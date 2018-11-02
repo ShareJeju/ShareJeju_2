@@ -16,34 +16,34 @@
 </head>
 
 
-
 <body class="homepage">
-
+	<jsp:include page="home_header.jsp"></jsp:include>
 	<!-- Header -->
-	<div id="main_home">
-		<div id="content" class="container_home">
+	<div id="main_home" style="background-color: white;">
+		<div id="content" class="container">
 
-			<jsp:include page="home_header.jsp"></jsp:include>
+			
 
 			<div class="row" style="background-color:white; width:100%; margin: 0px auto; padding-right:50px">
 				<jsp:include page="home/review.jsp"></jsp:include>			
 			</div>
+			
 			<div class="row" style="background-color:white; width:100%; margin: 0px auto; padding-left:50px">
 				<jsp:include page="home/tour.jsp"></jsp:include>
 			</div>
 
-			<!-- Tweet -->
-			<div id="tweet">
-				<div class="container">
-					<section>
-						<blockquote>&ldquo;인생은 여행과 같다. 우리가 신경 쓸 것은 목적지가 아니라, 길을 따라 있는 풍경과 그 풍경을 보는 마음이다.&rdquo;</blockquote>
-					</section>
-				</div>
-			</div>
+			
 
 		</div>
 	</div>
-
-
+	
+	<!-- Tweet -->
+			<div id="tweet">
+				<div class="container">
+					<section>
+						<blockquote>&ldquo;duddj duddj duddj duddj.&rdquo;</blockquote>
+					</section>
+				</div>
+			</div>
 </body>
 </html>
