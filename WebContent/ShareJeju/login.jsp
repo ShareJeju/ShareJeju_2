@@ -14,10 +14,10 @@
 	margin: 200px 300px 0px 300px;
 }
 .list-group{
-	padding : 80px 300px 0px 300px ;
+	padding : 70px 300px 0px 300px ;
 }
 .form-control{
-	padding: 25px;
+	padding: 22px;
 }
 
 </style>
@@ -39,17 +39,42 @@
 			   <div class="form-group">
 			      <label for="exampleInputEmail1">아이디</label>
 			      <input type="text" class="form-control" id="exampleInputEmail1" placeholder="ID 입력">
-			    </div>
-    
+			    </div>    
 			    <div class="form-group">
 			      <label for="exampleInputPassword1">비밀번호</label>
 			      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="비밀번호 입력">
 			    </div>
-   			   <div class="form-group"> 
-			    <div class="text-center">
+			    
+     	       <div class="form-group" style="margin-left:10px"> 
+			    <div class="custom-control custom-checkbox">
+			      <input type="checkbox" class="custom-control-input" id="customCheck1">
+			      <label class="custom-control-label" for="customCheck1">로그인 유지</label>
+			    </div>
+		  	   </div>	
+   			   <div class="form-group" style="margin-top:20px"> 
+			    <div class="col-sm-6 text-right" style="margin-left:15px">
 			      <button type="submit" class="btn btn-danger btn-md">로그인</button>
 			    </div>
-			  </div>
+   			    <div class="col-sm-6 text-left" style="margin-left:-20px">
+			      <button type="submit" class="btn btn-secondary btn-md">취소</button>
+			    </div>
+			  </div>			 						
+  			</form>
+	      <div class="form-group" style="margin-top:80px"> 
+		    <div class="col-sm-6 text-right" style="margin-left:20px">
+		      <button type="button" class="btn btn-link btn-md">비밀번호찾기</button>
+		    </div>
+		    <div class="col-sm-6 text-left" style="margin-left:-30px">
+		      <button type="button" class="btn btn-link btn-md">아이디찾기</button>
+		    </div>
+		  </div>	
+  	      <div class="form-group" style="margin-top:80px"> 
+		    <div class="text-center">
+		      <button type="button" class="btn btn-link btn-md"><u>회원가입</u></button>
+		    </div>
+		  </div>	
+          
+			  
 			  
   	<!-- 	<div class="form-group has-success">
 				  <label class="form-control-label" for="inputSuccess1">Valid input</label>
@@ -62,8 +87,7 @@
 				  <input type="text" value="wrong value" class="form-control is-invalid" id="inputInvalid">
 				  <div class="invalid-feedback">Sorry, that username's taken. Try another?</div>
 				</div> -->
-							
-  			</form> 
+
 	      </div>
 	   </div>
       </div>
