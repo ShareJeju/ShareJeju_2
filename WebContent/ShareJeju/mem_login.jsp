@@ -61,16 +61,16 @@
 			  </div>			 						
   			</form>
 	      <div class="form-group" style="margin-top:80px"> 
-		    <div class="col-sm-6 text-right" style="margin-left:20px">
-		      <button type="button" class="btn btn-link btn-md">비밀번호찾기</button>
+		    <div class="col-sm-6 text-right" >
+		      <a href="mem_findID.jsp" style="margin-left:20px">아이디찾기</a>
 		    </div>
 		    <div class="col-sm-6 text-left" style="margin-left:-30px">
-		      <button type="button" class="btn btn-link btn-md">아이디찾기</button>
-		    </div>
+		      <a href="mem_findPW.jsp" style="margin-left:30px">비밀번호찾기</a>
+		    </div>&nbsp;&nbsp;&nbsp;&nbsp;
 		  </div>	
-  	      <div class="form-group" style="margin-top:80px"> 
+  	      <div class="form-group" style="margin-top:10px"> 
 		    <div class="text-center">
-		      <button type="button" class="btn btn-link btn-md"><u>회원가입</u></button>
+		      <a href="mem_join.jsp"><u>회원가입</u></a>
 		    </div>
 		  </div>	
           

@@ -301,7 +301,8 @@ function init()
 <%-- 	<jsp:include page="navbar.jsp"></jsp:include> --%>
 	
 	<div class="jumbotron jumbotron-fluid">
-	   <h1>마이페이지</h1>      
+	   <h1>마이페이지 <a class="btn btn-danger btn-lg" href="mem_modify.jsp" role="button">내 정보 수정</a>
+	   </h1> 
 	</div>
 	
 	<div id="content" class="container">

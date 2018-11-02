@@ -18,7 +18,7 @@
 			<li id="licenter_rogo"><a href="#">로고</a></li>
 			<li id="licenter_tasty"><a href="#">맛집</a></li>
 			<li id="licenter_hotels"><a href="#">숙소</a></li>
-			<li id="licenter_login"><a href="login.jsp">로그인</a></li>
+			<li id="licenter_login"><a href="mem_login.jsp">로그인</a></li>
 			<li id="licenter_MY">
 			    <div class="dropdown">
 				  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,7 +27,7 @@
 				  <div class="dropdown-menu" >
 				    <a class="dropdown-item" href="my_mp.jsp">마이페이지</a><br>
 				    <a class="dropdown-item" href="my_wl.jsp">찜/좋아요</a><br>
-				    <a class="dropdown-item" href="join.jsp">회원가입</a><br>
+				    <a class="dropdown-item" href="mem_join.jsp">회원가입</a><br>
 				    <a class="dropdown-item" href="#">로그아웃</a><br>
 				  </div>
 				</div>

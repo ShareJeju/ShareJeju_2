@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>회원가입페이지</h3>
+	<h3>아이디찾기</h3>
 </body>
 </html>
