@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div id="home_header" style="background-color: white;">	
+	<div id="home_header">	
 		<jsp:include page="home_clider.jsp"></jsp:include>
 	</div>
 </body>

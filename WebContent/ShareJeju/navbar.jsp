@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">	
 		<ul class="nav navbar-nav">
 			<!-- 이유는 모르겠으나 이미지를 설정하는 걸로만 위치가 잡힌다
