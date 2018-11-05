@@ -48,7 +48,7 @@
 	Main
 		<div id="main">
 			<div id="content" class="container">
-				tweet 명언등등
+				tweet 명언등
 			</div>
 		</div>
 
