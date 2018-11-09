@@ -10,6 +10,7 @@
 <head>
 <title>Share JEJU</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -20,14 +21,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
-.jumbotron-fluid{
-	height:300px;
-	background-color: #668cff;
-}
-img{
- 	width: 330px;
-    height: 230px
-}
 div{
 background-color: white;
 }
@@ -66,7 +59,6 @@ background-color: white;
   flex: 1 1 auto;
   padding: 1.25rem;
 }
-
 .card-title {
   margin-bottom: 0.75rem;
 }
@@ -275,6 +267,61 @@ background-color: white;
     width: 100%;
   }
 }
+body {
+  background-color: #efefef;
+}
+
+.profile-pic {
+	max-width:100%; 
+	height:100%;
+    display: block;
+}
+
+.file-upload {
+    display: none;
+}
+.circle {
+    border-radius: 1000px !important;
+    overflow: hidden;
+    width: 170px;
+    height: 170px;
+    border: 8px solid rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 72px;
+}
+.p-image {
+  position: absolute;
+  right:42%; top:23%;
+  color: #666666;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+  font-size: 2.2em;
+}
+
+.upload-button:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  color: #999;
+}
+.mod-profile{
+	position: absolute;
+	right:2%; top:2%;
+	width:65px; 
+	height:65px;
+
+}
+.profile-img{
+	position:absolute;
+	left:50%; top:4%;
+}
+.profile-p{
+	position:absolute;
+	left:50%; top:28%;
+	font-size:5px;
+}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -295,16 +342,55 @@ function init()
 		}
 	});
 }
+$(document).ready(function() {
+
+    
+    var readURL = function(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('.profile-pic').attr('src', e.target.result);
+            }
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+
+    $(".file-upload").on('change', function(){
+        readURL(this);
+    });
+    
+    $(".upload-button").on('click', function() {
+       $(".file-upload").click();
+    });
+});
 </script>		
 </head>
 <body>
 <%-- 	<jsp:include page="navbar.jsp"></jsp:include> --%>
 	
-	<div class="jumbotron jumbotron-fluid">
-	   <h1>마이페이지 <a class="btn btn-danger btn-lg" href="mem_modify.jsp" role="button">내 정보 수정</a>
-	   </h1> 
-	</div>
-	
+	<div class="jumbotron jumbotron-fluid" style="height: 450px; background-color: #f5b634;">
+			<div class="row">
+			   <div class="small-12 medium-2 large-2 columns" style="padding-left:950px">
+			    <div class="profile-img">
+			     <div class="circle" style="background-color: #f5b634;">
+			       <!-- User Profile Image -->
+			       <img class="profile-pic" src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg">			
+				</div>
+ 			    </div>
+			     <div class="p-image" style="background-color: rgba(255,255,255,.0)">
+			       <i class="fa fa-camera upload-button"></i>
+			        <input class="file-upload" type="file" accept="image/*"/>
+			     </div>
+			  </div>
+			</div>
+		<p class="profile-p">name님의 프로필사진을 올려주세요.</p>
+		 <a href="mem_modify.jsp" role="button">
+		 <img class="mod-profile" src="images/icon/settings.png"></a>
+ 	</div>
+	<!-- START CONTENT -->
 	<div id="content" class="container">
 		  <ul class="nav nav-pills">
 		    <li class="active"><a data-toggle="pill" href="#review">REVIEW</a></li>
@@ -312,15 +398,15 @@ function init()
 		  </ul>		  
 	  <!-- START tab-content -->	  
 	  <div class="tab-content" style="margin-top: 20px; margin-left: 20px">	  
-  			<!-- START review TAB -->
+
 		    <div id="review" class="tab-pane fade in active">
 				<div id="review-tab"></div>
-	        </div><!-- END review TAB -->
-	      
-	      <!-- START reserve TAB -->
-	      <div id="reserve" class="tab-pane fade">
-			<jsp:include page="my_mp_reserve.jsp"></jsp:include>
-		 </div><!-- END reserve TAB -->
+	        </div>
+            <div id="reserve" class="tab-pane fade">
+				<jsp:include page="my_mp_reserve.jsp"></jsp:include>
+	
+		    </div>
+		    
       </div><!-- END TAB-CONTENT -->
     </div> <!-- END CONTENT -->
 </body>
