@@ -46,7 +46,10 @@
 	padding-right:400px;
 /* 	margin-left:200px; */
 	background-color:white;
-	color:white;
+	/* color:gray; */
+	color:#54d9cd;
+	font-size:20px;
+	font-weight:bold;
 /* 	display: inline-block; */
 	margin:0 auto;
 	
@@ -374,11 +377,11 @@ margin-top:200px;
 	</div>
 	<div class="category">
 	<ul>
-	 <li><img src="images/menu1.jpg" width=100%> </li>
-	 <li><img src="images/menu1.jpg" width=100%></li>
-	 <li><img src="images/menu1.jpg" width=100%></li>
-	 <li><img src="images/menu1.jpg" width=100%></li>
-	 <li><img src="images/menu1.jpg" width=100%></li>
+	 <li><img src="images/icon/menu1.png" width=80px> <br>전체</li>
+	 <li><img src="images/icon/menu2.png" width=80px> <br>한식</li>
+	 <li><img src="images/icon/menu3.png" width=80px> <br>양식</li>
+	 <li><img src="images/icon/menu4.png" width=80px> <br>카페</li>
+	 <li><img src="images/icon/menu5.png" width=80px> <br>기타</li>
 	</ul>	
 	</div>
 

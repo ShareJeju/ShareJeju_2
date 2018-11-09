@@ -32,12 +32,12 @@
 	
 	
 	
-	<body class="homepage">
+	<body style="background-color:white">
 
 	<!-- Header -->
 	<jsp:include page="navbar.jsp"></jsp:include>
-	<%-- <jsp:include page="subcontent.jsp"></jsp:include> --%>
-	<jsp:include page="subdetailcontent.jsp"></jsp:include>
+ <jsp:include page="subcontent.jsp"></jsp:include> 
+	<%--<jsp:include page="subdetailcontent.jsp"></jsp:include>--%>
 <%-- 	<jsp:include page="header.jsp"></jsp:include> 사진부분임 쓸사람만 쓰세요 --%>
 
 		
