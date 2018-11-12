@@ -20,14 +20,6 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
-.jumbotron-fluid{
-	height:300px;
-	background-color: #ffcccc;
-}
-img{
- 	width: 330px;
-    height: 230px
-}
 div{
 background-color: white;
 }
@@ -275,6 +267,41 @@ background-color: white;
     width: 100%;
   }
 }
+.wl{
+	background-color: rgba(255,255,255,.0);
+	
+}
+
+.table>tbody>tr>td{
+	border-style: none;
+	padding: 20px;
+	vertical-align: middle;
+}
+.profile-pic {
+	max-width:100%; 
+	height:100%;
+    display: block;
+}
+.circle {
+    border-radius: 1000px !important;
+    overflow: hidden;
+    width: 170px;
+    height: 170px;
+    border: 8px solid rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 50px;
+    left: 600px;
+}
+.p-image {
+  position: absolute;
+  right:42%; top:23%;
+  color: #666666;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.profile-img{
+	position:absolute;
+	left:50%; top:4%;
+}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -289,8 +316,27 @@ $(function(){
 <body>
 <%-- 	<jsp:include page="navbar.jsp"></jsp:include> --%>
 	
-	<div class="jumbotron jumbotron-fluid">
-	   <h1>찜/좋아요</h1>      
+	<div class="jumbotron jumbotron-fluid" style="height: 450px; background-color: #f5b634;">
+	 <div class="container wl">
+	  <table class="table">
+	   <tr>
+	    <td width=40% class="text-center" rowspan="3">
+			<div class="circle" style="background-color: #f5b634;">
+		       <img class="profile-pic" src="images/profile.jpg">			
+			</div>
+	    </td>
+	    <td colspan="2" class="text-left">name님의 제주위시리스트</td>
+	   </tr>
+	   <tr>
+	    <td width=20% class="text-left">찜한 여행</td>
+	    <td width=40%></td>
+	   </tr>
+	   <tr>
+	    <td width=20% class="text-left">좋아요한 리뷰</td>
+	    <td width=40%></td>
+	   </tr>
+	  </table>
+	 </div>
 	</div>
 	
 	<div id="content" class="container">

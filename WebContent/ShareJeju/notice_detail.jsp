@@ -12,16 +12,16 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <style type="text/css">
-  .table>tbody>tr>th{
-  	vertical-align: middle; 	
-  }
-  .table>tbody>tr>td{
- 	vertical-align: middle; 	
-  }
-  .table{
-  	margin-bottom: 0px;
-  }
-  </style>
+.table>tbody>tr>th{
+	vertical-align: middle; 	
+}
+.table>tbody>tr>td{
+vertical-align: middle; 	
+}
+.table{
+	margin-bottom: 0px;
+}
+</style>
 </head>
 <body>
 	<div class="container">
@@ -63,6 +63,18 @@
 				</tr>
 			</table>
 		</div>
+		<div class="row" >
+		  <table class="table" style="margin-top:20px">
+			<tr>
+			   <th width=20% class="text-center" style="background-color: rgb(242, 238, 238);">이전글</th>
+				<td width=80% class="text-left"><a href="#">이전글클릭</a></td>
+			</tr>
+			<tr>
+				<th width=20% class="text-center" style="background-color: rgb(242, 238, 238);">다음글</th>
+				 <td width=80% class="text-left"><a href="#">다음글클릭</a></td>
+			</tr>
+		  </table>
+		 </div>
 	</div>
 </body>
 </html>
