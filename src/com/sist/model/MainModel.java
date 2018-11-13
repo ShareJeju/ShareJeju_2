@@ -1,0 +1,15 @@
+package com.sist.model;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.sist.controller.RequestMapping;
+import java.util.*;
+
+public class MainModel {
+ @RequestMapping("ShareJeju/main.do")
+ public String main_main(HttpServletRequest req, HttpServletResponse res)
+ {
+	 return "main.jsp";
+ }
+}

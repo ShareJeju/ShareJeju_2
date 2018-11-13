@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>ShareJeju_2</display-name>
+  <servlet>
+	<servlet-name>mvc</servlet-name>
+	<servlet-class>com.sist.controller.DispatcherServlet</servlet-class><!--  -->
+	          <!-- 컨트롤러는 메모리할당은 끝내놓고 있고, 대기하고 있다가 필요한 클래스를 불러준다, --> 
+	<!-- 손님 (유저) -->
+	<!--======= -->
+	<!-- 메뉴판 : file: XML Properites-->
+	<!-- 서빙 : DispatcherServlet  -->
+	<!-- 메뉴 선택  ==> *.do(메뉴이름)  -->
+	<!-- 주방 : annotaion -->
+	<!-- 주방장  : Model (메뉴가 들어온다)-->
+	<!-- 식탁=>음식을 차린다  : View(jsp) -->
+	<!-- 주문서,음식 : 리퀘스트 (요청한 정보, 받는 정보) -->
+	
+	<init-param><!-- init-param은 DispatcherServlet가 읽어준다. (메인 시작점)  -->
+		<param-name>contextConfigLocation</param-name> <!-- 키  -->
+		<param-value>C:\Users\user\git\ShareJeju_2\WebContent\WEB-INF\application.xml</param-value> <!-- 값  -->
+	</init-param>  
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>mvc</servlet-name> <!-- 서빙 -->
+  	<url-pattern>*.do</url-pattern> <!-- 메뉴선택 -->
+  </servlet-mapping>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
