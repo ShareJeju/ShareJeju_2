@@ -6,8 +6,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
+
 <body>
-	<div class="container" style="margin-left:-80px; margin-top:-20px" >
+	<div class="container" style="margin-top: -50px; margin-left: 25px">
 		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
 				<a href="#"> <img src="images/pic03.jpg" width=100% height=200>
@@ -47,8 +48,6 @@
 				</div>
 			</div>
 		</div>
-
-	
 	</div>
 
 </body>

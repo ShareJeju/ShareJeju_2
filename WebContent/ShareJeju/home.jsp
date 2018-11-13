@@ -22,16 +22,19 @@
 	<div id="main_home" style="background-color: white;">
 		<div id="content" class="container">
 
-			
-
-			<div class="row" style="background-color:white; width:100%; margin: 0px auto; padding-right:50px">
-				<jsp:include page="home/review.jsp"></jsp:include>			
-			</div>
-			
-			<div class="row" style="background-color:white; width:100%; margin: 0px auto; padding-left:50px">
-				<jsp:include page="home/tour.jsp"></jsp:include>
+			<div class="row" style="background-color:white;margin-top:10px; float: right; left:-1%">
+				<jsp:include page="weather.jsp"></jsp:include>
 			</div>
 
+			<div class="row" style="background-color:white;  margin-top:50px;  padding-right:50px;">
+				<div style="margin-top:-50px; margin-bottom: -55px"><h3>º£½ºÆ® ¸®ºä</h3></div>
+				<div style="margin-top:-13px;"><jsp:include page="home/review.jsp"></jsp:include></div>			
+			</div>
+			
+			<div class="row" style="background-color:white; width:100%; padding-right:50px">
+				<div style="margin-top:-70px;"><h3>º£½ºÆ® ¸À±¤¼÷</h3></div>
+				<jsp:include page="home/tour.jsp"></jsp:include>	
+			</div>
 			
 
 		</div>

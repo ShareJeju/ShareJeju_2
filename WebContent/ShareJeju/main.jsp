@@ -35,9 +35,10 @@
 	
 <%-- 	<jsp:include page="header.jsp"></jsp:include> 사진부분임 쓸사람만 쓰세요 --%>
 
-		
-		<jsp:include page="home.jsp"></jsp:include>
+		<jsp:include page="schedule_list.jsp"></jsp:include>
+		<%-- <jsp:include page="home.jsp"></jsp:include> --%>		
 		<%-- <jsp:include page="mypage.jsp"></jsp:include> --%>
+		<%-- <jsp:include page="schedule_input.jsp"></jsp:include> --%>
 	
 <!-- 		<div id="featured">
 			<div class="container">
@@ -48,7 +49,7 @@
 	Main
 		<div id="main">
 			<div id="content" class="container">
-				tweet 명언등
+				tweet 명언등등
 			</div>
 		</div>
 
@@ -60,7 +61,7 @@
 		</div> -->
 
 	<!-- Footer -->
-		<div id="footer">
+		<div id="footer" style="background-color: black;">
 			<div class="container">
 				<!-- footer.jsp -->
 				<jsp:include page="footer.jsp"></jsp:include>
