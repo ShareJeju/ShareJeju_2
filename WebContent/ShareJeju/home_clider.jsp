@@ -105,7 +105,7 @@ $(function(){
 }
 
 /* //////////////////////////////////////// */
-.dropdown-menu {
+	 .dropdown-menu {
    position: absolute;
    top: 100%;
    left: -50%;
@@ -132,7 +132,7 @@ $(function(){
     border-color: #fff;
     margin-bottom: 0px;
 }
-
+ 
 .open>a{
 	margin-top: 0px;
 }
@@ -141,6 +141,7 @@ $(function(){
 	margin-top: 0px;
 }
 .bx-wrapper{
+ margin-top:-54px;
  margin-bottom: 0px;
  -webkit-box-shadow:0 0 0px #ccc;
  border: 0px;

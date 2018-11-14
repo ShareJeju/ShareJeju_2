@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+  <meta charset="EUC-KR">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-.dropdown-menu {
+  .dropdown-menu {
 	position: absolute;
 	top: 100%;
 	left: -50%;
@@ -33,39 +37,32 @@
 	border-color: #fff;
 	margin-bottom: 0px;
 }
-
-.home_navbar {
-	position: absolute;
-	height: 50px;
-}
-</style>
-<title>Insert title here</title>
+  </style>
 </head>
 <body>
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
-		<ul class="nav navbar-nav">
-			<!-- 이유는 모르겠으나 이미지를 설정하는 걸로만 위치가 잡힌다
-			float에 대한 설명 : https://ofcourse.kr/css-course/float-%EC%86%8D%EC%84%B1 -->
-			<li id="licenter_home"><a href="main.jsp"
-				style="margin-top: -3px;">홈</a></li>
-			<li id="licenter_jeju"><a href="#" style="margin-top: 0px;">제주소개</a></li>
-			<li id="licenter_tour"><a href="#" style="margin-top: 0px;">관광지</a></li>
-			<li id="licenter_rogo"><a href="#" style="margin-top: 0px;">로고</a></li>
-			<li id="licenter_tasty"><a href="#" style="margin-top: 0px;">맛집</a></li>
-			<li id="licenter_hotels"><a href="#" style="margin-top: 0px;">숙소</a></li>
-			<li id="licenter_login"><a href="mem_login.jsp"
-				style="margin-top: 0px;">로그인</a></li>
-			<li id="licenter_MY">
-				<div class="dropdown">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="#">홈</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+      <a class="navbar-brand navbar-header" href="#">로고</a>
+
+    <ul class="nav navbar-nav">
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li id="licenter_MY">
+				<div class="dropdown" margin-top="-5px">
 					<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
 						id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
 						aria-expanded="false"> <img src="images/menu.png" width="45px"
-						height="30px">
+						height="30px" margin-top="-5px">
 					</a>
 					<!-- dropdown-menu는 home_clider.jsp에서 스타일을 새로 지정해줬다 안해주면 안됨 아믄 안됨 -->
 					<!-- 충돌 안나게하려고 다른건 다 home_붙여서 새로 만들어줬는데 얘만 안됨...용서하기싫은데  건들수가없네 -->
-					<div class="dropdown-menu" style="margin-top: 7px;">
+					<div class="dropdown-menu">
 						<a class="dropdown-item" href="my_mp.jsp">마이페이지</a><br> <a
 							class="dropdown-item" href="my_wl.jsp">찜/좋아요</a><br> <a
 							class="dropdown-item" href="mem_join.jsp">회원가입</a><br> <a
@@ -73,13 +70,8 @@
 					</div>
 				</div>
 			</li>
-
-
-		</ul>
-
-
-	</div>
-	</nav>
-
+    </ul>
+  </div>
+</nav>
 </body>
 </html>

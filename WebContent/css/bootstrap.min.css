@@ -2877,8 +2877,9 @@ output {
 	background-color: #eee;
 	opacity: 1
 }
-/* 货肺款芭 */
-.custom-select {
+
+/*form-control2 */
+.form-control2 {
 	display: block;
 	width: 100%;
 	height: 34px;
@@ -2899,7 +2900,7 @@ output {
 	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
 }
 
-.custom-select:focus {
+.form-control2:focus {
 	border-color: #66afe9;
 	outline: 0;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px
@@ -2908,27 +2909,26 @@ output {
 		rgba(102, 175, 233, .6)
 }
 
-.custom-select::-moz-placeholder {
+.form-control2::-moz-placeholder {
 	color: #999;
 	opacity: 1
 }
 
-.custom-select:-ms-input-placeholder {
+.form-control2:-ms-input-placeholder {
 	color: #999
 }
 
-.custom-select::-webkit-input-placeholder {
+.form-control2::-webkit-input-placeholder {
 	color: #999
 }
 
-.custom-select[disabled], .custom-select[readonly], fieldset[disabled] .custom-select
+.form-control2[disabled], .form-control2[readonly], fieldset[disabled] .form-control
 	{
 	cursor: not-allowed;
 	background-color: #eee;
 	opacity: 1
 }
-
-/*货肺款芭 场 */
+/*form-control2 end */
 textarea.form-control {
 	height: auto
 }
@@ -5378,8 +5378,8 @@ a.badge:focus, a.badge:hover {
 }
 
 .jumbotron p {
-	margin-bottom: 15px;
-	font-size: 21px;
+	margin-bottom: 0px;
+	font-size: 12px;
 	font-weight: 200
 }
 
@@ -5397,7 +5397,7 @@ a.badge:focus, a.badge:hover {
 
 @media screen and (min-width:768px) {
 	.jumbotron {
-		padding: 48px 0
+		padding: 0 0
 	}
 	.container .jumbotron, .container-fluid .jumbotron {
 		padding-right: 60px;

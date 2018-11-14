@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
 
 
 <style type="text/css">
@@ -36,7 +35,7 @@
 }
 
 /* //////////////////////////////////////// */
-.dropdown-menu {
+/* .dropdown-menu {
 	position: absolute;
 	top: 100%;
 	left: -50%;
@@ -65,9 +64,10 @@
 }
 
 .bx-wrapper{
+ position:absolute;
  margin-bottom: 0px;
  border: 0px;
-}
+} */
  .bx-wrapper img {
     max-width: 100%;
     height:450px;

@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<div id="home_header">	
+	<div id="home_header" style="margin-top: 50px">	
 		<jsp:include page="home_clider.jsp"></jsp:include>
 	</div>
 </body>
