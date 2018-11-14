@@ -68,7 +68,7 @@
 	<center>
 	<div class="out2" style="width: 1500px; height: 50px;">
 	<div class="in2">
-		<font size="5" style="align: center;"><a href="#" style="color: black;">#여행기</a></font>&nbsp;&nbsp;
+		<font size="5" style="align: center;"><a href="schedule_list.jsp" style="color: black;">#여행기</a></font>&nbsp;&nbsp;
 		<font size="5" style="align: center;"><a href="#" style="color: black;">#맛집</a></font>&nbsp;&nbsp;
 		<font size="5"style="align: center;"><a href="#" style="color: black;">#관광지</a></font>&nbsp;&nbsp;
 		<font size="5" style="align: center;"><a href="#" style="color: black;">#숙소</a></font>

@@ -51,7 +51,7 @@
 				style="margin-top: 0px;">홈</a></li>
 			<li id="licenter_jeju"><a href="#" style="margin-top: 0px;">제주소개</a></li>
 			<li id="licenter_tour"><a href="#" style="margin-top: 0px;">관광지</a></li>
-			<li id="licenter_rogo"><a href="#" style="margin-top: 0px;">로고</a></li>
+			<li id="licenter_rogo"><a href="shareMain.jsp" style="margin-top: 0px;">로고</a></li>
 			<li id="licenter_tasty"><a href="#" style="margin-top: 0px;">맛집</a></li>
 			<li id="licenter_hotels"><a href="#" style="margin-top: 0px;">숙소</a></li>
 			<li id="licenter_login"><a href="mem_login.jsp"
@@ -73,13 +73,8 @@
 					</div>
 				</div>
 			</li>
-
-
 		</ul>
-
-
 	</div>
 	</nav>
-
 </body>
 </html>
