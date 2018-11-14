@@ -48,7 +48,7 @@
 			<!-- 이유는 모르겠으나 이미지를 설정하는 걸로만 위치가 잡힌다
 			float에 대한 설명 : https://ofcourse.kr/css-course/float-%EC%86%8D%EC%84%B1 -->
 			<li id="licenter_home"><a href="main.jsp"
-				style="margin-top: -3px;">홈</a></li>
+				style="margin-top: 0px;">홈</a></li>
 			<li id="licenter_jeju"><a href="#" style="margin-top: 0px;">제주소개</a></li>
 			<li id="licenter_tour"><a href="#" style="margin-top: 0px;">관광지</a></li>
 			<li id="licenter_rogo"><a href="#" style="margin-top: 0px;">로고</a></li>
