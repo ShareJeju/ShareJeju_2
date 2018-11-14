@@ -322,6 +322,7 @@ body {
 	left:50%; top:28%;
 	font-size:5px;
 }
+
 </style>
 <script type="text/javascript">
 $(function(){
