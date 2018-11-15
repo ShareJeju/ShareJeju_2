@@ -26,7 +26,7 @@
 	
 	<body class="homepage">
 		<div style="width: 100%">
-			<jsp:include page="navbar.jsp"></jsp:include>
+			<jsp:include page="../navbar.jsp"></jsp:include>
 		</div>
 		<jsp:include page="${main_jsp }"></jsp:include>
 		
@@ -34,7 +34,7 @@
 		<div id="footer" style="background-color: black;">
 			<div class="container">
 				<!-- footer.jsp -->
-				<jsp:include page="footer.jsp"></jsp:include>
+				<jsp:include page="../footer.jsp"></jsp:include>
 			</div>
 		</div>
 	</body>

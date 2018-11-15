@@ -12,7 +12,7 @@
 	<div class="container">
 		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic03.jpg" width=100% height=200>
+				<a href="#"> <img src="../images/pic03.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임<br>태그
@@ -22,7 +22,7 @@
 
 		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic04.jpg" width=100% height=200>
+				<a href="#"> <img src="../images/pic04.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임<br>태그
@@ -32,7 +32,7 @@
 
 		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic03.jpg" width=100% height=200>
+				<a href="#"> <img src="../images/pic03.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목 닉네임 <br>태그
@@ -42,7 +42,7 @@
 
 		<div class="col-sm-3" style="margin-right: -10px;">
 			<div class="panel">
-				<a href="#"> <img src="images/pic04.jpg" width=100% height=200>
+				<a href="#"> <img src="../images/pic04.jpg" width=100% height=200>
 				</a>
 				<div class="panel-heading" style="text-align: right">
 					제목닉네임 <br>태그

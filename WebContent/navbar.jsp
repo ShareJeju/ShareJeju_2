@@ -5,8 +5,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
 <style type="text/css">
 .dropdown-menu {
 	position: absolute;
@@ -119,6 +119,11 @@ body {
 	display: inline-block;
 	margin: 100px auto;
 }
+@media ( min-width :768px) {
+	.modal-dialog {
+		width: 350px !important;
+		margin: 30px auto
+	}
 </style>
 <title>Insert title here</title>
 </head>
@@ -144,7 +149,7 @@ body {
 				<div class="dropdown">
 					<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
 						id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> <img src="images/menu.png" width="30px" height="35px">
+						aria-expanded="false"> <img src="../images/menu.png" width="30px" height="35px">
 					</a>
 					<!-- dropdown-menu는 home_clider.jsp에서 스타일을 새로 지정해줬다 안해주면 안됨 아믄 안됨 -->
 					<!-- 충돌 안나게하려고 다른건 다 home_붙여서 새로 만들어줬는데 얘만 안됨...용서하기싫은데  건들수가없네 -->
@@ -166,14 +171,14 @@ body {
 		<div class="modal-content">
 			<div class="modal-header">
 				<div class="avatar">
-					<img src="/examples/images/avatar.png" alt="Avatar">
+					<img src="images/login_img.png" alt="Avatar">
 				</div>				
 				<h4 class="modal-title">로그인</h4>
 				<p style="font-size: 13px; margin: 22px 5px;"> 쉐어제주를 시작하기 위한 로그인을 해주세요.</p>	  	
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="/examples/actions/confirmation.php" method="post">
+				<form action="." method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" name="username" placeholder="아이디" required="required">		
 					</div>
@@ -191,12 +196,10 @@ body {
 					</div>
 				</form>
 			</div>
-			<div class="modal-footer" style="background: #e45a5a;">
-				<a href="mem_join.jsp" style="width: 50%;">회원가입</a>
-			</div>
-			<div class="modal-footer" style="background: #c0c3c3;">
-				<a href="mem_findID.jsp" style="width: 50%;">ID/PW 찾기</a>
-			</div>
+			<button type="button" class="btn btn-lg btn-block" style="background: #e45a5a; font-size: 14px"
+			onclick="location.href='mem_join.jsp'">회원가입</button>
+			<button type="button" class="btn btn-lg btn-block" style="background: #c0c3c3; font-size: 14px"
+			onclick="location.href='mem_findID.jsp'">ID/PW찾기</button>
 		</div>
 	  </div>
 	</div>     

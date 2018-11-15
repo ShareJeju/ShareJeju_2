@@ -1,43 +1,57 @@
 package com.sist.member.dao;
 
 /*
- *ID       NOT NULL VARCHAR2(20)  
-PWD      NOT NULL VARCHAR2(20)  
-NAME     NOT NULL VARCHAR2(34)  
-SEX               VARCHAR2(4)   
-BIRTHDAY NOT NULL VARCHAR2(10)  
-POST     NOT NULL CHAR(7)       
-ADDR1    NOT NULL VARCHAR2(200) 
-ADDR2             VARCHAR2(100) 
-TEL      NOT NULL CHAR(13)      
-CONTENT           CLOB          
-REGDATE           DATE          
+ID               NOT NULL NUMBER         
+USERID           NOT NULL VARCHAR2(15)   
+PW               NOT NULL VARCHAR2(15)   
+NAME             NOT NULL VARCHAR2(34)   
+EMAIL            NOT NULL VARCHAR2(50)   
+PHONE                     VARCHAR2(13)   
+SEX              NOT NULL CHAR(1)        
+BIRTH            NOT NULL VARCHAR2(8)    
+REGION                    VARCHAR2(10)   
+INTRO                     VARCHAR2(1000) 
+PROFILE_IMG               VARCHAR2(260)  
+PROFILE_IMG_SIZE          VARCHAR2(260)  
+CREATED_AT                DATE           
+UPDATED_AT                DATE           
+ADMIN                     NUMBER         
+
 */
 import java.util.*;
 public class MemberVO {
-	private String id;
-	private String pwd;
+	private int id;
+	private String userid;
+	private String pw;
 	private String name;
-	private String sex;
-	private String birthday;
-	private String post;
-	private String addr1;
-	private String addr2;
-	private String tel;
-	private String content;
-	private Date regdate;
-	
-	public String getId() {
+	private String email;
+	private String phone;
+	private String sex; // M, F
+	private String birth;
+	private String region;
+	private String intro;
+	private String profile_img;
+	private String profile_img_size;
+	private Date created_at; // 생성시간
+	private Date updated_at; // 수정시간
+	private int admin;
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-	public String getPwd() {
-		return pwd;
+	public String getUserid() {
+		return userid;
 	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 	public String getName() {
 		return name;
@@ -45,54 +59,73 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public String getSex() {
 		return sex;
 	}
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-	public String getBirthday() {
-		return birthday;
+	public String getBirth() {
+		return birth;
 	}
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
-	public String getPost() {
-		return post;
+	public String getRegion() {
+		return region;
 	}
-	public void setPost(String post) {
-		this.post = post;
+	public void setRegion(String region) {
+		this.region = region;
 	}
-	public String getAddr1() {
-		return addr1;
+	public String getIntro() {
+		return intro;
 	}
-	public void setAddr1(String addr1) {
-		this.addr1 = addr1;
+	public void setIntro(String intro) {
+		this.intro = intro;
 	}
-	public String getAddr2() {
-		return addr2;
+	public String getProfile_img() {
+		return profile_img;
 	}
-	public void setAddr2(String addr2) {
-		this.addr2 = addr2;
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
 	}
-	public String getTel() {
-		return tel;
+	public String getProfile_img_size() {
+		return profile_img_size;
 	}
-	public void setTel(String tel) {
-		this.tel = tel;
+	public void setProfile_img_size(String profile_img_size) {
+		this.profile_img_size = profile_img_size;
 	}
-	public String getContent() {
-		return content;
+	public Date getCreated_at() {
+		return created_at;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setCreated_at(Date created_at) {
+		this.created_at = created_at;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public Date getUpdated_at() {
+		return updated_at;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setUpdated_at(Date updated_at) {
+		this.updated_at = updated_at;
 	}
+	public int getAdmin() {
+		return admin;
+	}
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
+	
 	
 	
 }

@@ -11,18 +11,15 @@ import com.sist.member.dao.MemberVO;
 
 import java.util.*;
 public class MemberModel {
+  
   @RequestMapping("member/join.do")
   public String member_join(HttpServletRequest req,HttpServletResponse res)
-  {
-	 /* List<String> nList=NaverDaumManager.naverFindData();
-	  req.setAttribute("nList", nList);
-	  
-	  List<String> dList=NaverDaumManager.daumFindData();
-	  req.setAttribute("dList", dList);*/
-	  
+  {	  
 	  req.setAttribute("main_jsp","../member/join.jsp");
 	  return "../main/main.jsp";
   }
+  
+  
   @RequestMapping("member/idcheck.do")
   public String member_idcheck(HttpServletRequest req,HttpServletResponse res)
   {

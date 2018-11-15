@@ -29,28 +29,28 @@ $(function(){
 
 .img1{
     position: relative;
-    background-image: url(images/pic02.jpg);                                                               
+    background-image: url(../images/pic02.jpg);                                                               
     height: 525px;
     background-size: cover;
     width: 100%
 }
 .img2{
     position: relative;
-    background-image: url(images/pic01.jpg);                                                               
+    background-image: url(../images/pic01.jpg);                                                               
     height: 525px;
     background-size: cover;
     width: 100%
 }
 .img3{
     position: relative;
-    background-image: url(images/pic03.jpg);                                                               
+    background-image: url(../images/pic03.jpg);                                                               
     height: 525px;
     background-size: cover;
     width: 100%
 }
 .img4{
     position: relative;
-    background-image: url(images/pic04.jpg);                                                               
+    background-image: url(../images/pic04.jpg);                                                               
     height: 525px;
     background-size: cover;
     width: 100%

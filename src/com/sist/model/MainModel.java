@@ -7,7 +7,7 @@ import com.sist.controller.RequestMapping;
 import java.util.*;
 
 public class MainModel {
- @RequestMapping("ShareJeju/main.do")
+ @RequestMapping("main/main.do")
  public String main_main(HttpServletRequest req, HttpServletResponse res)
  {
 	 req.setAttribute("main_jsp", "home.jsp");

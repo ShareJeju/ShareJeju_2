@@ -23,17 +23,17 @@
 		<div id="content" class="container">
 
 			<div class="row" style="background-color:white;margin-top:10px; float: right; left:-1%">
-				<jsp:include page="weather.jsp"></jsp:include>
+				<jsp:include page="../weather.jsp"></jsp:include>
 			</div>
 
 			<div class="row" style="background-color:white;  margin-top:50px;  padding-right:50px;">
 				<div style="margin-top:-50px; margin-bottom: -55px"><h3>º£½ºÆ® ¸®ºä</h3></div>
-				<div style="margin-top:-13px;"><jsp:include page="home/review.jsp"></jsp:include></div>			
+				<div style="margin-top:-13px;"><jsp:include page="review.jsp"></jsp:include></div>			
 			</div>
 			
 			<div class="row" style="background-color:white; width:100%; padding-right:50px">
 				<div style="margin-top:-70px;"><h3>º£½ºÆ® ¸À±¤¼÷</h3></div>
-				<jsp:include page="home/tour.jsp"></jsp:include>	
+				<jsp:include page="tour.jsp"></jsp:include>	
 			</div>
 			
 

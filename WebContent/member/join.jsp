@@ -8,7 +8,7 @@
 <meta name="description" content="" />
 <meta name="keywords" content="" />
 <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../../bootstrap.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
 #title{
@@ -41,8 +41,13 @@
             <form>
 			   <div class="form-group">
 			      <label for="exampleInputEmail1">아이디</label>
-			      <input type="text" class="form-control" id="InputID" placeholder="ID 입력">
-				  <input type=button value="중복체크" class="btn btn-xs btn-primary" onclick="idcheck()">
+			      <div class="row">
+				      <div class="col-sm-9">
+				      <input type="text" class="form-control" id="InputID" placeholder="ID 입력"></div>
+					  <div class="col-sm-3">
+					  <input type=button value="중복체크" class="btn btn-md btn-success" onclick="idcheck()"
+					  style="margin: 3px 0 -10px -10px; padding: 9px 30px;"></div>
+				  </div>
 			    </div>    
 			    <div class="form-group">
 			      <label for="exampleInputPassword1">비밀번호</label>
