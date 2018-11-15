@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 
+	Connection 관련 
+ -->
+<configuration>
+  <!-- vo등록 -->
+  <typeAliases>
+    <typeAlias type="com.sist.member.dao.MemberVO" alias="MemberVO"/>
+  </typeAliases>
+  <!-- 데이터베이스 정보 -->
+  <environments default="development">
+    <environment id="development">
+     <transactionManager type="JDBC"/>
+     <dataSource type="POOLED">
+      <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+      <property name="url" value="jdbc:oracle:thin:@211.238.142.65:1521:ORCL"/>
+      <property name="username" value="scott"/>
+      <property name="password" value="tiger"/>
+     </dataSource>
+    </environment>
+  </environments>
+  <!-- SQL문장 등록 -->
+  
+  <mappers>
+  	<!-- mapper : include (데이터를 읽어온다~)-->
+  	<mapper resource="com/sist/member/dao/member-mapper.xml"/>
+  </mappers>
+</configuration>
