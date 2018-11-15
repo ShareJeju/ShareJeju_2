@@ -42,6 +42,7 @@
 			   <div class="form-group">
 			      <label for="exampleInputEmail1">아이디</label>
 			      <input type="text" class="form-control" id="InputID" placeholder="ID 입력">
+				  <input type=button value="중복체크" class="btn btn-xs btn-primary" onclick="idcheck()">
 			    </div>    
 			    <div class="form-group">
 			      <label for="exampleInputPassword1">비밀번호</label>
@@ -101,7 +102,7 @@
 
   	      <div class="form-group" style="margin-top:20px; margin-left:10px"> 
 		    <div class="text-center">
-		      이미 회원이세요?&nbsp;<a href="mem_login.jsp"><u>로그인하기</u></a>
+		      이미 회원이세요?&nbsp;<a href="main.jsp"><u>로그인하기</u></a>
 		    </div>
 		  </div>	
 	      </div>
