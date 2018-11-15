@@ -12,7 +12,7 @@ public class FileChange {
 	{
 		try {	
 						// 본인 src경로 적어주세요
-			String path="C:\\webDev\\webStudy\\ShareJeju_2\\src\\";
+			String path="C:\\Users\\user\\git\\ShareJeju_2\\src\\";
 						
 			for(String pack:pList)
 			{

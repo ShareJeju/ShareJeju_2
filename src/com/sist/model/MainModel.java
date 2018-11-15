@@ -10,6 +10,7 @@ public class MainModel {
  @RequestMapping("ShareJeju/main.do")
  public String main_main(HttpServletRequest req, HttpServletResponse res)
  {
+	 req.setAttribute("main_jsp", "home.jsp");
 	 return "main.jsp";
  }
 }
