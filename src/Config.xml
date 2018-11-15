@@ -24,7 +24,7 @@
   <!-- SQL문장 등록 -->
   
   <mappers>
-  	<!-- mapper : include (데이터를 읽어온다~)-->
+  	<!-- mapper : include (~데이터를 읽어온다~)-->
   	<mapper resource="com/sist/member/dao/member-mapper.xml"/>
   </mappers>
 </configuration>
