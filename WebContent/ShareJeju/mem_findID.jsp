@@ -55,11 +55,7 @@
 			    </div>
 			  </div>			 						
   			</form>
-	      <div class="form-group" style="margin-top:80px"> 
-		    <div class="col-sm-6 text-right" >
-		      <a href="mem_login.jsp" style="margin-left:40px">로그인</a>
-		    </div>
-		    <div class="col-sm-6 text-left" style="margin-left:-30px">
+		    <div class="text-center" style="margin-left:-30px">
 		      <a href="mem_findPW.jsp" style="margin-left:30px">비밀번호찾기</a>
 		    </div>&nbsp;&nbsp;&nbsp;&nbsp;
 		  </div>	
