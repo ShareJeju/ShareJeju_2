@@ -11,6 +11,10 @@
 <link rel="stylesheet" type="text/css" href="../../bootstrap.min.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
+.container
+{
+  background: white;
+}
 #title{
 	text-align: center;
 	margin: 200px 300px 0px 300px;
@@ -23,12 +27,30 @@
 }
 
 </style>
+<link rel="stylesheet" type="text/css" href="../shadow/css/shadowbox.css">
+<script type="text/javascript" src="../shadow/js/shadowbox.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- 세개 반드시 있어야 jquery/ajax 가능 -->
 <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript">
+Shadowbox.init({
+	players:["iframe"]
+});
+function idcheck()
+{
+	Shadowbox.open({
+		content:'../member/idcheck.do',
+		title:'아이디중복체크',
+		player:'iframe',
+		width:300,
+		height:150
+	});
+	
+}
+</script>
 </head>
 <body>
   <div id="title">
@@ -38,12 +60,13 @@
     <div id="content" class="container">
       <div class="row">
           <div class="list-group">
-            <form>
+            <form name="joinFrm" method="post" action="join_ok.do">
 			   <div class="form-group">
 			      <label for="exampleInputEmail1">아이디</label>
 			      <div class="row">
 				      <div class="col-sm-9">
-				      <input type="text" class="form-control" id="InputID" placeholder="ID 입력"></div>
+				      <input type="text" class="form-control" name=userid placeholder="ID 입력" readonly>
+				      </div>
 					  <div class="col-sm-3">
 					  <input type=button value="중복체크" class="btn btn-md btn-success" onclick="idcheck()"
 					  style="margin: 3px 0 -10px -10px; padding: 9px 30px;"></div>
@@ -51,30 +74,35 @@
 			    </div>    
 			    <div class="form-group">
 			      <label for="exampleInputPassword1">비밀번호</label>
-			      <input type="password" class="form-control" id="InputPassword" placeholder="비밀번호 입력">
+			      <input type="password" class="form-control" name=pw required placeholder="비밀번호 입력">
 			    </div>
    			    <div class="form-group">
 			      <label for="exampleInputPassword2">비밀번호 확인</label>
-			      <input type="password" class="form-control" id="InputPassword2" placeholder="비밀번호 재입력">
+			      <input type="password" class="form-control" name=pw1 placeholder="비밀번호 재입력">
 			    </div>
    			    <div class="form-group">
 			      <label for="exampleInputPassword1">닉네임</label>
-			      <input type="text" class="form-control" id="InputName" 
+			      <input type="text" class="form-control" name=name required
 			      	placeholder="닉네임을 공백없이 입력해주세요.">
 			    </div>
 			    <div class="form-group">
 			      <label for="exampleInputPassword1">이메일</label>
-			      <input type="email" class="form-control" id="InputEmail" 
+			      <input type="email" class="form-control" name=email required
 			      	placeholder="sharejeju@sharejeju.com">
 			    </div>
    			    <div class="form-group">
 			      <label for="exampleInputPassword1">생년월일</label>
-			      <input type="text" class="form-control" id="InputBirth" 
+			      <input type="text" class="form-control" name=birth required
 			      	placeholder="ex)19951101">
+			    </div>
+   			    <div class="form-group">
+			      <label for="exampleInputPassword1">연락처</label>
+			      <input type="text" class="form-control" name=phone
+			      	placeholder="ex)010-6547-4654">
 			    </div>
    		        <div class="form-group">
 			        <label for="exampleSelect1">거주지역</label>
-				  	  <select class="form-control2" id="SelectRegion">
+				  	  <select class="form-control2" name=region>
 				        <option>지역선택</option>
 				        <option>서울</option>
 				        <option>경기</option>
@@ -90,17 +118,19 @@
    			    <div class="form-group">
 			      <div class="form-check">
 			      <label class="form-check-label">성별</label>
-			          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios" value="option1"
-			          style="margin-left:10px">
-                  		남성
-                 	  <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios" value="option2"
+			          <input type="radio" class="form-check-input" name=sex value="M"
+			          style="margin-left:10px" checked>
+                  		남자
+                 	  <input type="radio" class="form-check-input" name=sex value="F"
                  	   style="margin-left:10px">
-                  		여성
+                  		여자
 			      </div>
     		    </div>
   			   <div class="form-group" style="margin-top:20px"> 
 			    <div class="text-center">
-			      <button type="submit" class="btn btn-danger btn-md">회원가입</button>
+			      <input type="submit" value="회원가입" class="btn btn-danger btn-md">
+			      <input type="button" value="취소" class="btn btn-warning btn-md"
+						 onclick="javascript:history.back()">
 			    </div>
 			  </div>			  
 		  </form>				 						

@@ -130,7 +130,7 @@ body {
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
 <script>
   $(function() {
@@ -196,7 +196,7 @@ body {
 			<li id="licenter_home"><a href="main.jsp"
 				style="margin-top: 0px;">홈</a></li>
 			<li id="licenter_jeju"><a href="#" style="margin-top: 0px;">제주소개</a></li>
-			<li id="licenter_tour"><a href="#" style="margin-top: 0px;">관광지</a></li>
+			<li id="licenter_tour"><a href="../member/modify.do" style="margin-top: 0px;">관광지</a></li>
 			<li id="licenter_rogo"><a href="shareMain.jsp" style="margin-top: 0px;">로고</a></li>
 			<li id="licenter_tasty"><a href="#" style="margin-top: 0px;">맛집</a></li>
 			<li id="licenter_hotels"><a href="#" style="margin-top: 0px;">숙소</a></li>
@@ -223,9 +223,7 @@ body {
 					<!-- 충돌 안나게하려고 다른건 다 home_붙여서 새로 만들어줬는데 얘만 안됨...용서하기싫은데  건들수가없네 -->
 					<div class="dropdown-menu" style="margin-top: 7px;">
 						<a class="dropdown-item" href="my_mp.jsp">마이페이지</a><br> <a
-							class="dropdown-item" href="my_wl.jsp">찜/좋아요</a><br> <a
-							class="dropdown-item" href="mem_join.jsp">회원가입</a><br> <a
-							class="dropdown-item" href="#">로그아웃</a><br>
+							class="dropdown-item" href="my_wl.jsp">찜/좋아요</a><br>
 					</div>
 				</div>
 			</li>
@@ -263,7 +261,7 @@ body {
 				</form>
 			</div>
 			<button type="button" class="btn btn-lg btn-block" style="background: #e45a5a; font-size: 14px"
-			onclick="location.href='../mem_join.jsp'">회원가입</button>
+			onclick="location.href='../member/join.do'">회원가입</button>
 			<button type="button" class="btn btn-lg btn-block" style="background: #c0c3c3; font-size: 14px"
 			onclick="location.href='../mem_findID.jsp'">ID/PW찾기</button>
 		</div>

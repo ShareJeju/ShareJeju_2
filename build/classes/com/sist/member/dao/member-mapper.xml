@@ -2,39 +2,6 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.member.dao.member-mapper">
-
-  <!-- ID중복체크 -->
-  <select id="idcheck" resultType="int" parameterType="String">
-    SELECT COUNT(*)
-    FROM member
-    WHERE id=#{id}
-  </select>
-  <!-- 회원가입 
-  
-    SEX               CHAR(4)       
-BIRTHDAY NOT NULL VARCHAR2(10)  
-POST     NOT NULL CHAR(7)       
-ADDR1    NOT NULL VARCHAR2(200) 
-ADDR2             VARCHAR2(100) 
-TEL      NOT NULL CHAR(13)      
-CONTENT           CLOB          
-REGDATE
-  -->
-  <insert id="joinInsert" parameterType="MemberVO">
-   INSERT INTO member VALUES(
-    #{id},
-    #{pwd},
-    #{name},
-    #{sex},
-    #{birthday},
-    #{post},
-    #{addr1},
-    #{addr2},
-    #{tel},
-    #{content},
-    SYSDATE
-   )
-  </insert>
   <!-- 로그인 처리 -->
   <select id="idCount" resultType="int" parameterType="String">
     SELECT COUNT(*) 
@@ -47,14 +14,38 @@ REGDATE
     FROM sj_member
     WHERE userid=#{userid}
   </select>
-  <!-- 회원탈퇴 -->
-  <!-- ID찾기 
-       ad*** RPAD
-  -->
-  <!-- 비밀번호 찾기 
-              자바 메일
-  -->
-  <!-- 
-             옵션 : 관리자와 유저,비밀번호변경  
-   -->
+  
+  <!-- ID중복체크 -->
+  <select id="idcheck" resultType="int" parameterType="String">
+    SELECT COUNT(*)
+    FROM sj_member
+    WHERE userid=#{userid}
+  </select>
+  
+  <!-- 회원가입 -->   
+  <insert id="joinInsert" parameterType="MemberVO">
+  	  <!-- id 자동증가 -->
+	  <selectKey keyProperty="id" order="BEFORE" resultType="int">
+	    SELECT NVL(MAX(id)+1,1) as id FROM sj_member 
+	  </selectKey>
+   INSERT INTO sj_member(id,userid,pw,name,email,phone,sex,birth,region)
+   VALUES(
+    #{id},
+    #{userid},
+    #{pw},
+    #{name},
+    #{email},
+    #{phone},
+    #{sex},
+    #{birth},
+    #{region}
+    )
+  </insert>
+  
+  <!-- 내정보수정 정보페이지 -->
+  <select id="joinDetail" resultType="MemberVO" parameterType="String">
+  	SELECT userid,pw,name,email,phone,sex,birth,region
+  	FROM sj_member
+  	WHERE userid=#{userid}
+  </select>
 </mapper>

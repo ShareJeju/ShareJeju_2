@@ -22,7 +22,8 @@ public class MemberDAO {
    }
    
     
-   public static int idcheck(String id)
+   // ID중복체크  
+   public static int idcheck(String userid)
    {
 	   int count=0;
 	   SqlSession session=null;
@@ -31,7 +32,7 @@ public class MemberDAO {
 		   // 데이터베이스 수행 요청 
 		   // getConnection()
 		   session=ssf.openSession();
-		   count=session.selectOne("idcheck",id);
+		   count=session.selectOne("idcheck",userid);
 	   }catch(Exception ex)
 	   {
 		   // 에러 처리
@@ -62,6 +63,22 @@ public class MemberDAO {
 	   {
 		   session.close();// 반환
 	   }
+   }
+   
+   // 정보수정 보여주는페이지
+   public static MemberVO joinDetail(String userid)
+   {
+	   MemberVO vo = new MemberVO();
+	   try {
+		   SqlSession session = ssf.openSession();
+		   vo=session.selectOne("joinDetail",userid);
+		   session.close();
+		   
+	   } catch (Exception e) {
+		System.out.println("joinModify:"+e.getMessage());
+		e.printStackTrace();
+	   }
+	   return vo;
    }
    
    // 로그인 처리

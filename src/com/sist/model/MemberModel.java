@@ -12,70 +12,77 @@ import com.sist.member.dao.MemberVO;
 import java.util.*;
 public class MemberModel {
   
+	  
   @RequestMapping("member/join.do")
   public String member_join(HttpServletRequest req,HttpServletResponse res)
   {	  
 	  req.setAttribute("main_jsp","../member/join.jsp");
 	  return "../main/main.jsp";
   }
-  
-  
+    
   @RequestMapping("member/idcheck.do")
   public String member_idcheck(HttpServletRequest req,HttpServletResponse res)
   {
 	  return "../member/idcheck.jsp";
   }
-
  
   @RequestMapping("member/idcheck_ok.do")
   public String member_idcheck_ok(HttpServletRequest req,HttpServletResponse res)
   {
 	  // DB연동 
-	  String id=req.getParameter("id");
-	  int count=MemberDAO.idcheck(id);
+	  String userid=req.getParameter("userid");
+	  int count=MemberDAO.idcheck(userid);
 	  
 	  req.setAttribute("count", count);
 	  return "../member/idcheck_ok.jsp";
   }
-  
+	  
   // 회원가입
   @RequestMapping("member/join_ok.do")
   public String member_join_ok(HttpServletRequest req,HttpServletResponse res)
   {
-	  try
-	  {
-		  // 한글 변환 
-		  req.setCharacterEncoding("EUC-KR");
-		  String id=req.getParameter("id");
-		  String pwd=req.getParameter("pwd");
-		  String name=req.getParameter("name");
-		  String sex=req.getParameter("sex");
-		  String birthday=req.getParameter("birthday");
-		  String post1=req.getParameter("post1");
-		  String post2=req.getParameter("post2");
-		  String addr1=req.getParameter("addr1");
-		  String addr2=req.getParameter("addr2");
-		  String tel1=req.getParameter("tel1");
-		  String tel2=req.getParameter("tel2");
-		  String tel3=req.getParameter("tel3");
-		  String content=req.getParameter("content");
-		  
-		  MemberVO vo=new MemberVO();
-	/*	  vo.setId(id);
-		  vo.setPwd(pwd);
-		  vo.setName(name);
-		  vo.setSex(sex);
-		  vo.setBirthday(birthday);
-		  vo.setPost(post1+"-"+post2);
-		  vo.setAddr1(addr1);
-		  vo.setAddr2(addr2);
-		  vo.setTel(tel1+"-"+tel2+"-"+tel3);
-		  vo.setContent(content);*/
-		  
-		  MemberDAO.joinInsert(vo);
-	  }catch(Exception ex){}
-	  return "redirect:../main/main.do";
+		 try {
+			 req.setCharacterEncoding("EUC-KR");
+			 // 값 가져오기
+			 String userid = req.getParameter("userid");
+			 String pw = req.getParameter("pw");
+			 String name = req.getParameter("name");
+			 String email = req.getParameter("email");
+			 String phone = req.getParameter("phone");
+			 String sex = req.getParameter("sex");
+			 String birth = req.getParameter("birth");
+			 String region = req.getParameter("region");
+			 
+			 MemberVO vo = new MemberVO();
+			 vo.setUserid(userid);
+			 vo.setPw(pw);
+			 vo.setName(name);
+			 vo.setEmail(email);
+			 vo.setPhone(phone);
+			 vo.setSex(sex);
+			 vo.setBirth(birth);
+			 vo.setRegion(region);
+			 MemberDAO.joinInsert(vo);
+			 
+		 }catch (Exception e) {}
+		  return "redirect:../main/main.do";
   }
+  
+	//내 정보수정
+	 @RequestMapping("member/modify.do")
+	 public String member_modify(HttpServletRequest req,HttpServletResponse res)
+	 {
+		 
+		 HttpSession session=req.getSession();
+		 String userid=(String)session.getAttribute("userid");
+		 MemberVO vo = MemberDAO.joinDetail(userid);
+		 System.out.println(vo.getUserid());
+		 
+		 req.setAttribute("vo", vo);
+		 req.setAttribute("main_jsp","../member/modify.jsp");
+		 return "../main/main.jsp";
+	 }
+
   @RequestMapping("member/login.do")
   public String member_login(HttpServletRequest req,HttpServletResponse res)
   {
