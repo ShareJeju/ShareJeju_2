@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -125,6 +126,65 @@ body {
 		margin: 30px auto
 	}
 </style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<script>
+  $(function() {
+    $('#logBtn').click(function(){
+    	var userid=$('#userid').val();
+    	if(userid.trim()=="")
+    	{    		
+    		$('#userid').focus();
+    		
+    		return;
+    	}
+    	var pw=$('#pw').val();
+    	if(pw.trim()=="")
+    	{
+    		$('#pw').focus();
+    		return;
+    	}
+    	/*
+    		../main   => MainModel
+    		../member => MemberModel
+    		../board  => BoardModel
+    	*/
+    	$.ajax({
+    		type:'post',
+    		url:'../member/login.do',
+    		data:{"userid":userid,"pw":pw},
+    		success:function(response)
+    		{
+    			var result=response.trim();
+    			if(result=="NOID")
+    			{
+    				alert("ID가 존재하지 않습니다");
+    				$('#userid').val("");
+    				$('#pw').val("");
+    				$('#userid').focus();
+    			}
+    			else if(result=="NOPWD")
+    			{
+    				alert("비밀번호가 틀립니다");
+    				$('#pw').val("");
+    				$('#pw').focus();
+    			}
+    			else
+    			{
+    				/* $('#myModal').modal('hide'); */
+    				location.href="../main/main.do";
+    			}
+    		}
+    	});
+    	
+    	//$('#myModal').modal('hide');
+    });
+  });
+  </script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -141,10 +201,18 @@ body {
 			<li id="licenter_tasty"><a href="#" style="margin-top: 0px;">맛집</a></li>
 			<li id="licenter_hotels"><a href="#" style="margin-top: 0px;">숙소</a></li>
 			
+			
+			<c:if test="${sessionScope.userid==null }">
 			<li id="licenter_login">
 				<a href="#myModal" class="trigger-btn" data-toggle="modal" style="margin-top: 0px;">로그인</a>
 			</li>				
-				
+			</c:if>
+			<c:if test="${sessionScope.userid!=null }">
+        		<li id="licenter_login">
+        		<a href="../member/logout.do">로그아웃</a>
+        		</li>
+       		</c:if>
+			
 			<li id="licenter_MY">			
 				<div class="dropdown">
 					<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
@@ -166,7 +234,7 @@ body {
 	</nav>
 	
 	<!-- Login Modal -->
-	<div id="myModal" class="modal fade">
+	<div class="modal fade" id="myModal" role="dialog">
 	  <div class="modal-dialog modal-login">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -178,12 +246,12 @@ body {
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="." method="post">
+				<form role="form">
 					<div class="form-group">
-						<input type="text" class="form-control" name="username" placeholder="아이디" required="required">		
+						<input type="text" class="form-control" placeholder="아이디" required="required" id="userid">		
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" name="password" placeholder="비밀번호" required="required">	
+						<input type="password" class="form-control"  placeholder="비밀번호" required="required" id="pw">	
 					</div>  
  	     	       <div class="form-group" style="margin-left:10px"> 
 				    <div class="custom-control custom-checkbox">
@@ -191,15 +259,13 @@ body {
 				      <label class="custom-control-label" for="customCheck1">로그인 유지</label>
 				    </div>
 			  	   </div>      
-					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-lg btn-block login-btn">Login</button>
-					</div>
+						<button type="button" id="logBtn" class="btn btn-primary btn-lg btn-block login-btn">Login</button>	
 				</form>
 			</div>
 			<button type="button" class="btn btn-lg btn-block" style="background: #e45a5a; font-size: 14px"
-			onclick="location.href='mem_join.jsp'">회원가입</button>
+			onclick="location.href='../mem_join.jsp'">회원가입</button>
 			<button type="button" class="btn btn-lg btn-block" style="background: #c0c3c3; font-size: 14px"
-			onclick="location.href='mem_findID.jsp'">ID/PW찾기</button>
+			onclick="location.href='../mem_findID.jsp'">ID/PW찾기</button>
 		</div>
 	  </div>
 	</div>     

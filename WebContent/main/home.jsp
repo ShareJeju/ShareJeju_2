@@ -42,8 +42,8 @@
 	
 	<!-- Tweet -->
 			<div id="tweet">
-				<div class="container">
-					<section>
+				<div class="container" style="height: 100px;">
+					<section style="margin-top: 30px">
 						<blockquote>&ldquo;duddj duddj duddj duddj.&rdquo;</blockquote>
 					</section>
 				</div>

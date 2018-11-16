@@ -61,7 +61,7 @@ public class MemberModel {
 		  String content=req.getParameter("content");
 		  
 		  MemberVO vo=new MemberVO();
-		  vo.setId(id);
+	/*	  vo.setId(id);
 		  vo.setPwd(pwd);
 		  vo.setName(name);
 		  vo.setSex(sex);
@@ -70,7 +70,7 @@ public class MemberModel {
 		  vo.setAddr1(addr1);
 		  vo.setAddr2(addr2);
 		  vo.setTel(tel1+"-"+tel2+"-"+tel3);
-		  vo.setContent(content);
+		  vo.setContent(content);*/
 		  
 		  MemberDAO.joinInsert(vo);
 	  }catch(Exception ex){}
@@ -79,17 +79,17 @@ public class MemberModel {
   @RequestMapping("member/login.do")
   public String member_login(HttpServletRequest req,HttpServletResponse res)
   {
-	  String id=req.getParameter("id");
-	  String pwd=req.getParameter("pwd");
+	  String userid=req.getParameter("userid");
+	  String pw=req.getParameter("pw");
 	  //DB연동 
-	  String result=MemberDAO.isLogin(id, pwd);
+	  String result=MemberDAO.isLogin(userid, pw);
 	  if(!(result.equals("NOID")&& result.equals("NOPWD")))
 	  {
 		  //로그인이 된 상태
 		  HttpSession session=req.getSession();
 		  
 		  //session을 가지고 온다
-		  session.setAttribute("id", id);
+		  session.setAttribute("userid", userid);
 		  session.setAttribute("name", result);
 		  
 		  //setssion에 저장

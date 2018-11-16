@@ -65,22 +65,22 @@ public class MemberDAO {
    }
    
    // 로그인 처리
-   public static String isLogin(String id,String pwd)
+   public static String isLogin(String userid,String pw)
    {
 	   String result="";
 	   SqlSession session=null;
 	   try
 	   {
 		   session=ssf.openSession();
-		   int count=session.selectOne("idCount",id);
+		   int count=session.selectOne("idCount",userid);
 		   if(count==0)
 		   {
 			   result="NOID";
 		   }
 		   else
 		   {
-			   MemberVO vo=session.selectOne("memberGetPwd", id);
-			   if(pwd.equals(vo.getPwd()))
+			   MemberVO vo=session.selectOne("memberGetPwd", userid);
+			   if(pw.equals(vo.getPw()))
 			   {
 				   result=vo.getName();
 			   }

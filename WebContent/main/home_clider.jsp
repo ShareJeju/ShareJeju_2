@@ -17,9 +17,12 @@ $(function(){
    $('.bxslider').bxSlider({
       mode:'fade',
       auto:true,
+      pause:8000,
       captions:true
    });
 });
+
+
 </script>
 
 
@@ -29,73 +32,53 @@ $(function(){
 
 .img1{
     position: relative;
-    background-image: url(../images/pic02.jpg);                                                               
-    height: 525px;
+    background-image: url(../images/main1.jpg);                                                               
+    height: 575px;
     background-size: cover;
-    width: 100%
+    width: 110%
 }
 .img2{
     position: relative;
-    background-image: url(../images/pic01.jpg);                                                               
-    height: 525px;
+    background-image: url(../images/main2.jpg);                                                               
+    height: 575px;
     background-size: cover;
-    width: 100%
+    width: 110%
 }
 .img3{
     position: relative;
-    background-image: url(../images/pic03.jpg);                                                               
-    height: 525px;
+    background-image: url(../images/main3.jpg);                                                               
+    height: 575px;
     background-size: cover;
-    width: 100%
+    width: 110%
 }
 .img4{
     position: relative;
-    background-image: url(../images/pic04.jpg);                                                               
-    height: 525px;
+    background-image: url(../images/main4.jpg);                                                               
+    height: 575px;
     background-size: cover;
-    width: 100%
+    width: 110%
 }
 .img-cover{
    position: absolute;
-   height: 525px;
-   width: 100%;
+   height: 575px;
+   width: 110%;
    background-color: rgba(0, 0, 0, 0.4);                                                                 
    z-index:1;
 }
-.img1 .content{
+/* .img1 .content, .img2 .content, .img3 .content, .img4 .content{
      position: absolute;
-     top:50%;
+     top:55%;
      left:50%;
      transform: translate(-50%, -50%);                                                                   
      font-size:5rem;
      color: white;
      z-index: 2;
      text-align: center;    
-}
+} */
 
-.img2 .content{
-     position: absolute;
-     top:50%;
-     left:50%;
-     transform: translate(-50%, -50%);                                                                   
-     font-size:5rem;
-     color: white;
-     z-index: 2;
-     text-align: center;    
-}
-.img3 .content{
-     position: absolute;
-     top:50%;
-     left:50%;
-     transform: translate(-50%, -50%);                                                                   
-     font-size:5rem;
-     color: white;
-     z-index: 2;
-     text-align: center;    
-}
-.img4 .content{
-     position: absolute;
-     top:50%;
+.content{
+     position: fixed;
+     top:55%;
      left:50%;
      transform: translate(-50%, -50%);                                                                   
      font-size:5rem;
@@ -205,7 +188,7 @@ $(function(){
                                  <input type="text" class="form-control" placeholder="Search"
                                     style="background-color: rgba(255, 255, 255, 0.0); color:black;">
                                  <span class="input-group-addon">
-                                    <button type="submit">
+                                    <button type="button">
                                        <span class="glyphicon glyphicon-search"></span>
                                     </button>
                                  </span>

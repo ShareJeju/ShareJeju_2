@@ -38,14 +38,14 @@ REGDATE
   <!-- 로그인 처리 -->
   <select id="idCount" resultType="int" parameterType="String">
     SELECT COUNT(*) 
-    FROM member
-    WHERE id=#{id}
+    FROM sj_member
+    WHERE userid=#{userid}
   </select>
   <select id="memberGetPwd" resultType="MemberVO"
      parameterType="String">
-    SELECT pwd,name 
-    FROM member
-    WHERE id=#{id}
+    SELECT pw,name 
+    FROM sj_member
+    WHERE userid=#{userid}
   </select>
   <!-- 회원탈퇴 -->
   <!-- ID찾기 
