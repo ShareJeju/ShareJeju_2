@@ -8,6 +8,7 @@
   <!-- vo등록 -->
   <typeAliases>
     <typeAlias type="com.sist.member.dao.MemberVO" alias="MemberVO"/>
+    <typeAlias type="com.sist.category.dao.CategoryVO" alias="CategoryVO"/>
   </typeAliases>
   <!-- 데이터베이스 정보 -->
   <environments default="development">
@@ -26,5 +27,8 @@
   <mappers>
   	<!-- mapper : include (~데이터를 읽어온다~)-->
   	<mapper resource="com/sist/member/dao/member-mapper.xml"/>
+  	<mapper resource="com/sist/category/dao/food-mapper.xml"/>
+ 	<mapper resource="com/sist/category/dao/hotel-mapper.xml"/>
+ 	<mapper resource="com/sist/category/dao/tour-mapper.xml"/>
   </mappers>
 </configuration>
