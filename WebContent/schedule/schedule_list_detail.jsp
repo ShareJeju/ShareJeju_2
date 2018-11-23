@@ -22,28 +22,28 @@ td{
 <body>
  <div class="container" style="height: 190px;">
  	<div class="row" style="height: 170px;">
- 		<table class="table table-hover">
+ 		<table class="table table-hover" style="border:hidden;">
  			<tr>
  			 <td rowspan="3">
- 			 <img src="images/pic04.jpg" width="100px" height="120px">
+ 			 <img src="../images/pic04.jpg" width="100px" height="120px">
  			 </td>
  			 <td width=70% class="text-left"></td>
  			</tr>
  			
- 			<tr style="height: 30px">
+ 			<tr style="height: 30px; border:hidden;">
  				<td width=70% class="text-left" style="padding-top: 20px; margin-bottom: -20px">제에에에에에목</td>
  			</tr>
  			
- 			<tr  style="margin-top: -10px;">
+ 			<tr  style="margin-top: -10px; border:hidden;">
  				<td width=70% class="text-left">#냠냠 #냠냠냠 #냠냠냠냠</td> 				
  			</tr>
  			
  			<tr>
- 				<td width=30% class="text-left" style="padding:0">사진 유저이름</td>
- 				<td width=40% class="text-center" style="padding:0">여행기간 <img src="images/icon/like.png" width="20px" height="20px" style="float: right"></td>		
+ 				<td width=30% class="text-left" style="padding:0;border:hidden;">사진 유저이름</td>
+ 				<td width=40% class="text-center" style="padding:0; border:hidden;">여행기간 <img src="../images/icon/like.png" width="20px" height="20px" style="float: right"></td>		
  			</tr>
  		</table>
- 		<hr color = "gray" size="5" width="120%" style="margin: 0; padding: 0;margin-top: -4px;">
+ 		<hr color = "gray" size="5" width="110%" style="margin: 0; padding: 0;margin-top: -4px;">
  	</div>
  	
  </div>
