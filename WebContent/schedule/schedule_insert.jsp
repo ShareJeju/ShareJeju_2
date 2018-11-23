@@ -203,22 +203,24 @@
 }
 </style>
 <script type="text/javascript">
+var fileIndex=2
 $(function() {
 	var day = 2;
 	$("#addDay").click(function () {
 		var row = "<tr>";
 		row +="<th width=15% class='text-top'>"+day+"일차</th>";
-		row +="<td width=85% class='text-left'><textarea rows='15' cols='100' name=content></textarea></td>";
+		row +="<td width=85% class='text-left'><textarea rows='15' cols='100' name=text></textarea></td>";
 		row +="</tr>";
 		row +="<tr>";
 		row +="<th width=15%/>";
 		row +="<td width=85%>";
-		row +="<input type=file name='file'>";
+		row +="<input type=file name='file["+fileIndex+"]'>";
 		row +="</td>";
 		row +="</tr>";
 		
 		day++;
 		$("#my-tbody").append(row);
+		fileIndex=fileIndex+1;
 	});
 	
 	//preview
@@ -925,17 +927,18 @@ $(function() {
 </script>
 </head>
 <body style="background-color: white;">
+	<form id="myForm" method="post" action="../schedule/schedule_insert_ok.do"
+			enctype="multipart/form-data">
 	<div class="container"
 		style="height: 525px; background-color: gray; width: 100%; margin-top: 0px">
-		<input type="text" name=subject id="subject" class="hc vc" style="font-size: 15px">
+		<input type="text" name=title id="subject" class="hc vc" style="font-size: 15px">
 		<div id="date" style="padding-top: 290px; padding-left: 780px;">
-			<input type=date class="da" name=date1> ~ <input type="date" class="da" name=name2>
+			<input type=date class="da" name=date1> ~ <input type="date" class="da" name=date2>
 		</div>
 	</div>
 
 	<div  style="padding-top: 20px;">
-		<form method="post" action="#"
-			enctype="multipart/form-data">
+		
 			<table class="table table-hover">
 				<tbody id="my-tbody">
 				<th width=15%/>
@@ -945,7 +948,7 @@ $(function() {
 							<input class="upload-name" value="파일선택" disabled="disabled" style="width: 200px;">
 
 							<label for="input_file">업로드</label> 
-						  <input type="file" id="input_file" class="upload-hidden"> 
+						  <input type="file" id="input_file" class="upload-hidden" name="file[0]"> 
 						</div>
 					</td>
 				
@@ -958,7 +961,7 @@ $(function() {
 						<th width=15%/>
 						<td width=85% class="text-left" height="20px">
 						<!--  <div class="filebox"> <label for="ex_file">사진선택</label> <input type="file" id="ex_file"> </div> -->
-							<input type=file name="img">
+							<input type=file name="file[1]">
 						</td>
 					</tr>
 				</tbody>
@@ -975,7 +978,9 @@ $(function() {
 						<p />
 						<div style="float: right; padding-bottom: 10px;">
 							<input type="button" class="btn btn-sm btn-info" value="작성하기"
-								onclick="#">
+							onclick="document.getElementById('myForm').submit();">
+							<input type="button" class="btn btn-sm btn-danger" value="취소"
+		 	 			onclick="javascript:history.back()">
 						</div>
 						<p />
 					</td>

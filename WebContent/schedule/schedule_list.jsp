@@ -14,7 +14,7 @@
 		<div style="margin-left: 5px; margin-bottom: 10px;">
 			<input type=button value="최신순" class="btn btn-xs btn-info" id="">
 			<input type=button value="인기순" class="btn btn-xs btn-primary active" id="">
-			<a href="schedule_input.jsp"><input type=button value="리뷰쓰기" class="btn btn-xs btn-primary active" style="float: right;"></a>
+			<a href="../schedule/schedule_insert.do"><input type=button value="리뷰쓰기" class="btn btn-xs btn-primary active" style="float: right;"></a>
 		</div>
 	</div>
 
