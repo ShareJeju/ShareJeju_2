@@ -1,5 +1,6 @@
 package com.sist.model;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -39,9 +40,12 @@ public class ScheduleModel {
 		MultipartRequest mr = null;
 		try{
 			req.setCharacterEncoding("EUC-KR");
-			String path="C:\\Users\\user\\git\\ShareJeju_2\\WebContent\\upload\\"; //파일 저장위치
-		 	
-		 	int size=10000*1024*1024; //100mb 파일 최대크기
+			
+			 // 업로드한 프로필사진 데이터 받기       
+		    ServletContext context = req.getServletContext();
+		    String path = context.getRealPath("/")+"schedule_upload"; // 사용자에게 전송받은 파일을 브라우저에서 보여주기위해서 필요
+		 	System.out.println(path);
+		 	int size=1000*1024*1024; //100mb 파일 최대크기
 		 	String enctype="EUC-KR"; //한글 파일명
 		 	
 		 	//new DefaultFileRenamePolicy() 중복 파일명일때 파일명 변경해서 저장해주는것. => a.jpg >>>>a1.jpg 	

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%-- <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -193,7 +193,7 @@ body {
 		<ul class="nav navbar-nav" style="height: 50px;">
 			<!-- 이유는 모르겠으나 이미지를 설정하는 걸로만 위치가 잡힌다
 			float에 대한 설명 : https://ofcourse.kr/css-course/float-%EC%86%8D%EC%84%B1 -->
-			<li id="licenter_home"><a href="main.jsp"
+			<li id="licenter_home"><a href="main.do"
 				style="margin-top: 0px;">홈</a></li>
 			<li id="licenter_jeju"><a href="#" style="margin-top: 0px;">제주소개</a></li>
 			<li id="licenter_tour"><a href="../member/modify.do" style="margin-top: 0px;">관광지</a></li>
@@ -251,13 +251,14 @@ body {
 					<div class="form-group">
 						<input type="password" class="form-control"  placeholder="비밀번호" required="required" id="pw">	
 					</div>  
- 	     	       <div class="form-group" style="margin-left:10px"> 
+ 	     	       <div class="form-group"> 
 				    <div class="custom-control custom-checkbox">
 				      <input type="checkbox" class="custom-control-input" id="customCheck1">
 				      <label class="custom-control-label" for="customCheck1">로그인 유지</label>
 				    </div>
 			  	   </div>      
-						<button type="button" id="logBtn" class="btn btn-primary btn-lg btn-block login-btn">Login</button>	
+			<button type="button" id="logBtn" class="btn btn-primary btn-lg btn-block login-btn">Login</button>	
+					
 				</form>
 			</div>
 			<button type="button" class="btn btn-lg btn-block" style="background: #e45a5a; font-size: 14px"
@@ -268,4 +269,4 @@ body {
 	  </div>
 	</div>     
 </body>
-</html>
+</html> --%>

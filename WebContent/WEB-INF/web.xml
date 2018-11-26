@@ -18,7 +18,7 @@
 	<init-param><!-- init-param은 DispatcherServlet가 읽어준다. (메인 시작점)  -->
 		<param-name>contextConfigLocation</param-name> <!-- 키  -->
 					<!-- 본인 application.xml 경로를 적어주세요 -->
-		<param-value>C:\webDev\webStudy\ShareJeju_2\WebContent\WEB-INF\application.xml</param-value> <!-- 값  -->
+		<param-value>C:\Users\user\git\ShareJeju_2\WebContent\WEB-INF\application.xml</param-value> <!-- 값  -->
 	</init-param>  
   </servlet>
   <servlet-mapping>

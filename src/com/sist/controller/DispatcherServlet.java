@@ -80,7 +80,7 @@ public class DispatcherServlet extends HttpServlet {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 	}
 	/*
