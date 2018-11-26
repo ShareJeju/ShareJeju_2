@@ -5,7 +5,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-
 import java.io.*;
 public class MemberDAO {
    private static SqlSessionFactory ssf;
@@ -65,7 +64,26 @@ public class MemberDAO {
 	   }
    }
    
-   // 정보수정 보여주는페이지
+   // 프로필사진 업로드
+   public static void profileUpload(MemberVO vo)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.update("profileUpload",vo);
+		   
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }finally
+	   {
+		   session.close();
+	   }
+   }
+   
+   
+   // 가입정보 보여주는페이지(modify 초기화면)
    public static MemberVO joinDetail(String userid)
    {
 	   MemberVO vo = new MemberVO();
@@ -108,6 +126,7 @@ public class MemberDAO {
 		   }
 	   }catch(Exception ex)
 	   {
+		   System.out.println("isLogin:"+ex.getMessage());
 		   ex.printStackTrace();
 	   }
 	   finally
@@ -116,8 +135,131 @@ public class MemberDAO {
 	   }
 	   return result;
    }
+   
+   // 공지사항
+   // 목록출력
+   public static List<NoticeVO> noticeListData(Map map)
+   {
+	   List<NoticeVO> list= new ArrayList<>();
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   list = session.selectList("noticeListData", map);
+	
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close();
+	   }
+	   return list;
+   }
+   // 총페이지
+   public static int noticeTotalPage()
+   {
+	   SqlSession session = null;
+	   int total = 0;
+	   try
+	   {
+		   session = ssf.openSession();
+		   total = session.selectOne("noticeTotalPage");
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close();
+	   }
+	   return total;
+   }
+   // 공지사항 내용보기
+   public static NoticeVO noticeDetailData(int id)
+   {
+	   NoticeVO vo = new NoticeVO();
+	   SqlSession session=null;
+	   try {
+		   session=ssf.openSession();
+		   session.update("hitIncrement",id);
+		   session.commit();
+		   vo=session.selectOne("noticeDetailData",id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    finally
+	    {
+	    	session.close();
+	    }
+	   return  vo;
+   }
+   // 공지사항 작성
+   public static void noticeInsert(NoticeVO vo)
+   {
+	   SqlSession session=null;
+	   try {
+		    session = ssf.openSession(true);
+		    session.insert("noticeInsert", vo);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally
+		{
+			session.close();
+		}
+   }
+   // 공지사항 수정하기
+   public static NoticeVO noticeUpdateData(int id)
+   {
+	   NoticeVO vo = new NoticeVO();
+	   SqlSession session=null;
+	   try {
+		   session=ssf.openSession();
+		   vo=session.selectOne("noticeDetailData",id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    finally
+	    {
+	    	session.close();
+	    }
+	   return  vo;
+   }
+   // 공지사항 수정사항 반영하여 출력
+   public static void noticeUpdate(NoticeVO vo)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.update("noticeUpdate",vo);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }finally
+	   {
+		   session.close();
+	   }
+   }
+   
+   // 삭제
+   public static void noticeDelete(int id)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.delete("noticeDelete",id);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }finally
+	   {
+		   session.close();
+	   }
+   }
 }
-
 
 
 

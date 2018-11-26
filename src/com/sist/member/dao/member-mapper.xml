@@ -41,11 +41,81 @@
     #{region}
     )
   </insert>
+  <!-- 프로필사진 업로드 -->
+  <update id="profileUpload" parameterType="MemberVO">
+  	UPDATE sj_member
+  	SET profile_img=#{profile_img}
+  	WHERE userid=#{userid}
+  </update>
   
   <!-- 내정보수정 정보페이지 -->
   <select id="joinDetail" resultType="MemberVO" parameterType="String">
-  	SELECT userid,pw,name,email,phone,sex,birth,region
+  	SELECT userid,pw,name,email,phone,sex,birth,region,profile_img
   	FROM sj_member
   	WHERE userid=#{userid}
   </select>
+  
+  <!-- 공지사항 -->
+  <!-- 목록출력 -->
+   <sql id="where-id">
+  	WHERE id=#{id}
+  </sql>
+  <select id="noticeListData" resultType="NoticeVO"
+  	parameterType="java.util.Map">
+    SELECT id,title,hit,news,created_at,num
+    FROM (SELECT id,title,hit,news,created_at,rownum as num 
+    FROM (SELECT id,title,hit,news,created_at
+    FROM sj_notice ORDER BY id DESC))
+    WHERE num BETWEEN #{start} AND #{end}
+  </select>
+  <select id="noticeTotalPage" resultType="int">
+    SELECT CEIL(COUNT(*)/10) FROM sj_notice
+  </select>
+  
+  <!-- 내용보기 -->
+   <!--  조회수 증가  -->
+   <update id="hitIncrement" parameterType="int">
+    UPDATE sj_notice
+    SET hit = hit+1
+    <include refid="where-id"/>
+   </update>
+  <select id="noticeDetailData" resultType="NoticeVO" parameterType="int">
+   SELECT * 
+   FROM sj_notice
+   <include refid="where-id"/>
+  </select>
+  
+  <!-- 글쓰기 -->
+  <insert id="noticeInsert" parameterType="NoticeVO">
+   <!-- 자동증가번호 -->
+   <selectKey keyProperty="id" resultType="int" order="BEFORE">
+   	SELECT NVL(MAX(id)+1,1) as id FROM sj_notice   
+   </selectKey>
+	INSERT INTO sj_notice(id,title,news,contents,files,created_at,hit) 
+	VALUES(
+	 #{id},
+	 #{title},
+	 #{news},
+	 #{contents},
+	 #{files},
+	 SYSDATE,
+	 0
+	)
+  </insert>
+  
+  <!-- 수정 -->
+  <update id="noticeUpdate" parameterType="NoticeVO">
+    UPDATE sj_notice SET
+     title=#{title},
+     news=#{news},
+     contents=#{contents},
+     files=#{files},
+     updated_at=SYSDATE
+     <include refid="where-id"/>
+  </update>
+  <!-- 삭제 -->
+  <delete id="noticeDelete" parameterType="int">
+  	DELETE FROM sj_notice
+ 	<include refid="where-id"/>
+  </delete>
 </mapper>

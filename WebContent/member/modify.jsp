@@ -44,8 +44,7 @@
 			    </div>    
    			    <div class="form-group">
 			      <label>기존 비밀번호</label>
-			      <input type="password" class="form-control" name=pw placeholder="기존 비밀번호 입력"
-			       value="${vo.pw}">
+			      <input type="password" class="form-control" name=pw placeholder="기존 비밀번호 입력">
 			    </div>
 			    <div class="form-group">
 			      <label>새 비밀번호</label>
@@ -77,7 +76,7 @@
 			    </div>
    		        <div class="form-group">
 			        <label for="exampleSelect1">거주지역</label>
-				  	  <select class="form-control2" name=region selected="${vo.region}">
+				  	  <select class="form-control2" name=region ${vo.region=="경기"?"selected":"" }>
 				        <option>지역선택</option>
 				        <option>서울</option>
 				        <option>경기</option>

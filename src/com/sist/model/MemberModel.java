@@ -1,5 +1,7 @@
 package com.sist.model;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -7,8 +9,9 @@ import javax.servlet.http.HttpSession;
 import com.sist.controller.RequestMapping;
 import com.sist.member.dao.MemberDAO;
 import com.sist.member.dao.MemberVO;
-
-
+import com.sist.member.dao.NoticeVO;
+import com.oreilly.servlet.*;
+import com.oreilly.servlet.multipart.*;
 import java.util.*;
 public class MemberModel {
   
@@ -67,21 +70,75 @@ public class MemberModel {
 		 }catch (Exception e) {}
 		  return "redirect:../main/main.do";
   }
-  
-	//내 정보수정
-	 @RequestMapping("member/modify.do")
-	 public String member_modify(HttpServletRequest req,HttpServletResponse res)
-	 {
-		 
+ 
+ // 마이페이지
+ @RequestMapping("member/mypage.do")
+ public String member_mypage(HttpServletRequest req,HttpServletResponse res)
+ {	 
+	 HttpSession session=req.getSession();
+	 String userid=(String)session.getAttribute("userid");
+	 MemberVO vo = MemberDAO.joinDetail(userid);
+	 req.setAttribute("vo", vo);
+	 req.setAttribute("main_jsp", "../member/mypage.jsp");
+	 return "../main/main.jsp";
+ }
+ 
+ // 프로필사진업로드
+ @RequestMapping("member/profile_upload_ok.do")
+ public String member_profile_upload_ok(HttpServletRequest req,HttpServletResponse res)throws ServletException
+ {	
+	 try{
+		 // 업로드한 프로필사진 데이터 받기		 
+		 ServletContext context = req.getServletContext();
+		 String path = context.getRealPath("/")+"member"; // 사용자에게 전송받은 파일을 브라우저에서 보여주기위해서 필요
+	 	 int max = 100*128*128;
+		 String enctype="EUC-KR";
+		 // 업로드
+		 MultipartRequest mr = new MultipartRequest(
+				req,
+				path,
+				max,
+				enctype,
+				new DefaultFileRenamePolicy());
+		 String profile=mr.getFilesystemName("profile");
+		 //res.sendRedirect("list.jsp?name="+name);
+		 System.out.println(profile);
+		
 		 HttpSession session=req.getSession();
 		 String userid=(String)session.getAttribute("userid");
-		 MemberVO vo = MemberDAO.joinDetail(userid);
-		 System.out.println(vo.getUserid());
+		 if(profile!=null)
+		 {
+			 session.setAttribute("profile", profile);
+		 }
 		 
-		 req.setAttribute("vo", vo);
-		 req.setAttribute("main_jsp","../member/modify.jsp");
-		 return "../main/main.jsp";
+		 MemberVO vo = new MemberVO();
+		 vo.setUserid(userid);
+		 vo.setProfile_img(profile);
+		 
+		 MemberDAO.profileUpload(vo);
+
 	 }
+	 catch(Exception ex){
+		 ex.printStackTrace();
+	 }
+
+	 return "redirect:../member/mypage.do";
+ }
+  
+ //내 정보수정
+ @RequestMapping("member/modify.do")
+ public String member_modify(HttpServletRequest req,HttpServletResponse res)
+ {
+	 
+	 HttpSession session=req.getSession();
+	 String userid=(String)session.getAttribute("userid");
+	 MemberVO vo = MemberDAO.joinDetail(userid);
+	 System.out.println(vo.getUserid());
+	 
+	 req.setAttribute("vo", vo);
+	 req.setAttribute("main_jsp","../member/modify.jsp");
+	 return "../main/main.jsp";
+ }
 
   @RequestMapping("member/login.do")
   public String member_login(HttpServletRequest req,HttpServletResponse res)
@@ -93,13 +150,11 @@ public class MemberModel {
 	  if(!(result.equals("NOID")&& result.equals("NOPWD")))
 	  {
 		  //로그인이 된 상태
-		  HttpSession session=req.getSession();
-		  
+		  HttpSession session=req.getSession();		  
 		  //session을 가지고 온다
 		  session.setAttribute("userid", userid);
-		  session.setAttribute("name", result);
-		  
-		  //setssion에 저장
+		  session.setAttribute("name", result);		  
+		  //session에 저장
 	  }
 	  req.setAttribute("res", result);
 	  return "../member/login.jsp";
@@ -114,6 +169,131 @@ public class MemberModel {
 	  //전체 세션에 저장된 데이터삭제
 	  return "redirect:../main/main.do";
   }
+  
+  // 공지사항
+  // 공지사항 목록 출력
+  @RequestMapping("member/notice_list.do")
+  public String member_notice_list(HttpServletRequest req,HttpServletResponse res)
+  {
+	  String page = req.getParameter("page");
+	  if(page==null)
+		  page="1";
+	  int curpage=Integer.parseInt(page);
+	  
+	  int rowSize=10;
+	  int start=(curpage*rowSize) - (rowSize-1);
+	  int end=curpage*rowSize;
+	  Map map = new HashMap();
+	  map.put("start", start);
+	  map.put("end", end);
+	  List<NoticeVO> list = MemberDAO.noticeListData(map);
+	  req.setAttribute("list", list);
+	  int totalpage = MemberDAO.noticeTotalPage();
+	  req.setAttribute("totalpage", totalpage);
+	  req.setAttribute("curpage", curpage);
+	  req.setAttribute("main_jsp", "../member/notice_list.jsp");
+	  return "../main/main.jsp";
+  }
+  
+  // 공지사항 게시글 출력
+  @RequestMapping("member/notice_detail.do")
+  public String member_notice_detail(HttpServletRequest req,HttpServletResponse res)
+  {
+	  String id = req.getParameter("id");
+	  NoticeVO vo = MemberDAO.noticeDetailData(Integer.parseInt(id));
+	  req.setAttribute("vo", vo);
+	  req.setAttribute("main_jsp", "../member/notice_detail.jsp");
+	  return "../main/main.jsp";
+  }
+  
+  // 공지사항 작성
+  @RequestMapping("member/notice_insert.do")
+  public String member_notice_insert(HttpServletRequest req,HttpServletResponse res)
+  {
+	  try {
+		  req.setCharacterEncoding("EUC-KR");
+	  } catch (Exception e) {}
+	  // 값받기
+	  req.setAttribute("main_jsp", "../member/notice_insert.jsp");
+	  
+	  return "../main/main.jsp";
+  }
+  
+  // 공지사항 작성글 전송
+  @RequestMapping("member/notice_insert_ok.do")
+  public String member_notice_insert_ok(HttpServletRequest req,HttpServletResponse res)
+  {
+	  try
+	  {
+		  req.setCharacterEncoding("EUC-KR");
+	  }catch(Exception ex){}
+	  // 데이터 값받기
+	  String title = req.getParameter("title");
+	  String news = req.getParameter("news");
+	  String contents = req.getParameter("contents");
+	  String files = req.getParameter("files");
+	  
+	  NoticeVO vo = new NoticeVO();
+	  vo.setTitle(title);
+	  vo.setNews(Integer.parseInt(news));
+	  vo.setContents(contents);
+	  vo.setFiles(files);
+	  // 데이터 연결
+	  MemberDAO.noticeInsert(vo);
+	  
+	  return "redirect:notice_list.do";
+  }
+  
+  // 공지사항 수정
+  @RequestMapping("member/notice_update.do")
+  public String member_notice_update(HttpServletRequest req,HttpServletResponse res)
+  {
+	  String id = req.getParameter("id");
+	  NoticeVO vo = MemberDAO.noticeUpdateData(Integer.parseInt(id));
+	  req.setAttribute("vo", vo);	  
+	  req.setAttribute("main_jsp", "../member/notice_update.jsp");
+	  return "../main/main.jsp";
+  }
+  
+  // 공지사항 수정사항 반영
+  @RequestMapping("member/notice_update_ok.do")
+  public String member_notice_update_ok(HttpServletRequest req,HttpServletResponse res)
+  {
+	  try
+	  {
+		  req.setCharacterEncoding("EUC-KR");
+	  }catch(Exception ex){}
+	  
+	  // 전송한 데이터 받기
+	  String title = req.getParameter("title");
+	  String news = req.getParameter("news");
+	  String contents = req.getParameter("contents");
+	  String files = req.getParameter("files");
+	  String id = req.getParameter("id");
+	  
+	  NoticeVO vo = new NoticeVO();
+	  vo.setTitle(title);
+	  vo.setNews(Integer.parseInt(news));
+	  vo.setContents(contents);
+	  vo.setFiles(files);
+	  vo.setId(Integer.parseInt(id));
+	  
+	  MemberDAO.noticeUpdate(vo);
+	  return "redirect:../member/notice_detail.do?id="+id;
+  }
+  
+  // 공지사항 삭제
+  @RequestMapping("member/notice_delete.do")
+  public String member_notice_delete(HttpServletRequest req,HttpServletResponse res)
+  {
+	  String id = req.getParameter("id");
+	  
+	  // DB연동 ==> SQL ==> DAO
+	  MemberDAO.noticeDelete(Integer.parseInt(id));
+	  return "redirect:../member/notice_list.do";
+  }
+  
+  
 }
 
 

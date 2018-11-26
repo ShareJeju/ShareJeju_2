@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
-<!--
-	Linear by TEMPLATED
-    templated.co @templatedco
-    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
+
 <html>
 <head>
 <title>Share JEJU</title>
@@ -267,9 +264,6 @@ background-color: white;
     width: 100%;
   }
 }
-body {
-  background-color: #efefef;
-}
 
 .profile-pic {
 	max-width:100%; 
@@ -322,6 +316,9 @@ body {
 	left:50%; top:28%;
 	font-size:5px;
 }
+input[type=file]{
+	display:none;
+}
 
 </style>
 <script type="text/javascript">
@@ -369,27 +366,41 @@ $(document).ready(function() {
 });
 </script>		
 </head>
-<body>
-<%-- 	<jsp:include page="navbar.jsp"></jsp:include> --%>
-	
+<body>	
 	<div class="jumbotron jumbotron-fluid" style="height: 450px; background-color: #f5b634;">
+	    <form method="post" action="../member/profile_upload_ok.do"
+	     enctype="multipart/form-data">
 			<div class="row">
 			   <div class="small-12 medium-2 large-2 columns" style="padding-left:950px">
 			    <div class="profile-img">
 			     <div class="circle" style="background-color: #f5b634;">
-			       <!-- User Profile Image -->
-			       <img class="profile-pic" src="http://cdn.cutestpaw.com/wp-content/uploads/2012/07/l-Wittle-puppy-yawning.jpg">			
+			       <img class="profile-pic" src="../member/${vo.profile_img }">	
+			       
+<%--        			<c:if test="${sessionScope.profile!=null }">
+			       <img class="profile-pic" src="${sessionScope.profile }">		
+			    </c:if>
+			    <c:if test="${sessionScope.profile==null }">
+			     <c:if test="${vo.sex==M }">
+			       <img class="profile-pic" src="../images/icon/boy.png">
+			     </c:if>
+			     <c:if test="${vo.sex==F }">
+			       <img class="profile-pic" src="../images/icon/girl.png">
+			     </c:if>
+			    </c:if>	 --%>
 				</div>
  			    </div>
+
 			     <div class="p-image" style="background-color: rgba(255,255,255,.0)">
 			       <i class="fa fa-camera upload-button"></i>
-			        <input class="file-upload" type="file" accept="image/*"/>
+			        <input class="file-upload" type="file" accept="image/*" name="profile">
+			        <input type="submit" class="btn btn-sm btn-primary" value="업로드">		
 			     </div>
 			  </div>
 			</div>
-		<p class="profile-p">name님의 프로필사진을 올려주세요.</p>
-		 <a href="mem_modify.jsp" role="button">
-		 <img class="mod-profile" src="images/icon/settings.png"></a>
+			<p class="profile-p">name님의 프로필사진을 올려주세요.</p>
+			 <a href="mem_modify.jsp" role="button">
+			 <img class="mod-profile" src="../images/icon/settings.png"></a>
+	    </form>
  	</div>
 	<!-- START CONTENT -->
 	<div id="content" class="container">
@@ -401,13 +412,198 @@ $(document).ready(function() {
 	  <div class="tab-content" style="margin-top: 20px; margin-left: 20px">	  
 
 		    <div id="review" class="tab-pane fade in active">
-				<div id="review-tab"></div>
+			 <div id="content" class="container">
+			  <ul class="nav nav-pills" style="margin-bottom:20px">
+			    <li class="active"><a data-toggle="pill" href="#trip">여행기</a></li>
+			    <li><a data-toggle="pill" href="#s_review">맛광숙</a></li>
+				<span class="pull-right">
+				<li>
+			      <form>
+				    <div class="form-group">
+				      <label for="exampleSelect1">보기</label>
+				      <select class="form-control" id="exampleSelect1">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				      </select>
+			    	</div>
+			      </form>
+	   		    </li>
+	   		    </span>
+			  </ul>		  
+			</div>
+		  		<!-- START CARD -->
+			<div class="tab-content">
+			 <div id="trip" class="tab-pane fade in active">
+				<div class="row">
+		         <div class="col-lg-4">
+		              <div class="card h-100">
+		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <div class="card-body">
+		                  <h4 class="card-title">
+		                    <a href="#">여행기</a>
+		                  </h4>
+		                  <p>설명</p>
+		                </div>
+		                <div class="card-footer">
+		                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+		                </div>
+		              </div>
+		          </div>
+		          <div class="col-lg-4">
+		              <div class="card h-100">
+		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <div class="card-body">
+		                  <h4 class="card-title">
+		                    <a href="#">여행기</a>
+		                  </h4>
+		                  <p>설명</p>
+		                </div>
+		                <div class="card-footer">
+		                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+		                </div>
+		              </div>
+		          </div>
+		        </div>
+			 </div>
+			 
+	 	 <div id="s_review" class="tab-pane fade">
+		  <div class="row">
+           <div class="col-lg-4">
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#">맛광숙</a>
+                  </h4>
+                  <p>설명</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+          </div>
+            <div class="col-lg-4">
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#">맛광숙</a>
+                  </h4>
+                  <p>설명</p>
+                </div>
+                <div class="card-footer">
+                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                </div>
+              </div>
+          </div>
+         </div>
+			 </div>
+			</div>
+				<!-- END CARD -->
+			<div class="text-center" style="margin-top:30px">
+			  <ul class="pagination pagination-sm">
+			    <li class="page-item disabled">
+			      <a class="page-link" href="#">&laquo;</a>
+			    </li>
+			    <li class="page-item active">
+			      <a class="page-link" href="#">1</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">2</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">3</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">4</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">5</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">&raquo;</a>
+			    </li>
+			  </ul>
+			 </div>
+
 	        </div>
+	        
             <div id="reserve" class="tab-pane fade">
-				<jsp:include page="my_mp_reserve.jsp"></jsp:include>
-	
-		    </div>
-		    
+           	 <div class="row">
+				<span class="pull-right">
+				      <form>
+					    <div class="form-group">
+					      <label for="exampleSelect1">보기</label>
+					      <select class="form-control" id="exampleSelect1">
+					        <option>1</option>
+					        <option>2</option>
+					        <option>3</option>
+					        <option>4</option>
+					        <option>5</option>
+					      </select>
+				    	</div>
+				      </form>
+		 		    </span>
+			 </div>
+			<div class="row">
+	 	         <div class="col-lg-4">
+		              <div class="card h-100">
+		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <div class="card-body">
+		                  <h4 class="card-title">
+		                    <a href="#">예약</a>
+		                  </h4>
+		                  <p>설명</p>
+		                </div>
+		                <div class="card-footer">
+		                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+		                </div>
+		              </div>
+		          </div>
+		          <div class="col-lg-4">
+		              <div class="card h-100">
+		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <div class="card-body">
+		                  <h4 class="card-title">
+		                    <a href="#">예약2</a>
+		                  </h4>
+		                  <p>설명</p>
+		                </div>
+		                <div class="card-footer">
+		                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+		                </div>
+		              </div>
+		          </div>
+		        </div>
+		       	<div class="text-center"  style="margin-top:30px">
+				  <ul class="pagination pagination-sm">
+				    <li class="page-item disabled">
+				      <a class="page-link" href="#">&laquo;</a>
+				    </li>
+				    <li class="page-item active">
+				      <a class="page-link" href="#">1</a>
+				    </li>
+				    <li class="page-item">
+				      <a class="page-link" href="#">2</a>
+				    </li>
+				    <li class="page-item">
+				      <a class="page-link" href="#">3</a>
+				    </li>
+				    <li class="page-item">
+				      <a class="page-link" href="#">4</a>
+				    </li>
+				    <li class="page-item">
+				      <a class="page-link" href="#">5</a>
+				    </li>
+				    <li class="page-item">
+				      <a class="page-link" href="#">&raquo;</a>
+				    </li>
+				  </ul>
+				 </div>	
+		    </div>		    
       </div><!-- END TAB-CONTENT -->
     </div> <!-- END CONTENT -->
 </body>

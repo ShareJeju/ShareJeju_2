@@ -314,15 +314,13 @@ $(function(){
 </script>		
 </head>
 <body>
-<%-- 	<jsp:include page="navbar.jsp"></jsp:include> --%>
-	
 	<div class="jumbotron jumbotron-fluid" style="height: 450px; background-color: #f5b634;">
 	 <div class="container wl">
 	  <table class="table">
 	   <tr>
 	    <td width=40% class="text-center" rowspan="3">
 			<div class="circle" style="background-color: #f5b634;">
-		       <img class="profile-pic" src="images/profile.jpg">			
+		       <img class="profile-pic" src="../images/icon/boy.png">			
 			</div>
 	    </td>
 	    <td colspan="2" class="text-left">name님의 제주위시리스트</td>
@@ -348,13 +346,155 @@ $(function(){
 	  <div class="tab-content" style="margin-top: 20px; margin-left: 20px">	  
   			<!-- START review TAB -->
 		    <div id="wish" class="tab-pane fade in active">
-			 <jsp:include page="my_wl_wish.jsp"></jsp:include>
+			 	<div class="row">
+					<span class="pull-right">
+					      <form>
+						    <div class="form-group">
+						      <label for="exampleSelect1">보기</label>
+						      <select class="form-control" id="exampleSelect1">
+						        <option>1</option>
+						        <option>2</option>
+						        <option>3</option>
+						        <option>4</option>
+						        <option>5</option>
+						      </select>
+					    	</div>
+					      </form>
+			 		    </span>
+				</div>
+				<div class="row">
+			         <div class="col-lg-4">
+			              <div class="card h-100">
+			                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+			                <div class="card-body">
+			                  <h4 class="card-title">
+			                    <a href="#">찜</a>
+			                  </h4>
+			                  <p>설명</p>
+			                </div>
+			                <div class="card-footer">
+			                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+			                </div>
+			              </div>
+			          </div>
+			          <div class="col-lg-4">
+			              <div class="card h-100">
+			                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+			                <div class="card-body">
+			                  <h4 class="card-title">
+			                    <a href="#">찜2</a>
+			                  </h4>
+			                  <p>설명</p>
+			                </div>
+			                <div class="card-footer">
+			                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+			                </div>
+			              </div>
+			          </div>
+			        </div>
+            	<div class="text-center"  style="margin-top:30px">
+			  <ul class="pagination pagination-sm">
+			    <li class="page-item disabled">
+			      <a class="page-link" href="#">&laquo;</a>
+			    </li>
+			    <li class="page-item active">
+			      <a class="page-link" href="#">1</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">2</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">3</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">4</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">5</a>
+			    </li>
+			    <li class="page-item">
+			      <a class="page-link" href="#">&raquo;</a>
+			    </li>
+			  </ul>
+			 </div>
 	        </div><!-- END review TAB -->
+
 	      
 	      <!-- START reserve TAB -->
 	      <div id="like" class="tab-pane fade">
-			<jsp:include page="my_wl_like.jsp"></jsp:include>
+			<div class="row">
+			<span class="pull-right">
+			      <form>
+				    <div class="form-group">
+				      <label for="exampleSelect1">보기</label>
+				      <select class="form-control" id="exampleSelect1">
+				        <option>1</option>
+				        <option>2</option>
+				        <option>3</option>
+				        <option>4</option>
+				        <option>5</option>
+				      </select>
+			    	</div>
+			      </form>
+	 		    </span>
+			</div>
+			<div class="row">
+	         <div class="col-lg-4">
+	              <div class="card h-100">
+	                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+	                <div class="card-body">
+	                  <h4 class="card-title">
+	                    <a href="#">좋아요</a>
+	                  </h4>
+	                  <p>설명</p>
+	                </div>
+	                <div class="card-footer">
+	                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+	                </div>
+	              </div>
+	          </div>
+	          <div class="col-lg-4">
+	              <div class="card h-100">
+	                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+	                <div class="card-body">
+	                  <h4 class="card-title">
+	                    <a href="#">좋아요2</a>
+	                  </h4>
+	                  <p>설명</p>
+	                </div>
+	                <div class="card-footer">
+	                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+	                </div>
+	              </div>
+	          </div>
+	        </div>
+  		  	<div class="text-center"  style="margin-top:30px">
+		  <ul class="pagination pagination-sm">
+		    <li class="page-item disabled">
+		      <a class="page-link" href="#">&laquo;</a>
+		    </li>
+		    <li class="page-item active">
+		      <a class="page-link" href="#">1</a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" href="#">2</a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" href="#">3</a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" href="#">4</a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" href="#">5</a>
+		    </li>
+		    <li class="page-item">
+		      <a class="page-link" href="#">&raquo;</a>
+		    </li>
+		  </ul>
+		 </div>
 		 </div><!-- END reserve TAB -->
+
       </div><!-- END TAB-CONTENT -->
     </div> <!-- END CONTENT -->
 </body>

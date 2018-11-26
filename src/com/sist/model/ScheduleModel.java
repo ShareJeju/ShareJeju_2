@@ -105,4 +105,11 @@ public class ScheduleModel {
 		return "redirect:../schedule/schedule_list.do";
 	}
 	
+	// 상세페이지
+	@RequestMapping("schedule/schedule_detail.do")
+	public String schedule_detail(HttpServletRequest req,HttpServletResponse res)
+	{
+		req.setAttribute("main_jsp", "../schedule/schedule_detail.jsp");
+		return "../main/main.jsp";
+	}
 }
