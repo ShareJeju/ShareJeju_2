@@ -4,22 +4,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <style type="text/css">
   .table{
   	margin-bottom: 0px;
   }
-  hr{
+  .nhr{
    	width: 30%;
    	margin-bottom:15px;
    	margin-top:10px;
+   	margin:0 30 0 0 ;
   }
   </style>
 </head>
@@ -27,7 +21,7 @@
 	<div class="container" style="margin-top:100px">
 		<div class="row">
 			<h3 class="text-center">공지사항</h3>
-			<hr>
+			<hr class="nhr">
 			<p align=center>제주도의 공지사항과 뉴스를 알려드립니다</p>
 			<div class="row">
 	     		<a href="../member/notice_insert.do" class="btn btn-sm btn-success">새글</a>

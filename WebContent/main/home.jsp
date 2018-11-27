@@ -28,7 +28,7 @@
 
 			<div class="row" style="background-color:white;  margin-top:50px;  padding-right:50px;">
 				<div style="margin-top:-50px; margin-bottom: -55px"><h3>º£½ºÆ® ¸®ºä</h3></div>
-				<div style="margin-top:-13px;"><jsp:include page="review.jsp"></jsp:include></div>			
+				<div style="margin-top:-13px;"><jsp:include page="review.jsp"></jsp:include></div>		
 			</div>
 			
 			<div class="row" style="background-color:white; width:100%; padding-right:50px">

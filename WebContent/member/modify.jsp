@@ -5,16 +5,6 @@
 <html>
 <head>
 <title>Share JEJU</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- 세개 반드시 있어야 jquery/ajax 가능 -->
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style type="text/css">
 #title{
 	text-align: center;
@@ -76,27 +66,27 @@
 			    </div>
    		        <div class="form-group">
 			        <label for="exampleSelect1">거주지역</label>
-				  	  <select class="form-control2" name=region ${vo.region=="경기"?"selected":"" }>
+				  	  <select class="form-control2" name=region>
 				        <option>지역선택</option>
-				        <option>서울</option>
-				        <option>경기</option>
-				        <option>부산</option>
-				        <option>대전</option>
-				        <option>대구</option>
-				        <option>광주</option>
-				        <option>울산</option>
-				        <option>강원</option>
-				        <option>제주</option>
+				        <option ${vo.region=='서울'?'selected="selected"':''}>서울</option>
+				        <option ${vo.region=='경기'?'selected="selected"':''}>경기</option>
+				        <option ${vo.region=='부산'?'selected="selected"':''}>부산</option>
+				        <option ${vo.region=='대전'?'selected="selected"':''}>대전</option>
+				        <option ${vo.region=='대구'?'selected="selected"':''}>대구</option>
+				        <option ${vo.region=='광주'?'selected="selected"':''}>광주</option>
+				        <option ${vo.region=='울산'?'selected="selected"':''}>울산</option>
+				        <option ${vo.region=='강원'?'selected="selected"':''}>강원</option>
+				        <option ${vo.region=='제주'?'selected="selected"':''}>제주</option>
 				  	  </select>
 				  </div>	
    			    <div class="form-group">
 			      <div class="form-check">
 			      <label class="form-check-label">성별</label>
 			          <input type="radio" class="form-check-input" name=sex value="M"
-			          style="margin-left:10px">
+			          style="margin-left:10px" ${vo.sex=='M'?"checked":'' }>
                   		남자
                  	  <input type="radio" class="form-check-input" name=sex value="F"
-                 	   style="margin-left:10px">
+                 	   style="margin-left:10px" ${vo.sex=='F'?"checked":'' }>
                   		여자
 			      </div>
     		    </div>

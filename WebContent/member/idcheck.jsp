@@ -5,7 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
 .container
 {
@@ -16,7 +15,6 @@
   width: 280px;
 }
 </style>
-<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <!-- 이벤트처리 -->
 <script type="text/javascript">
 

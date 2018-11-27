@@ -6,22 +6,7 @@
 <html>
 <head>
 <title>Share JEJU</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,700,500,900' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- 세개 반드시 있어야 jquery/ajax 가능 -->
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<style type="text/css">
-div{
-background-color: white;
-}
-
+ <style type="text/css">
 .card {
   position: relative;
   display: -ms-flexbox;
@@ -376,10 +361,10 @@ $(document).ready(function() {
 			     <div class="circle" style="background-color: #f5b634;">
 			       <img class="profile-pic" src="../member/${vo.profile_img }">	
 			       
-<%--        			<c:if test="${sessionScope.profile!=null }">
-			       <img class="profile-pic" src="${sessionScope.profile }">		
+<%--        			<c:if test="${vo.profile_img!=null }">
+			       <img class="profile-pic" src="../member/${vo.profile_img }">		
 			    </c:if>
-			    <c:if test="${sessionScope.profile==null }">
+			    <c:if test="${vo.profile_img==null }">
 			     <c:if test="${vo.sex==M }">
 			       <img class="profile-pic" src="../images/icon/boy.png">
 			     </c:if>
@@ -398,7 +383,7 @@ $(document).ready(function() {
 			  </div>
 			</div>
 			<p class="profile-p">name님의 프로필사진을 올려주세요.</p>
-			 <a href="mem_modify.jsp" role="button">
+			 <a href="../member/modify.do" role="button">
 			 <img class="mod-profile" src="../images/icon/settings.png"></a>
 	    </form>
  	</div>

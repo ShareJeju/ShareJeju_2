@@ -4224,44 +4224,49 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 }
 
 .nav>li {
-	position: relative;
+	position: absolute;
 	display: block;	
 }
 
 #licenter_home{
 	float: left;
-	position: relative;
+	position: absolute;
     left: 5%;
 }
 
 #licenter_jeju{
 	float: left;
-    position: relative;
+    position: absolute;
     left: 28%;
 }
 
 #licenter_tour{
 	float: left;
-    position: relative;
+    position: absolute;
     left: 33%;
 }
 
 #licenter_rogo{
 	float: left;
-    position: relative;
+    position: absolute;
     left: 38%;
 }
 
 #licenter_tasty{
 	float: left;
-    position: relative;
+    position: absolute;
     left: 44%;
 }
 
 #licenter_hotels{
 	float: left;
-    position: relative;
+    position: absolute;
     left: 49%;
+}
+
+#licenter_schedule{
+	position: absolute;
+	left: 20%;
 }
 
 #licenter_login{
