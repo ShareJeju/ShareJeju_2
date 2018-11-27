@@ -18,11 +18,11 @@ public class ScheduleModel {
 	public String schedule_list(HttpServletRequest req,HttpServletResponse res)
 	{
 		try {
-			req.setCharacterEncoding("EUC-KR");
+			req.setCharacterEncoding("UTF-8");
 		} catch (Exception e) {}
 				
 		List<ScheduleVO> list=ScheduleDAO.scheduleList();
-		
+	
 		req.setAttribute("list", list); // 목록출력
 		
 		req.setAttribute("main_jsp", "../schedule/schedule_list.jsp");
