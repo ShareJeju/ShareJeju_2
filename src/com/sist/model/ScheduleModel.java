@@ -20,6 +20,11 @@ public class ScheduleModel {
 		try {
 			req.setCharacterEncoding("EUC-KR");
 		} catch (Exception e) {}
+				
+		List<ScheduleVO> list=ScheduleDAO.scheduleList();
+		
+		req.setAttribute("list", list); // 목록출력
+		
 		req.setAttribute("main_jsp", "../schedule/schedule_list.jsp");
 		return "../main/main.jsp";
 	}
@@ -71,7 +76,8 @@ public class ScheduleModel {
 		//String file[]; //파일이 임시로 순서대로들어갈곳 
 		int f=0;
 		int j=0;
-		String hashtag = mr.getParameter("hashtag");// 해쉬태그 구분자는 ,
+		String hashtag = "#"+mr.getParameter("hashtag");// 해쉬태그 구분자는 ,
+		hashtag=hashtag.replaceAll(",", ",#");// ,를 ,#으로 바꿔준다.
 		System.out.println(hashtag);
 		
 		//String main_imgs=;
@@ -106,10 +112,14 @@ public class ScheduleModel {
 				if (i == 0) {
 					main_img = file[i];
 					System.out.println("메인 이미지 : " + main_img);
-				} else {
-					img += ","+file[i]; //userid+"_"+
+				} else if(i==file.length-1) {
+					img += file[i]; //userid+"_"+
+					System.out.println("마지막 이미지는" + img);
+				} else{
+					img += file[i]+","; //userid+"_"+
 					System.out.println(i + "째날 이미지는" + img);
 				}
+				
 			}	
 		} catch (Exception e) {
 			System.out.println("리뷰작성 ERROR : " + e.getMessage());
@@ -117,7 +127,7 @@ public class ScheduleModel {
 		}
 	
 		ScheduleVO vo=new ScheduleVO();
-		vo.setMain_img(userid+"_"+main_img);
+		vo.setMain_img(main_img);
 		vo.setImg(img);
 		vo.setTitle(title);
 		vo.setDay(day);

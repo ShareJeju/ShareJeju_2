@@ -2,7 +2,16 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sist.schedule.dao.schedule-mapper">
-
+	<!-- 여행기리뷰의 MAX ID값 가져오기 -->
+	<select id="scheduleReviewMaxId" resultType="int">
+		SELECT MAX(id) FROM sj_tourreview
+	</select>
+	
+	<!-- 여행기 리스트 뿌리기 -->
+	<select id="scheduleList" resultType="ScheduleVO">
+		SELECT id,main_img,title,day,likes,hashtag,userid FROM sj_tourreview ORDER BY likes DESC
+	</select>
+		
 	<!-- 여행기 리뷰 입력 -->
 	<insert id="scheduleInsert" parameterType="ScheduleVO">
 		<!-- 자동증가번호 -->
