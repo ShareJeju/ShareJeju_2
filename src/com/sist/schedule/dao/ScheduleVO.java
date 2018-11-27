@@ -1,5 +1,5 @@
 package com.sist.schedule.dao;
-import oracle.sql.*;
+import java.util.*;
 
 public class ScheduleVO {
 /*
@@ -43,9 +43,9 @@ UPDATED_AT             DATE
 	private String text;
 	private String hashtag;
 	private String term;
-	private int member_id;
-	private DATE created_at;
-	private DATE updated_at;
+	private Date created_at;
+	private Date updated_at;
+	private String userid;
 	public int getId() {
 		return id;
 	}
@@ -112,23 +112,23 @@ UPDATED_AT             DATE
 	public void setTerm(String term) {
 		this.term = term;
 	}
-	public int getMember_id() {
-		return member_id;
-	}
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
-	}
-	public DATE getCreated_at() {
+	public Date getCreated_at() {
 		return created_at;
 	}
-	public void setCreated_at(DATE created_at) {
+	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
-	public DATE getUpdated_at() {
+	public Date getUpdated_at() {
 		return updated_at;
 	}
-	public void setUpdated_at(DATE updated_at) {
+	public void setUpdated_at(Date updated_at) {
 		this.updated_at = updated_at;
+	}
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	
 	
