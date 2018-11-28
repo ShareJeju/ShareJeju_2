@@ -1,3 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.category.dao.tour-mapper">
+ 
+    <!-- 업체 목록 출력 -->
+    <select id="tourListData" resultType="CategoryVO" parameterType="java.util.Map">           
+       SELECT id,addr,cost,time,tel,wish,likes,hit,name,regdate,img,img_size,text,menu,website,category,map,num
+       FROM (SELECT id,addr,cost,time,tel,wish,likes,hit,name,regdate,img,img_size,text,menu,website,category,map,rownum as num
+       FROM (SELECT id,addr,cost,time,tel,wish,likes,hit,name,regdate,img,img_size,text,menu,website,category,map
+       FROM sj_company WHERE category='관광' ORDER BY id))
+       WHERE num BETWEEN #{start} AND #{end}
+    </select>
+    
+    <!-- 업체별 상세페이지 출력 -->
+    <select id="tourDetailData" resultType="CategoryVO" parameterType="int">
+       SELECT id,addr,cost,time,tel,wish,likes,hit,name,regdate,img,img_size,text,menu,website,category,map
+       FROM sj_company
+       WHERE id=#{id}
+    </select>
+    
+    <!--  업체별 리뷰 출력 -->
+    <select id="tourreviewListData" resultType="tourreviewVO" parameterType="java.util.Map">
+       SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate,review_img,review_img_size
+       FROM sj_cate_review
+       WHERE cid=#{cid}
+    </select>
+    
+    <!-- 업체별 리뷰 갯수 -->
+    <select id="tourreviewCount" resultType="int" parameterType="int">
+       SELECT COUNT(*)
+       FROM sj_cate_review
+       WHERE cid=#{cid}
+    </select>
+    
+    <!-- 업체별 리뷰 쓰기 -->
+    <insert id="tourreviewInsert" parameterType="tourreviewVO">
+      <selectKey keyProperty="review_id" resultType="int" order="BEFORE">
+        SELECT NVL(MAX(review_id)+1,1) AS review_id FROM sj_cate_review
+      </selectKey>
+      INSERT INTO sj_cate_review(review_id,cid,review_userid,review_content,review_subject,review_regdate) VALUES(
+         #{review_id},
+         #{cid},
+         #{review_userid},
+	     #{review_content},
+	     #{review_subject},
+         SYSDATE
+       ) 
+    </insert>
+    
+    <!-- 업체별 리뷰 삭제 -->
+    <delete id="tourreviewDelete" parameterType="int">
+        DELETE FROM sj_cate_review
+        WHERE review_id=#{review_id}
+    </delete>
+    
+    <!-- 업체별 리뷰 수정 -->
+    <update id="tourreviewUpdate" parameterType="tourreviewVO">
+        UPDATE sj_cate_review SET
+        review_content=#{review_content}
+        WHERE review_id=#{review_id}
+    </update>
+    
+   <!-- 사진 업로드 
+    <update id="profileUpload" parameterType="MemberVO">
+        UPDATE sj_member
+        SET profile_img=#{profile_img}
+        WHERE userid=#{userid}
+    </update> -->
+    
+    <!-- <select id="tourreviewTotalPage" resultType="int">
+       SELECT CEIL(COUNT(*)/10) FROM sj_cate_review 세미콜론 붙이면 오류
+    </select> -->
+    
+    <!-- <insert id="tourInsert" parameterType="CategoryVO">
+         <selectKey keyProperty="id" resultType="int" order="BEFORE">
+             SELECT NVL(MAX(id)+1,1) as id FROM sj_company
+         </selectKey>
+      INSERT INTO sj_company(id,addr,tel,name,img,text,category,map) VALUES(#{id},#{addr},#{tel},#{name},#{img},#{text},#{category},#{map})
+    </insert> -->
+    
+    
+ </mapper>

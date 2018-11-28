@@ -202,7 +202,7 @@ body {
          <li id="licenter_home"><a href="../main/main.do"
             style="margin-top: 0px;">权</a></li>
          <li id="licenter_jeju"><a href="#" style="margin-top: 0px;">力林家俺</a></li>
-         <li id="licenter_tour"><a href="#" style="margin-top: 0px;">包堡瘤</a></li>
+         <li id="licenter_tour"><a href="../tour/tourcontent.do" style="margin-top: 0px;">包堡瘤</a></li>
          <li id="licenter_rogo"><a href="shareMain.jsp" style="margin-top: 0px;">肺绊</a></li>
          <li id="licenter_tasty"><a href="#" style="margin-top: 0px;">咐笼</a></li>
          <li id="licenter_hotels"><a href="#" style="margin-top: 0px;">槛家</a></li>
