@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.board.dao.Cate_Review-mapper">
+ <!-- 댓글 목록 출력 -->
+ <select id="reviewListData" resultType="Cate_ReviewVO" parameterType="int">
+ 	SELECT review_id,cid,review_userid,review_content,review_subject,review_img,TO_CHAR(review_regdate, 'YYYY-MM-DD HH24:MI:SS') as dbday,review_img,review_img_size
+ 	FROM sj_cate_review
+ 	WHERE cid=#{cid}
+ 	ORDER BY review_id DESC
+ 	
+ </select>
+<select id="hotelReviewData" resultType="CategoryVO" parameterType="int">
+		SELECT * FROM  sj_company
+ 		WHERE id=#{id}
+</select>
+
+ <!-- 댓글 추가 -->
+ <insert id="cateReviewInsert" parameterType="Cate_ReviewVO">
+ 	<selectKey keyProperty="review_id" resultType="int" order="BEFORE">
+ 	SELECT NVL(MAX(review_id)+1,1) as review_id FROM sj_cate_review
+ 	</selectKey>
+ 	INSERT INTO sj_cate_review VALUES(
+ 		#{review_id},
+ 		#{cid},
+ 		#{review_userid},
+ 		#{review_content},
+ 		#{review_subject}, 
+ 		SYSDATE,	
+ 		#{review_img},
+ 		#{review_img_size}
+ 		
+ 	
+ 		)
+ 		
+ 
+ 	
+ </insert>
+ <!-- 댓글 수정1 -->
+ <select id="reviewAllData" resultType="Cate_ReviewVO" parameterType="int" >
+ SELECT review_content,review_subject
+ FROM sj_cate_review
+ WHERE review_id=#{review_id}
+ </select>
+ <!-- 댓글수정 -->
+ <update id="hotelReviewUpdate" parameterType="Cate_ReviewVO">
+ 
+ UPDATE sj_cate_review SET
+ review_content=#{review_content},
+ review_subject=#{review_subject}  
+ WHERE review_id=#{review_id}
+ 
+ </update>
+ <!-- 댓글 삭제 -->
+ <delete id="reviewDelete" parameterType="int">
+ 	DELETE FROM sj_cate_review
+ 	WHERE review_id=#{review_id}
+ </delete>
+ 
+
+  </mapper>

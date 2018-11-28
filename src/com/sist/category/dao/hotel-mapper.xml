@@ -1,3 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.category.dao.hotel-mapper">
+ 
+ <select id="hotelAllData" resultType="CategoryVO" parameterType="java.util.Map">
+ 	
+SELECT id, name, img, num
+FROM (SELECT id,name,img,rownum as num
+FROM (SELECT id,name,img
+FROM sj_company   
+ORDER BY id ASC ))
+WHERE num BETWEEN #{start} AND #{end}
+ </select>
+ <!-- 호텔 -->
+ <select id="hotelData" resultType="CategoryVO" parameterType="java.util.Map">
+ 	
+SELECT id, name, img, num
+FROM (SELECT id,name,img,rownum as num
+FROM (SELECT id,name,img
+FROM sj_company 
+WHERE name LIKE '%'||'호텔'||'%'
+ORDER BY id ASC ))
+WHERE id BETWEEN 1 AND 255
+ </select> 
+ 
+<select id="hotelTotalpage" resultType="int">
+ 		SELECT CEIL(COUNT(*)/63) FROM sj_company
+</select>
+
+
+<!-- 펜션 -->
+ <select id="PensionData" resultType="CategoryVO" parameterType="java.util.Map">
+ SELECT id, name, img, num
+FROM (SELECT id,name,img,rownum as num
+FROM (SELECT id,name,img
+FROM sj_company 
+WHERE name LIKE '%'||'펜션'||'%'
+ORDER BY id ASC ))
+WHERE id BETWEEN 1 AND 255
+ </select> 
+<!-- 하우스(집) -->
+ <select id="HouseData" resultType="CategoryVO" parameterType="java.util.Map">
+ SELECT id, name, img, num
+FROM (SELECT id,name,img,rownum as num
+FROM (SELECT id,name,img
+FROM sj_company 
+WHERE name LIKE '%'||'하우스'||'%' OR name LIKE '%'||'집'||'%'
+ORDER BY id ASC ))
+WHERE id BETWEEN 1 AND 255
+ </select> 
+<!-- 기타 -->
+ <select id="OtherData" resultType="CategoryVO" parameterType="java.util.Map">
+ SELECT id, name, img, num
+FROM (SELECT id,name,img,rownum as num
+FROM (SELECT id,name,img
+FROM sj_company 
+WHERE name NOT LIKE '%'||'집'||'%' AND name NOT LIKE '%'||'호텔'||'%' AND name NOT LIKE '%'||'펜션'||'%' AND name NOT LIKE '%'||'하우스'||'%'
+ORDER BY id ASC ))
+WHERE id BETWEEN 1 AND 255
+ </select> 
+ 
+ 
+<select id="hotelDetailData" resultType="CategoryVO" parameterType="int">
+		SELECT * FROM  sj_company
+ 		WHERE id=#{id}
+</select>
+
+
+ 
+ </mapper>

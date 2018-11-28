@@ -205,7 +205,7 @@ body {
          <li id="licenter_tour"><a href="../tour/tourcontent.do" style="margin-top: 0px;">°ü±¤Áö</a></li>
          <li id="licenter_rogo"><a href="shareMain.jsp" style="margin-top: 0px;">·Î°í</a></li>
          <li id="licenter_tasty"><a href="../food/foodcontent.do?map=%C1%A6%C1%D6%BD%C3" style="margin-top: 0px;">¸ÀÁý</a></li>
-         <li id="licenter_hotels"><a href="#" style="margin-top: 0px;">¼÷¼Ò</a></li>
+         <li id="licenter_hotels"><a href="../hotel/hotelContent.do" style="margin-top: 0px;">¼÷¼Ò</a></li>
          <li id="licenter_schedule"><a href="../schedule/schedule_main.do" style="margin-top: 0px;">¿©Çà±â</a></li>
          
          
