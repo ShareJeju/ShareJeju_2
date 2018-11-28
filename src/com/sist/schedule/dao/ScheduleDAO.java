@@ -24,7 +24,26 @@ public class ScheduleDAO {
 			   System.out.println(ex.getMessage());
 		   }
 	   }
-	
+	   //메인에 상위 리뷰 4개  뿌리기
+	   public static List<ScheduleVO> scheduleMainList()
+	   {
+		   SqlSession session=null;
+		   List<ScheduleVO> list=new ArrayList<ScheduleVO>();
+		   try
+		   {
+			   session=ssf.openSession();//autocommit
+			   list=session.selectList("scheduleMainList");
+			   session.commit();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   session.close();// 반환
+		   }
+		   return list;
+	   }
 	//게시글 추가
 	   public static void scheduleInsert(ScheduleVO vo)
 	   {
