@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
@@ -30,10 +29,6 @@
 <td colspan="2"><h4>최신 | 추천 | 평가</h4></td>
 </tr>
 </table>
-
-
-
-
  <table class="reviewtable">
 <c:forEach var="vo" items="${reviewlist }">  
 <tr>
