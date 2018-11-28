@@ -11,7 +11,7 @@
 	<select id="scheduleList" resultType="ScheduleVO">
 		SELECT id,main_img,title,day,likes,hashtag,userid FROM sj_tourreview ORDER BY likes DESC
 	</select>
-		
+
 	<!-- 여행기 리뷰 입력 -->
 	<insert id="scheduleInsert" parameterType="ScheduleVO">
 		<!-- 자동증가번호 -->
@@ -34,10 +34,22 @@
 		#{userid}
 		)
 	</insert>
- <!-- 여행기 메인에 리뷰 상위 4개 뿌리기 -->
+ <!-- 여행기, 메인에 리뷰 상위 4개 뿌리기 -->
 	<select id="scheduleMainList" resultType="ScheduleVO">
 		SELECT * FROM(SELECT * FROM sj_tourreview ORDER BY likes DESC) WHERE ROWNUM BETWEEN 1 AND 4
 	</select>
+	
+	 <!-- 업체, 메인에 리뷰 랜덤 4개 뿌리기 -->
+	<select id="categoryMainList" resultType="CategoryVO">
+		SELECT * FROM(SELECT * FROM sj_company ORDER BY DBMS_RANDOM.RANDOM) WHERE ROWNUM BETWEEN 1 AND 4
+	</select>
+	<!-- 
+		select * from( 
+    select * from 테이블명
+    order by DBMS_RANDOM.RANDOM 
+) where rownum < 10;
+	 -->
+	
  <!-- 리뷰디테일 -->
  <select id="scheduleDetail" resultType="ScheduleVO" parameterType="int">
 	SELECT id,main_img,img,title,day,likes,text,hashtag,created_at,updated_at,userid
