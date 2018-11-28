@@ -12,9 +12,8 @@
     <typeAlias type="com.sist.schedule.dao.CommentVO" alias="CommentVO"/>    
     <typeAlias type="com.sist.schedule.dao.ScheduleVO" alias="ScheduleVO"/>
     <typeAlias type="com.sist.category.dao.CategoryVO" alias="CategoryVO"/>
-<!--     <typeAlias type="com.sist.category.dao.FoodVO" alias="FoodVO"/>
     <typeAlias type="com.sist.category.dao.FoodReviewVO" alias="FoodReviewVO"/>
-    <typeAlias type="com.sist.category.dao.Cate_ReviewVO" alias="Cate_ReviewVO"/> -->
+<!--     <typeAlias type="com.sist.category.dao.Cate_ReviewVO" alias="Cate_ReviewVO"/> -->
     <typeAlias type="com.sist.category.dao.tourreviewVO" alias="tourreviewVO"/>
 
     
@@ -37,8 +36,8 @@
   	<!-- mapper : include (~데이터를 읽어온다~)-->
   	<mapper resource="com/sist/member/dao/member-mapper.xml"/>
   	<mapper resource="com/sist/schedule/dao/schedule-mapper.xml"/>
-<!--   	<mapper resource="com/sist/category/dao/food-mapper.xml"/>
- 	<mapper resource="com/sist/category/dao/hotel-mapper.xml"/> -->
+<mapper resource="com/sist/category/dao/food-mapper.xml"/>
+<!-- <mapper resource="com/sist/category/dao/hotel-mapper.xml"/> -->
  	<mapper resource="com/sist/category/dao/tour-mapper.xml"/>
  	<!-- <mapper resource="com/sist/category/dao/Cate_Review-mapper.xml"/> -->
   </mappers>

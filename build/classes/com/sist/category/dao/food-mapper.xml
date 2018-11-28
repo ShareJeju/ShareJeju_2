@@ -1,3 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.sist.category.dao.food-mapper">
+     
+    <insert id="foodInsert" parameterType="CategoryVO">
+         <selectKey keyProperty="id" resultType="int" order="BEFORE">
+        SELECT NVL(MAX(id)+1,1) as id FROM sj_company
+        
+       </selectKey>
+       INSERT INTO sj_company(id,addr,tel,name,img,text,menu,category,map) VALUES(#{id},#{addr},#{tel},#{name},#{img},#{text},#{menu},#{category},#{map})
+
+    </insert>
+    <select id="foodListData" resultType="CategoryVO" parameterType="java.util.Map">           
+	   SELECT id,addr,tel,name,img,text,menu,category,map,num
+       FROM (SELECT id,addr,tel,name,img,text,menu,category,map,rownum as num
+       FROM (SELECT id,addr,tel,name,img,text,menu,category,map
+       FROM sj_company WHERE category='맛집' AND map=#{map} ORDER BY id))
+       WHERE (num BETWEEN #{start} AND #{end})
+    </select>
+    
+      <select id="foodDetail" resultType="CategoryVO" parameterType="int">           
+	   SELECT id,addr,tel,name,img,text,menu,category,map
+	   FROM sj_company
+	   WHERE id=#{id}
+<!-- 	   WHERE category='맛집' ORDER BY id -->
+    </select>
+    
+    <select id="foodTotalpage" resultType="int">
+  	SELECT CEIL(COUNT(*)/9) FROM sj_company
+  	WHERE category='맛집' 
+  </select>
+<select id="FoodReviewListData" resultType="FoodReviewVO" parameterType="int"> <!--데이터 받는 게 2개이상이라 Map!-->
+<!-- 리뷰 목록 출력 -->
+SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate
+FROM sj_cate_review
+WHERE cid=#{cid}
+</select>
+<!-- 리뷰 쓰기 -->
+  <insert id="FoodReviewInsert" parameterType="FoodReviewVO">
+   <!-- 리뷰 번호 (자동 증가) -->
+   <selectKey keyProperty="review_id" resultType="int" order="BEFORE">
+     SELECT NVL(MAX(review_id)+1,1) as review_id FROM sj_cate_review
+   </selectKey>
+   INSERT INTO sj_cate_review(review_id,cid,review_userid,review_content,review_subject,review_regdate) VALUES(
+     #{review_id},
+     #{cid},
+     #{review_userid},
+     #{review_content},
+     #{review_subject},
+     SYSDATE
+   )
+  </insert>
+  <select id="FoodReviewOneData" resultType="FoodReviewVO" parameterType="int"> <!--데이터 받는 게 2개이상이라 Map!-->
+<!-- 리뷰 목록 출력 -->
+SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate
+FROM sj_cate_review
+WHERE review_id=#{review_id}
+ORDER BY review_id DESC
+</select>
+  <!-- 리뷰 수정 -->
+  <update id="FoodReviewUpdate" parameterType="FoodReviewVO">
+    UPDATE sj_cate_review SET
+    review_content=#{review_content},
+    review_subject=#{review_subject}
+    WHERE review_id=#{review_id}
+  </update>
+  <!-- 리뷰 삭제 -->
+<delete id="FoodReviewDelete" parameterType="int">
+    DELETE FROM sj_cate_review
+    WHERE review_id=#{review_id}
+  </delete>
+ </mapper>
