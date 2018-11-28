@@ -44,7 +44,7 @@ td{
 
 					<tr style="height: 30px; border: hidden;">
 						<td width=70% class="text-left"
-							style="padding-top: 20px; margin-bottom: -20px">${vo.title }</td>
+							style="padding-top: 20px; margin-bottom: -20px"><a href="../schedule/schedule_detail.do?id=${vo.id}">${vo.title }</td>
 					</tr>
 
 					<tr style="margin-top: -10px; border: hidden;">

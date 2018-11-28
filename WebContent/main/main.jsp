@@ -206,7 +206,7 @@ body {
          <li id="licenter_rogo"><a href="shareMain.jsp" style="margin-top: 0px;">로고</a></li>
          <li id="licenter_tasty"><a href="#" style="margin-top: 0px;">맛집</a></li>
          <li id="licenter_hotels"><a href="#" style="margin-top: 0px;">숙소</a></li>
-         <li id="licenter_schedule"><a href="../schedule/schedule_detail.do" style="margin-top: 0px;">여행기</a></li>
+         <li id="licenter_schedule"><a href="../schedule/schedule_main.do" style="margin-top: 0px;">여행기</a></li>
          
          
          <c:if test="${sessionScope.userid==null }">
@@ -229,8 +229,9 @@ body {
                <!-- dropdown-menu는 home_clider.jsp에서 스타일을 새로 지정해줬다 안해주면 안됨 아믄 안됨 -->
                <!-- 충돌 안나게하려고 다른건 다 home_붙여서 새로 만들어줬는데 얘만 안됨...용서하기싫은데  건들수가없네 -->
                <div class="dropdown-menu" style="margin-top: 7px;">
-                  <a class="dropdown-item" href="../member/mypage.do">마이페이지</a><br> <a
-                     class="dropdown-item" href="../member/wishlike.do">찜/좋아요</a><br>
+                  <a class="dropdown-item" href="../member/mypage.do">마이페이지</a><br> 
+                  <a class="dropdown-item" href="../member/wishlike.do">찜/좋아요</a><br>
+                  <a class="dropdown-item" href="../member/notice_list.do">공지사항</a><br>
                </div>
             </div>
          </li>
@@ -244,7 +245,7 @@ body {
       <div class="modal-content">
          <div class="modal-header">
             <div class="avatar">
-               <img src="images/login_img.png" alt="Avatar">
+               <img src="../images/login_img.png" alt="Avatar">
             </div>            
             <h4 class="modal-title">로그인</h4>
             <p style="font-size: 13px; margin: 22px 5px;"> 쉐어제주를 시작하기 위한 로그인을 해주세요.</p>        
@@ -258,19 +259,19 @@ body {
                <div class="form-group">
                   <input type="password" class="form-control"  placeholder="비밀번호" required="required" id="pw">   
                </div>  
-                   <div class="form-group" style="margin-left:10px"> 
+<!--                    <div class="form-group" style="margin-left:10px"> 
                 <div class="custom-control custom-checkbox">
                   <input type="checkbox" class="custom-control-input" id="customCheck1">
                   <label class="custom-control-label" for="customCheck1">로그인 유지</label>
                 </div>
                  </div>      
-                  <button type="button" id="logBtn" class="btn btn-primary btn-lg btn-block login-btn">Login</button>   
+ -->                  <button type="button" id="logBtn" class="btn btn-primary btn-lg btn-block login-btn">Login</button>   
             </form>
          </div>
          <button type="button" class="btn btn-lg btn-block" style="background: #e45a5a; font-size: 14px"
          onclick="location.href='../member/join.do'">회원가입</button>
-         <button type="button" class="btn btn-lg btn-block" style="background: #c0c3c3; font-size: 14px"
-         onclick="location.href='../mem_findID.jsp'">ID/PW찾기</button>
+<!--          <button type="button" class="btn btn-lg btn-block" style="background: #c0c3c3; font-size: 14px"
+         onclick="location.href='../mem_findID.jsp'">ID/PW찾기</button> -->
       </div>
      </div>
    </div>     

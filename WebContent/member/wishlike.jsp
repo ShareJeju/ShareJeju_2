@@ -5,10 +5,8 @@
 <head>
 <title>Share JEJU</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
-div{
-background-color: white;
-}
 
 .card {
   position: relative;
@@ -255,6 +253,7 @@ background-color: white;
 }
 .wl{
 	background-color: rgba(255,255,255,.0);
+	margin-top: 55px;
 	
 }
 
@@ -275,8 +274,8 @@ background-color: white;
     height: 170px;
     border: 8px solid rgba(255, 255, 255, 0.7);
     position: absolute;
-    top: 50px;
-    left: 600px;
+    top: 150px;
+    left: 587px;
 }
 .p-image {
   position: absolute;
@@ -306,10 +305,10 @@ $(function(){
 	   <tr>
 	    <td width=40% class="text-center" rowspan="3">
 			<div class="circle" style="background-color: #f5b634;">
-		       <img class="profile-pic" src="../images/icon/boy.png">			
+		       <img class="profile-pic" src="../member/${profile }">			
 			</div>
 	    </td>
-	    <td colspan="2" class="text-left">name님의 제주위시리스트</td>
+	    <td colspan="2" class="text-left">${sessionScope.name } 님의 제주위시리스트</td>
 	   </tr>
 	   <tr>
 	    <td width=20% class="text-left">찜한 여행</td>

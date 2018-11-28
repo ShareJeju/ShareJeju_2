@@ -18,6 +18,7 @@
 }
 
 </style>
+<!-- 자바스크립트 ; 비밀번호 체크 구현 -->
 <body>
   <div id="title">
   	<h3>내 정보 수정</h3>
@@ -25,11 +26,11 @@
     <div id="content" class="container">
       <div class="row">
           <div class="list-group">
-            <form method="post">
+            <form method="post" action="../member/modify_ok.do">
 			   <div class="form-group">
 			      <label>아이디</label>
 			      <input type="text" class="form-control" name=id placeholder="ID입력"
-			      value="${vo.userid}">
+			      value="${vo.userid}" readonly>
 			      
 			    </div>    
    			    <div class="form-group">
@@ -46,17 +47,17 @@
 			    </div>
    			    <div class="form-group">
 			      <label for="exampleInputPassword1">닉네임</label>
-			      <input type="text" class="form-control" name=name required
+			      <input type="text" class="form-control" name=name
 			      	placeholder="닉네임을 공백없이 입력해주세요."  value="${vo.name}">
 			    </div>
 			    <div class="form-group">
 			      <label for="exampleInputPassword1">이메일</label>
-			      <input type="email" class="form-control" name=email required
+			      <input type="email" class="form-control" name=email
 			      	placeholder="sharejeju@sharejeju.com"  value="${vo.email}">
 			    </div>
    			    <div class="form-group">
 			      <label for="exampleInputPassword1">생년월일</label>
-			      <input type="text" class="form-control" name=birth required
+			      <input type="text" class="form-control" name=birth
 			      	placeholder="ex)19951101"  value="${vo.birth}">
 			    </div>
    			    <div class="form-group">
@@ -92,7 +93,7 @@
     		    </div>
     		     <div class="form-group">
 			      <label for="exampleTextarea">자기소개</label>
-			      <textarea class="form-control" name=intro rows="5"></textarea>
+			      <textarea class="form-control" name=intro rows="5">${vo.intro }</textarea>
   				  <small class="form-text text-muted" style="text-align:center">1,000 bytes</small>
         	   </div>
         	   

@@ -106,11 +106,7 @@ public class MemberModel {
 		
 		 HttpSession session=req.getSession();
 		 String userid=(String)session.getAttribute("userid");
-		 if(profile!=null)
-		 {
-			 session.setAttribute("profile", profile);
-		 }
-		 
+
 		 MemberVO vo = new MemberVO();
 		 vo.setUserid(userid);
 		 vo.setProfile_img(profile);
@@ -139,6 +135,52 @@ public class MemberModel {
 	 req.setAttribute("main_jsp","../member/modify.jsp");
 	 return "../main/main.jsp";
  }
+ 
+  // 회원정보 수정반영하여 출력
+  @RequestMapping("member/modify_ok.do")
+  public String member_modify_ok(HttpServletRequest req,HttpServletResponse res)
+  {
+	  try
+	  {
+		  req.setCharacterEncoding("EUC-KR");
+	  }catch(Exception ex){}
+	  
+	  HttpSession session=req.getSession();
+      String userid=(String)session.getAttribute("userid");
+      String spw = (String)session.getAttribute("pw");
+
+	  // 수정한 데이터 받기
+      String pw = req.getParameter("pw");
+      String newpw = req.getParameter("newpw");
+      String newpw2 = req.getParameter("newpw2");
+      
+      String name = req.getParameter("name");
+      String email = req.getParameter("email");
+      String phone = req.getParameter("phone");
+      String sex = req.getParameter("sex");
+      String birth = req.getParameter("birth");
+      String region = req.getParameter("region");
+      String intro = req.getParameter("intro");
+	  
+      MemberVO vo = new MemberVO();
+      if(newpw.equals(""))
+      {
+    	  vo.setPw(spw);
+      }else
+      {
+    	  vo.setPw(newpw);
+      }
+      vo.setName(name);
+      vo.setEmail(email);
+      vo.setPhone(phone);
+      vo.setSex(sex);
+      vo.setBirth(birth);
+      vo.setRegion(region);
+      vo.setIntro(intro);
+      vo.setUserid(userid);
+      MemberDAO.joinUpdate(vo);
+      return "redirect:../member/modify.do";
+  }
 
   @RequestMapping("member/login.do")
   public String member_login(HttpServletRequest req,HttpServletResponse res)
@@ -153,7 +195,8 @@ public class MemberModel {
 		  HttpSession session=req.getSession();		  
 		  //session을 가지고 온다
 		  session.setAttribute("userid", userid);
-		  session.setAttribute("name", result);		  
+		  session.setAttribute("name", result);	
+		  session.setAttribute("pw", pw);
 		  //session에 저장
 	  }
 	  req.setAttribute("res", result);
@@ -169,6 +212,19 @@ public class MemberModel {
 	  //전체 세션에 저장된 데이터삭제
 	  return "redirect:../main/main.do";
   }
+  
+  // 찜,좋아요
+  @RequestMapping("member/wishlike.do")
+  public String member_wishlike(HttpServletRequest req,HttpServletResponse res)
+  {
+	  HttpSession session=req.getSession();
+      String userid=(String)session.getAttribute("userid");
+	  MemberVO vo = MemberDAO.joinDetail(userid);
+	  req.setAttribute("profile", vo.getProfile_img());
+	  req.setAttribute("main_jsp", "../member/wishlike.jsp");
+	  return "../main/main.jsp";
+  }
+  
   
   // 공지사항
   // 공지사항 목록 출력
@@ -232,12 +288,15 @@ public class MemberModel {
 	  String news = req.getParameter("news");
 	  String contents = req.getParameter("contents");
 	  String files = req.getParameter("files");
+	  System.out.println("title="+title);
+	  System.out.println("news="+news);
 	  
 	  NoticeVO vo = new NoticeVO();
 	  vo.setTitle(title);
 	  vo.setNews(Integer.parseInt(news));
 	  vo.setContents(contents);
 	  vo.setFiles(files);
+
 	  // 데이터 연결
 	  MemberDAO.noticeInsert(vo);
 	  

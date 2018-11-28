@@ -3,20 +3,27 @@ package com.sist.schedule.dao;
 import java.util.Date;
 
 /*
-ID          NOT NULL NUMBER         
-SID NOT NULL NUMBER         
-MEMBER_ID            NUMBER         
-CONTENT     NOT NULL VARCHAR2(1000) 
-CREATED_AT           DATE           
-UPDATE_AT            DATE           
+ID         NOT NULL NUMBER         
+SID        NOT NULL NUMBER         
+CONTENT    NOT NULL VARCHAR2(1000) 
+CREATED_AT          DATE           
+UPDATE_AT           DATE           
+USERID              VARCHAR2(15)     
  */
 public class CommentVO {
 	private int id;
 	private int sid; // 게시물 참조번호
-	private int member_id; // userid==SessionScopeId 수정,삭제가능
 	private String content;
 	private Date created_at;
 	private Date updated_at;
+	private String userid;
+	private String name;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public int getId() {
 		return id;
 	}
@@ -30,11 +37,11 @@ public class CommentVO {
 	public void setSid(int sid) {
 		this.sid = sid;
 	}
-	public int getMember_id() {
-		return member_id;
+	public String getUserid() {
+		return userid;
 	}
-	public void setMember_id(int member_id) {
-		this.member_id = member_id;
+	public void setUserid(String userid) {
+		this.userid = userid;
 	}
 	public String getContent() {
 		return content;

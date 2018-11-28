@@ -99,6 +99,23 @@ public class MemberDAO {
 	   return vo;
    }
    
+   // 회원정보 수정
+   public static void joinUpdate(MemberVO vo)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession(true);
+		   session.update("joinUpdate",vo);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }finally
+	   {
+		   session.close();
+	   }
+   }
+   
    // 로그인 처리
    public static String isLogin(String userid,String pw)
    {

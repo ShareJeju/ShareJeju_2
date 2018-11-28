@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>Share JEJU</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <style type="text/css">
 .card {
   position: relative;
@@ -270,7 +271,8 @@
 }
 .p-image {
   position: absolute;
-  right:42%; top:23%;
+  right:42%;
+  margin-top: 185px;
   color: #666666;
   transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
 }
@@ -287,24 +289,27 @@
 }
 .mod-profile{
 	position: absolute;
-	right:2%; top:2%;
+	right:2%; top:8%;
 	width:65px; 
 	height:65px;
 
 }
 .profile-img{
 	position:absolute;
-	left:50%; top:4%;
+	left:45%; top:8%;
 }
 .profile-p{
-	position:absolute;
-	left:50%; top:28%;
-	font-size:5px;
+	font-size: 20px;
+	position: absolute;
+    left: 42%;
+    margin-top: 263px;
 }
 input[type=file]{
 	display:none;
 }
-
+.jumbotron p{
+	font-size:20px;
+}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -378,11 +383,11 @@ $(document).ready(function() {
 			     <div class="p-image" style="background-color: rgba(255,255,255,.0)">
 			       <i class="fa fa-camera upload-button"></i>
 			        <input class="file-upload" type="file" accept="image/*" name="profile">
-			        <input type="submit" class="btn btn-sm btn-primary" value="업로드">		
+			        <input type="submit" class="btn btn-sm btn-primary" style="margin-left:20px;" value="업로드">		
 			     </div>
 			  </div>
 			</div>
-			<p class="profile-p">name님의 프로필사진을 올려주세요.</p>
+			<p class="profile-p">${sessionScope.name } 님의 프로필사진을 올려주세요.</p>
 			 <a href="../member/modify.do" role="button">
 			 <img class="mod-profile" src="../images/icon/settings.png"></a>
 	    </form>

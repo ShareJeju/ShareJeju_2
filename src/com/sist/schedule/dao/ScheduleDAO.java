@@ -86,8 +86,95 @@ public class ScheduleDAO {
 		   return list;
 	 }
 	 
+	// ¸®ºäµðÅ×ÀÏ
+	public static ScheduleVO scheduleDetail(int id)
+	{
+		ScheduleVO vo = new ScheduleVO();
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			vo=session.selectOne("scheduleDetail",id);
+		} 
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			session.close();
+		}
+		return vo; 
+	}
 	//°Ô½Ã±Û ¼öÁ¤
 	
 	   
 	//°Ô±â½½ »èÁ¦
+	
+	// ¸®ºä´ñ±ÛÃâ·Â
+	public static List<CommentVO> scheduleReplyList(int sid)
+	{
+		List<CommentVO> list=new ArrayList<>();
+		SqlSession session=null;
+		try {
+			session=ssf.openSession();
+			list=session.selectList("scheduleReplyList",sid);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		finally{
+			session.close();
+		}
+		return list;
+	}
+	
+	// ¸®ºä´ñ±ÛÀÛ¼º
+   public static void scheduleReplyNew(CommentVO vo)
+   {
+	   SqlSession session=null;
+	   try {	   
+		   session=ssf.openSession(true);
+		   session.insert("scheduleReplyNew",vo);
+	   } catch (Exception e) {
+		   e.printStackTrace();
+	   } 
+	   finally
+	   {
+		   session.close();
+	   }
+   }
+	// ¸®ºä´ñ±Û¼öÁ¤
+   public static void scheduleReplyUpdate(CommentVO vo)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   //¿¬°á 
+		   session=ssf.openSession(true);//autoCommit
+		   session.update("scheduleReplyUpdate",vo);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close();
+	   }
+   }
+	// ¸®ºä´ñ±Û»èÁ¦
+   public static void scheduleReplyDelete(int id)
+   {
+	   SqlSession session=null;
+	   try
+	   {
+		   //¿¬°á 
+		   session=ssf.openSession(true);//autoCommit
+		   session.insert("scheduleReplyDelete",id);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close();
+	   }
+   }
 }

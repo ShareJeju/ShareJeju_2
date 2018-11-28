@@ -34,4 +34,47 @@
 		#{userid}
 		)
 	</insert>
+ <!-- 여행기 메인에 리뷰 상위 4개 뿌리기 -->
+	<select id="scheduleMainList" resultType="ScheduleVO">
+		SELECT * FROM(SELECT * FROM sj_tourreview ORDER BY likes DESC) WHERE ROWNUM BETWEEN 1 AND 4
+	</select>
+ <!-- 리뷰디테일 -->
+ <select id="scheduleDetail" resultType="ScheduleVO" parameterType="int">
+	SELECT id,main_img,img,title,day,likes,text,hashtag,created_at,updated_at,userid
+	FROM sj_tourreview
+	WHERE id=#{id}
+ </select>
+ <!-- 댓글 -->
+  <!-- 댓글보기 -->
+  <select id="scheduleReplyList" resultType="CommentVO" parameterType="int">
+	SELECT id,sid,content,created_at,updated_at,userid,(SELECT sj_member.name FROM sj_member WHERE sj_comment.userid=sj_member.userid) as name
+	FROM sj_comment
+  	WHERE sid=#{sid}
+  </select>
+  <!-- 댓글작성 -->
+  <insert id="scheduleReplyNew" parameterType="CommentVO">
+   <selectKey keyProperty="id" resultType="int" order="BEFORE">
+    SELECT NVL(MAX(id)+1,1) as id FROM sj_comment
+   </selectKey>
+   INSERT INTO sj_comment VALUES(
+   #{id},
+   #{sid},
+   #{content},
+   SYSDATE,
+   SYSDATE,
+   #{userid}
+   )   
+  </insert>
+  <!-- 댓글수정 -->
+  <update id="scheduleReplyUpdate" parameterType="CommentVO">
+  	UPDATE sj_comment SET
+  	content=#{content}
+  	WHERE id=#{id}
+  </update>
+  <!-- 댓글삭제 -->
+  <delete id="scheduleReplyDelete" parameterType="int">
+   DELETE FROM sj_comment
+   WHERE id=#{id}
+  </delete>
+	
 </mapper>

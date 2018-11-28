@@ -8,12 +8,20 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sist.controller.RequestMapping;
+import com.sist.schedule.dao.CommentVO;
 import com.sist.schedule.dao.ScheduleDAO;
 import com.sist.schedule.dao.ScheduleVO;
 
 import java.util.*;
 public class ScheduleModel {
+	
+	@RequestMapping("schedule/schedule_main.do")
+	public String schedule_main(HttpServletRequest req,HttpServletResponse res)
+	{
 
+		req.setAttribute("main_jsp", "../schedule/schedule_main.jsp");
+		return "../main/main.jsp";
+	}	
 	@RequestMapping("schedule/schedule_list.do")
 	public String schedule_list(HttpServletRequest req,HttpServletResponse res)
 	{
@@ -35,7 +43,7 @@ public class ScheduleModel {
 	{
 			
 		try {
-			req.setCharacterEncoding("UTF-8");
+			req.setCharacterEncoding("EUC-KR");
 		} catch (Exception e) {}
 		
 		req.setAttribute("main_jsp", "../schedule/schedule_insert.jsp");
@@ -87,7 +95,7 @@ public class ScheduleModel {
 		String[] textList=mr.getParameterValues("text");
 		for(int i=0; i<textList.length; i++)
 		{
-			text += ".|*|.";
+			text += ".||.";
 			text += textList[i];			
 		} 
 		System.out.println("±Û ³»¿ë : "+text);
@@ -143,7 +151,88 @@ public class ScheduleModel {
 	@RequestMapping("schedule/schedule_detail.do")
 	public String schedule_detail(HttpServletRequest req,HttpServletResponse res)
 	{
+		String id=req.getParameter("id");
+		System.out.println("id="+id);
+		
+		// °Ô½Ã¹°³»¿ë
+		ScheduleVO vo = ScheduleDAO.scheduleDetail(Integer.parseInt(id));
+		String day = vo.getDay();
+		String start=day.substring(0, day.lastIndexOf("~"));
+		String end=day.substring(day.lastIndexOf("~")+1,day.length());
+		String[] img = vo.getImg().split(",");
+		String[] text = vo.getText().split("\\.\\|\\|\\.");// \\.\\|
+		String[] hashtag = vo.getHashtag().split(",");
+        List<String> iList=Arrays.asList(img);
+        ArrayList<String> tList=new ArrayList<String>();
+        for(String t:text)
+        {
+        	tList.add(t);
+        }
+        tList.remove(0);
+		req.setAttribute("vo", vo);
+		req.setAttribute("start", start);
+		req.setAttribute("end",end);
+		req.setAttribute("img",iList);
+		req.setAttribute("text",tList);
+		req.setAttribute("hashtag",hashtag);
+		
+		// ´ñ±Û
+		String sid=id;
+		System.out.println("sid="+sid);
+		List<CommentVO> list = ScheduleDAO.scheduleReplyList(Integer.parseInt(sid));
+		req.setAttribute("list", list);
+		req.setAttribute("count", list.size()); // ´ñ±Û°¹¼ö
 		req.setAttribute("main_jsp", "../schedule/schedule_detail.jsp");
 		return "../main/main.jsp";
 	}
+	
+	// ´ñ±ÛÀÛ¼º
+	@RequestMapping("schedule/reply_new.do")
+	public String schedule_reply_new(HttpServletRequest req,HttpServletResponse res)
+	{
+        try {
+        	req.setCharacterEncoding("EUC-KR");
+   	    } catch (Exception e) {}
+		String sid=req.getParameter("sid");
+		String content=req.getParameter("content");
+		
+		HttpSession session=req.getSession();
+		String userid=(String)session.getAttribute("userid");
+		
+		CommentVO vo = new CommentVO();
+		vo.setSid(Integer.parseInt(sid));
+		vo.setUserid(userid);
+		vo.setContent(content);
+		ScheduleDAO.scheduleReplyNew(vo);
+		return "redirect:../schedule/schedule_detail.do?id="+sid;
+	}
+	
+	// ´ñ±Û¼öÁ¤
+   @RequestMapping("schedule/reply_update.do")
+   public String schedule_reply_update(HttpServletRequest req,HttpServletResponse res)
+   {
+	  try
+	  {
+		  req.setCharacterEncoding("EUC-KR");
+	  }catch(Exception ex){}
+	  String id = req.getParameter("id");
+	  String sid = req.getParameter("sid");
+	  String content = req.getParameter("content");
+	  
+	  CommentVO vo = new CommentVO();
+	  vo.setId(Integer.parseInt(id));
+	  vo.setContent(content);
+	  ScheduleDAO.scheduleReplyUpdate(vo);
+	  return "redirect:../schedule/schedule_detail.do?id="+sid;
+   }
+   
+	// ´ñ±Û»èÁ¦
+   @RequestMapping("schedule/reply_delete.do")
+   public String schedule_reply_delete(HttpServletRequest req,HttpServletResponse res)
+   {
+	  String id = req.getParameter("id");
+	  String sid = req.getParameter("sid");
+	  ScheduleDAO.scheduleReplyDelete(Integer.parseInt(id));
+	  return "redirect:../schedule/schedule_detail.do?id="+sid;
+   }
 }

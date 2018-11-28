@@ -50,10 +50,26 @@
   
   <!-- 내정보수정 정보페이지 -->
   <select id="joinDetail" resultType="MemberVO" parameterType="String">
-  	SELECT userid,pw,name,email,phone,sex,birth,region,profile_img
+  	SELECT userid,pw,name,email,phone,sex,birth,region,profile_img,intro
   	FROM sj_member
   	WHERE userid=#{userid}
   </select>
+  
+  <!-- 내정보수정 -->
+  <update id="joinUpdate" parameterType="MemberVO">
+  	UPDATE sj_member SET
+  	pw=#{pw},
+  	name=#{name},
+  	email=#{email},
+  	phone=#{phone},
+  	sex=#{sex},
+  	birth=#{birth},
+  	region=#{region},
+  	intro=#{intro},
+    updated_at=SYSDATE
+  	WHERE userid=#{userid}
+  </update>
+    
   
   <!-- 공지사항 -->
   <!-- 목록출력 -->

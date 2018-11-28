@@ -35,6 +35,23 @@ public class MemberVO {
 	private Date created_at; // 생성시간
 	private Date updated_at; // 수정시간
 	private int admin;
+	
+	private String newpw;
+	private String newpw2;
+	
+	
+	public String getNewpw() {
+		return newpw;
+	}
+	public void setNewpw(String newpw) {
+		this.newpw = newpw;
+	}
+	public String getNewpw2() {
+		return newpw2;
+	}
+	public void setNewpw2(String newpw2) {
+		this.newpw2 = newpw2;
+	}
 	public int getId() {
 		return id;
 	}

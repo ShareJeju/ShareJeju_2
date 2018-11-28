@@ -21,8 +21,7 @@ vertical-align: middle;
 	<div class="container" style="margin-top:100px">
 	  	<h3 class="text-center">공지글 작성</h3>
 		<div class="row">
-		<form method="post" action="../member/notice_insert_ok.do"
-			enctype="multipart/form-data">
+		<form method="post" action="../member/notice_insert_ok.do">
 			<table class="table table-hover">
 				<tr>
 					<th width=20% class="text-center success">제목</th>
