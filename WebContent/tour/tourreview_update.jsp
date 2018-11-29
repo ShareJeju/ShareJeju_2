@@ -30,14 +30,16 @@ text-align:center;
 </head>
 <body style="background-color:white">
   <div>
-    <h3>후기작성</h3>
+    <h3>후기수정</h3>
     <form method="post" action="../tour/tourreview_update_ok.do">
+      <input type="hidden" name="cid" value="${vo.cid }">
+      <input type="hidden" name="cid" value="${vo.review_id }">
     <table class="table table-hover" id="review_write">
       <tr>
        <th width=15% class="text-center">제목</th>
 	    <td width=85% class="text-left" colspan="5">
 	      <input type=text name=review_subject size=50 value="${vo.review_subject}">
-	      <input type="hidden" name="cid" value="${vo.review_id }">
+	      
 	    </td>
       </tr>
       

@@ -24,6 +24,7 @@ public class TourModel {
    public String tour_tourcontent(HttpServletRequest req, HttpServletResponse res)
    {
       String page=req.getParameter("page");
+      String jejumap=req.getParameter("map");
       if(page==null)
          page="1";
       
@@ -32,13 +33,18 @@ public class TourModel {
       int start=(curpage*rowSize)-(rowSize-1);
       int end=curpage*rowSize;
       Map map=new HashMap();
+      map.put("map", jejumap);
       map.put("start", start);
       map.put("end", end);
       
       List<CategoryVO> list=TourDAO.tourListData(map);
       req.setAttribute("list", list);
-      req.setAttribute("start", start);
-      req.setAttribute("end", end);
+      
+      int totalpage=TourDAO.tourTotalpage();
+      req.setAttribute("curpage", curpage);
+      req.setAttribute("totalpage", totalpage);
+      /*req.setAttribute("start", start);
+      req.setAttribute("end", end);*/
        req.setAttribute("main_jsp", "../tour/tourcontent.jsp");
        return "../main/main.jsp";
    }
@@ -135,9 +141,9 @@ public class TourModel {
        // DB¿¬°á
        tourreviewVO vo=new tourreviewVO();
        vo.setReview_id(Integer.parseInt(review_id));
-       vo.setReview_content(review_content);
        vo.setCid(Integer.parseInt(cid));
        vo.setReview_subject(review_subject);
+       vo.setReview_content(review_content);
        
        TourDAO.tourreviewUpdate(vo);
        return "redirect:../tour/tourdetailcontent.do?id="+cid;

@@ -5,6 +5,30 @@
 <html>
 <head>
 <title>Share JEJU</title>
+<script>
+ $(function () {
+          $('area').click(function () {
+                //클릭될때
+                $('.sjmap img').attr('src', $(this).attr('href'));
+             
+      //img의 src 속성값을 this(해당태그(img)의 href 값으로 바꿔라 
+            var s=$(this).attr('alt');
+             //alert(s);
+             location.href="../tour/tourcontent.do?map="+s;
+             return false;
+               // 페이지 전환 막기
+            });
+
+      /* $('area#jeju').click(function(){
+         $('#sjlist_jeju').show();
+         $('#sjlist_jeju2').hide();
+         return false;
+      }); */
+      
+        });
+          
+</script>
+
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <style type="text/css">
 
@@ -366,7 +390,7 @@ margin-top:200px;
 	</div>
 	<div class="category">
 	<ul>
-	 <li><img src="../images/menu1.jpg" width=100%> </li>
+	 <li><img src="../images/menu1.jpg" width=100%></li>
 	 <li><img src="../images/menu1.jpg" width=100%></li>
 	 <li><img src="../images/menu1.jpg" width=100%></li>
 	 <li><img src="../images/menu1.jpg" width=100%></li>
@@ -407,50 +431,27 @@ margin-top:200px;
       
     </div>
     <div id=page class="text-center">
-    <ul class="pagination justify-content-center">
+     <td class="text-center">
+      <a href="../tour/tourcontent.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-xs btn-success">이전</a>
+      ${curpage } page / ${totalpage } pages
+      <a href="../tour/tourcontent.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-xs btn-success">다음</a>
+     </td>
+    <!-- <ul class="pagination justify-content-center">
         <li class="page-item">
           <a class="page-link" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
             <span class="sr-only">Previous</span>
           </a>
         </li>
-        <li class="page-item">
-          <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-          <li class="page-item">
-          <a class="page-link" href="#">4</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">5</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">6</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">7</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">8</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">9</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">10</a>
-        </li>
-        <li class="page-item">
+         -->
+        
+       <!--  <li class="page-item">
           <a class="page-link" href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
             <span class="sr-only">Next</span>
           </a>
         </li>
-      </ul>
+      </ul> -->
     </div>
     <!-- /.container -->
    </div>

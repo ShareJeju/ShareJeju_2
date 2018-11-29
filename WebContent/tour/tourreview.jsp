@@ -132,7 +132,7 @@ border-color:#54d9cd;
 		 <h2 style="font-weight:bold;color:#54d9cd;">여행가의 리뷰(숫자)</h2>
 	  </td>
 	  <td width=5%>
-		<%-- <c:if test="${sessionScope.review_userid!=null }"> <!-- 로그인이 됐을 때 --> --%>
+		
 		  <a href="../tour/tourreview_insert.do?id=${id}" class="btn btn-md btn_color">리뷰 쓰기</a>
 		<%-- </c:if> --%>
 	  </td>
@@ -162,9 +162,11 @@ border-color:#54d9cd;
     </tr>
     <tr>
       <td colspan="5" class="text-right">
+      <%-- <c:if test="${sessionScope.review_id==vo.userid }"> <!-- 로그인이 됐을 때 --> --%>
        <button type="button" class="btn btn-xs btn_color"
        data-toggle="modal" data-target="#deleteconfirm">삭제</button>
        <a href="../tour/tourreview_update.do?id=${id}&review_id=${vo.review_id}" class="btn btn-xs btn_color">수정</a>
+      <%-- </c:if> --%>
       </td>
     </tr>
     <tr>

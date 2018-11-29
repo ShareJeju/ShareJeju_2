@@ -57,9 +57,24 @@
     <!-- 업체별 리뷰 수정 -->
     <update id="tourreviewUpdate" parameterType="tourreviewVO">
         UPDATE sj_cate_review SET
-        review_content=#{review_content}
+        review_content=#{review_content},
+        review_subject=${review_subject}
         WHERE review_id=#{review_id}
     </update>
+    
+    <!--  -->
+    <select id="tourreviewUpdateData" resultType="tourreviewVO" parameterType="int">
+        SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate
+        FROM sj_cate_review
+        WHERE review_id=${review_id}
+        ORDER BY review_id DESC
+    </select>
+    
+    <!-- 총페이지 출력 -->
+    <select id="tourTotalpage" resultType="int">
+        SELECT CEIL(COUNT(*)/10) FROM sj_company
+    </select>
+    
     
    <!-- 사진 업로드 
     <update id="profileUpload" parameterType="MemberVO">

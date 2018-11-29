@@ -106,20 +106,10 @@ public class TourDAO {
 	// √—∆‰¿Ã¡ˆ
 	public static int tourTotalpage()
 	{
-		SqlSession session=null;
 		int total=0;
-		try
-		{
-			session=ssf.openSession();
-			total=session.selectOne("tourTotalpage");
-		}catch(Exception ex)
-		{
-			ex.printStackTrace();
-		}
-		finally
-		{
-			session.close();
-		}
+		SqlSession session=ssf.openSession();
+		total=session.selectOne("tourTotalpage");
+		session.close();
 		return total;
 	}
 	
