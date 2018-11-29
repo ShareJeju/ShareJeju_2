@@ -40,7 +40,7 @@ public class TourModel {
       List<CategoryVO> list=TourDAO.tourListData(map);
       req.setAttribute("list", list);
       
-      int totalpage=TourDAO.tourTotalpage();
+      int totalpage=TourDAO.tourTotalpage(); 
       req.setAttribute("curpage", curpage);
       req.setAttribute("totalpage", totalpage);
       /*req.setAttribute("start", start);

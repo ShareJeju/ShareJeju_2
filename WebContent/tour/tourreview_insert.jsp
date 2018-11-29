@@ -20,7 +20,7 @@
   color:white;
 }
 #review_write td{
-  padding:10px;
+  padding:10px; 
 }
 .btn_color:hover
 {

@@ -31,7 +31,7 @@ public class TourDAO {
 		List<CategoryVO> list = new ArrayList<CategoryVO>();
 		SqlSession session=null;
 		try
-		{
+		{ 
 			session=ssf.openSession();
 			list=session.selectList("tourListData",map);
 		}catch(Exception ex)

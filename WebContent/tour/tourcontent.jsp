@@ -23,7 +23,7 @@
          $('#sjlist_jeju').show();
          $('#sjlist_jeju2').hide();
          return false;
-      }); */
+      }); */ 
       
         });
           

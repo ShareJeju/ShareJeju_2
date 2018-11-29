@@ -24,7 +24,7 @@
        SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate,review_img,review_img_size
        FROM sj_cate_review
        WHERE cid=#{cid}
-    </select>
+    </select> 
     
     <!-- 업체별 리뷰 갯수 -->
     <select id="tourreviewCount" resultType="int" parameterType="int">

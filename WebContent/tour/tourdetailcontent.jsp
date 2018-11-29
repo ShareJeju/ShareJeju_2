@@ -21,7 +21,7 @@ width:50%;
 height:400px;
 float:left;
 }
-#detail_info
+#detail_info 
 {
 margin-top:100px;
 display:inline-block;
