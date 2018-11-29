@@ -88,7 +88,7 @@ $(function(){
 }
 
 /* //////////////////////////////////////// */
-    .dropdown-menu {
+	 .dropdown-menu {
    position: absolute;
    top: 100%;
    left: -10%;
@@ -117,11 +117,11 @@ $(function(){
 }
  
 .open>a{
-   margin-top: 0px;
+	margin-top: 0px;
 }
 
 .btn{
-   margin-top: 0px;
+	margin-top: 0px;
 }
 .bx-wrapper{
  margin-top:-54px;
@@ -150,29 +150,28 @@ $(function(){
 </style>
 </head>
 <body>
-   <div class="content">
-      <div class="container">
-         <div class="row">
-
-            <div class="col-sm-6 col-sm-offset-3">
-               <form>
-                  <div id="imaginary_container">
-                     <div class="input-group stylish-input-group">
-                        <input type="text" class="form-control" placeholder="Search"
-                           style="background-color: rgba(255, 255, 255, 0.0); color: black;">
-                        <span class="input-group-addon">
-                           <button type="submit">
-                              <span class="glyphicon glyphicon-search"></span>
-                           </button>
-                        </span>
-                     </div>
-                  </div>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
-   <ul class="bxslider">
+	<div class="content">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<form action="../main/main_search.do" method="post">
+						<div id="imaginary_container">
+							<div class="input-group stylish-input-group">
+								<input type="text" class="form-control" placeholder="Search" name="name"
+									style="background-color: rgba(255, 255, 255, 0.0); color: black;">
+								<span class="input-group-addon">
+									<button type="submit">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ul class="bxslider">
       <li>
          <div class="img1" >
          </div>

@@ -280,7 +280,7 @@ public class ScheduleModel {
 			String title=mr.getParameter("title");//제목
 			String date1=mr.getParameter("date1");//여행 시작 임시
 			String date2=mr.getParameter("date2");//여행 끝 임시
-			String main_img=mr.getOriginalFileName("main_img");//메인 이미지가 들어갈 곳
+			String main_img=mr.getOriginalFileName("main_img");//메인 이미지가 들어갈 곳		
 			String day=date1+"~"+date2;//여행 기간
 			String text="";//글
 			//String file[]; //파일이 임시로 순서대로들어갈곳 
@@ -297,23 +297,22 @@ public class ScheduleModel {
 				text += textList[i];
 				text += ".||.";
 			} 	
-			
-			//String main_imgs=;
+			System.out.println("///////////////////////////////수정");
 			System.out.println(id);
 			System.out.println("제목 : "+title);
 			System.out.println("여행기간 : "+date1+"~"+date2);
-			System.out.println("메인이미지: "+main_img);
+			System.out.println("메인이미지: "+main_img);			
 			System.out.println("글 내용 : "+text);
 			System.out.println(hashtag);
 			try {
 			ScheduleVO vo=new ScheduleVO();
-			
+			vo.setId(Integer.parseInt(id));
 			vo.setMain_img(main_img);
 			vo.setTitle(title);
 			vo.setDay(day);
 			vo.setText(text);
 			vo.setHashtag(hashtag);
-			vo.setId(Integer.parseInt(id));
+			
 			ScheduleDAO.scheduleUpdate(vo);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());

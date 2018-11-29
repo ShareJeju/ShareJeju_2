@@ -956,7 +956,8 @@ $(function() {
 							<input class="upload-name" value="${vo.main_img }" disabled="disabled" style="width: 200px;">
 
 							<label for="input_file">¾÷·Îµå</label> 
-						  <input type="file" id="input_file" class="upload-hidden" name="main_img" value="${vo.main_img }"> 
+						  <input type="file" id="input_file" class="upload-hidden" name="main_img" value="${vo.main_img }">
+						  <input type="hidden" name="main_img1" value="${vo.main_img }">
 						</div>
 					</td>
 				

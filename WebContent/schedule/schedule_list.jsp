@@ -28,7 +28,9 @@ td{
 		<div style="margin-left: 5px; margin-bottom: 10px;">
 			<input type=button value="최신순" class="btn btn-xs btn-info" id="">
 			<input type=button value="인기순" class="btn btn-xs btn-primary active" id="">
+			<c:if test="${sessionScope.userid!=null}">
 			<a href="../schedule/schedule_insert.do"><input type=button value="리뷰쓰기" class="btn btn-xs btn-primary active" style="float: right;"></a>
+			</c:if>
 		</div>
 	</div>
 
