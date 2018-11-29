@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import com.sist.category.dao.CategoryVO;
 import com.sist.member.dao.MemberVO;
 
 public class ScheduleDAO {
@@ -24,7 +25,7 @@ public class ScheduleDAO {
 			   System.out.println(ex.getMessage());
 		   }
 	   }
-	   //메인에 상위 리뷰 4개  뿌리기
+	   //메인에 상위 여행기리뷰 4개  뿌리기
 	   public static List<ScheduleVO> scheduleMainList()
 	   {
 		   SqlSession session=null;
@@ -44,6 +45,29 @@ public class ScheduleDAO {
 		   }
 		   return list;
 	   }
+	   
+	   //메인에 업체리뷰 상위 4개 뿌리기
+	   public static List<CategoryVO> categoryMainList()
+	   {
+		   SqlSession session=null;
+		   List<CategoryVO> list=new ArrayList<CategoryVO>();
+		   try
+		   {
+			   session=ssf.openSession();//autocommit
+			   list=session.selectList("categoryMainList");
+			   session.commit();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   session.close();// 반환
+		   }
+		   return list;
+	   }
+	   
+	   
 	//게시글 추가
 	   public static void scheduleInsert(ScheduleVO vo)
 	   {
