@@ -17,7 +17,7 @@
              location.href="../tour/tourcontent.do?map="+s;
              return false;
                // 페이지 전환 막기
-            });
+            }); 
 
       /* $('area#jeju').click(function(){
          $('#sjlist_jeju').show();

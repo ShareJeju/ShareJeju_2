@@ -23,7 +23,7 @@ float:left;
 }
 #detail_info
 {
-margin-top:100px; 
+margin-top:100px;  
 display:inline-block;
 width:50%;
 height:400px;

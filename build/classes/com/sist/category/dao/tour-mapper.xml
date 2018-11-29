@@ -17,7 +17,7 @@
        SELECT id,addr,cost,time,tel,wish,likes,hit,name,regdate,img,img_size,text,menu,website,category,map
        FROM sj_company
        WHERE id=#{id}
-    </select>
+    </select> 
     
     <!--  업체별 리뷰 출력 -->
     <select id="tourreviewListData" resultType="tourreviewVO" parameterType="java.util.Map">

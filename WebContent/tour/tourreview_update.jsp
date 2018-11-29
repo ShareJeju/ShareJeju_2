@@ -23,7 +23,7 @@
   padding:10px;
 }
 h3 
-{
+{ 
 text-align:center;
 }
 </style>

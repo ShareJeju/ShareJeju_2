@@ -23,7 +23,7 @@ public class TourDAO {
 		{
 			System.out.println(ex.getMessage());
 		}
-	}
+	} 
 	
 	// 업체 목록 출력 (한페이지에 9개씩 출력)
 	public static List<CategoryVO> tourListData(Map map)
