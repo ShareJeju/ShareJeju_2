@@ -20,7 +20,16 @@ public class tourreviewVO {
 	private Date review_regdate;
 	private String review_img;
 	private String review_img_size;
+	private String profile_img;
 	
+	
+	
+	public String getProfile_img() {
+		return profile_img;
+	}
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
+	}
 	public int getReview_id() {
 		return review_id;
 	}

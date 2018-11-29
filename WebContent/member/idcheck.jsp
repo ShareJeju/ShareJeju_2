@@ -3,7 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style type="text/css">
 .container
 {
@@ -14,9 +16,9 @@
   width: 280px;
 }
 </style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <!-- 이벤트처리 -->
 <script type="text/javascript">
-
 $(function(){
 	$('#idBtn').click(function(){
 		// 버튼클릭 시 처리 영역
@@ -52,7 +54,6 @@ $(function(){
 		});	
 	});
 });
-
 // 값넣어주는 메소드
 function ok(userid)
 {

@@ -86,13 +86,13 @@ public class TourDAO {
 		return list;
 	}
 	
-	/*public static void profileUpload(MemberVO vo)
+	/*public static void tourreviewImgUpload(MemberVO vo)
 	{
 		SqlSession session=null;
 		try
 		{
 			session=ssf.openSession();
-			session.update("profileUpload",vo);
+			session.update("upload",upload);
 		}catch(Exception ex)
 		{
 			ex.printStackTrace();

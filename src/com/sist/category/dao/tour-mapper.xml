@@ -5,10 +5,10 @@
  
     <!-- 업체 목록 출력 -->
     <select id="tourListData" resultType="CategoryVO" parameterType="java.util.Map">           
-       SELECT id,addr,cost,time,tel,wish,likes,hit,name,regdate,img,img_size,text,menu,website,category,map,num
-       FROM (SELECT id,addr,cost,time,tel,wish,likes,hit,name,regdate,img,img_size,text,menu,website,category,map,rownum as num
-       FROM (SELECT id,addr,cost,time,tel,wish,likes,hit,name,regdate,img,img_size,text,menu,website,category,map
-       FROM sj_company WHERE category='관광' ORDER BY id))
+       SELECT id,addr,tel,wish,likes,hit,name,regdate,img,text,category,map,num
+       FROM (SELECT id,addr,tel,wish,likes,hit,name,regdate,img,text,category,map,rownum as num
+       FROM (SELECT id,addr,tel,wish,likes,hit,name,regdate,img,text,category,map
+       FROM sj_company WHERE category='관광' AND map=#{map} ORDER BY id))
        WHERE num BETWEEN #{start} AND #{end}
     </select>
     
@@ -22,6 +22,7 @@
     <!--  업체별 리뷰 출력 -->
     <select id="tourreviewListData" resultType="tourreviewVO" parameterType="java.util.Map">
        SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate,review_img,review_img_size
+       ,(SELECT sj_member.profile_img FROM sj_member WHERE sj_cate_review.review_userid=sj_member.userid) as profile_img
        FROM sj_cate_review
        WHERE cid=#{cid}
     </select> 
@@ -38,13 +39,14 @@
       <selectKey keyProperty="review_id" resultType="int" order="BEFORE">
         SELECT NVL(MAX(review_id)+1,1) AS review_id FROM sj_cate_review
       </selectKey>
-      INSERT INTO sj_cate_review(review_id,cid,review_userid,review_content,review_subject,review_regdate) VALUES(
+      INSERT INTO sj_cate_review(review_id,cid,review_userid,review_content,review_subject,review_regdate,review_img) VALUES(
          #{review_id},
          #{cid},
          #{review_userid},
 	     #{review_content},
 	     #{review_subject},
-         SYSDATE
+         SYSDATE,
+         #{review_img}
        ) 
     </insert>
     
@@ -58,7 +60,7 @@
     <update id="tourreviewUpdate" parameterType="tourreviewVO">
         UPDATE sj_cate_review SET
         review_content=#{review_content},
-        review_subject=${review_subject}
+        review_subject=#{review_subject}
         WHERE review_id=#{review_id}
     </update>
     
@@ -66,7 +68,7 @@
     <select id="tourreviewUpdateData" resultType="tourreviewVO" parameterType="int">
         SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate
         FROM sj_cate_review
-        WHERE review_id=${review_id}
+        WHERE review_id=#{review_id}
         ORDER BY review_id DESC
     </select>
     

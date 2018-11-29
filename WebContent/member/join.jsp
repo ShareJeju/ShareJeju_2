@@ -4,10 +4,6 @@
 <html>
 <head>
 <title>Share JEJU</title>
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<!-- 지우지말것 -->
-<link rel="stylesheet" type="text/css" href="../shadow/css/shadowbox.css">
-<script type="text/javascript" src="../shadow/js/shadowbox.js"></script>
 <style type="text/css">
 
 #title{
@@ -20,8 +16,9 @@
 .form-control{
 	padding: 22px;
 }
-
 </style>
+<link rel="stylesheet" type="text/css" href="../shadow/css/shadowbox.css">
+<script type="text/javascript" src="../shadow/js/shadowbox.js"></script>
 <script type="text/javascript">
 Shadowbox.init({
 	players:["iframe"]
@@ -123,9 +120,6 @@ function idcheck()
 		  </form>				 						
 
   	      <div class="form-group" style="margin-top:20px; margin-left:10px"> 
-		    <div class="text-center">
-		      이미 회원이세요?&nbsp;<a href="main.jsp"><u>로그인하기</u></a>
-		    </div>
 		  </div>	
 	      </div>
 	   </div>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -332,235 +332,6 @@ padding-right: 15px;
   margin-right:-30px;
 }
 
-.card > hr {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-.card > .list-group:first-child .list-group-item:first-child {
-  border-top-left-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
-}
-
-.card > .list-group:last-child .list-group-item:last-child {
-  border-bottom-right-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-}
-
-.card-body {
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
-  padding: 1.25rem;
-}
-
-.card-title {
-  margin-bottom: 0.75rem;
-}
-
-.card-subtitle {
-  margin-top: -0.375rem;
-  margin-bottom: 0;
-}
-
-.card-text:last-child {
-  margin-bottom: 0;
-}
-
-.card-link:hover {
-  text-decoration: none;
-}
-
-.card-link + .card-link {
-  margin-left: 1.25rem;
-}
-
-.card-header {
-  padding: 0.75rem 1.25rem;
-  margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
-}
-
-.card-header:first-child {
-  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
-}
-
-.card-header + .list-group .list-group-item:first-child {
-  border-top: 0;
-}
-
-.card-footer {
-  padding: 0.75rem 1.25rem;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-top: 1px solid rgba(0, 0, 0, 0.125);
-}
-
-.card-footer:last-child {
-  border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
-}
-
-.card-header-tabs {
-  margin-right: -0.625rem;
-  margin-bottom: -0.75rem;
-  margin-left: -0.625rem;
-  border-bottom: 0;
-}
-
-.card-header-pills {
-  margin-right: -0.625rem;
-  margin-left: -0.625rem;
-}
-
-.card-img-overlay {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1.25rem;
-}
-
-.card-img {
-  width: 100%;
-  border-radius: calc(0.25rem - 1px);
-}
-
-.card-img-top {
-  width: 100%;
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
-}
-
-.card-img-bottom {
-  width: 100%;
-  border-bottom-right-radius: calc(0.25rem - 1px);
-  border-bottom-left-radius: calc(0.25rem - 1px);
-}
-
-.card-deck {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.card-deck .card {
-  margin-bottom: 15px;
-}
-
-@media (min-width: 576px) {
-  .card-deck {
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    margin-right: -15px;
-    margin-left: -15px;
-  }
-  .card-deck .card {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex: 1 0 0%;
-    flex: 1 0 0%;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    margin-right: 15px;
-    margin-bottom: 0;
-    margin-left: 15px;
-  }
-}
-
-.card-group {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.card-group > .card {
-  margin-bottom: 15px;
-}
-
-@media (min-width: 576px) {
-  .card-group {
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-  }
-  .card-group > .card {
-    -ms-flex: 1 0 0%;
-    flex: 1 0 0%;
-    margin-bottom: 0;
-  }
-  .card-group > .card + .card {
-    margin-left: 0;
-    border-left: 0;
-  }
-  .card-group > .card:first-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .card-group > .card:first-child .card-img-top,
-  .card-group > .card:first-child .card-header {
-    border-top-right-radius: 0;
-  }
-  .card-group > .card:first-child .card-img-bottom,
-  .card-group > .card:first-child .card-footer {
-    border-bottom-right-radius: 0;
-  }
-  .card-group > .card:last-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-  .card-group > .card:last-child .card-img-top,
-  .card-group > .card:last-child .card-header {
-    border-top-left-radius: 0;
-  }
-  .card-group > .card:last-child .card-img-bottom,
-  .card-group > .card:last-child .card-footer {
-    border-bottom-left-radius: 0;
-  }
-  .card-group > .card:only-child {
-    border-radius: 0.25rem;
-  }
-  .card-group > .card:only-child .card-img-top,
-  .card-group > .card:only-child .card-header {
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
-  }
-  .card-group > .card:only-child .card-img-bottom,
-  .card-group > .card:only-child .card-footer {
-    border-bottom-right-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-  }
-  .card-group > .card:not(:first-child):not(:last-child):not(:only-child) {
-    border-radius: 0;
-  }
-  .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-img-top,
-  .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-img-bottom,
-  .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-header,
-  .card-group > .card:not(:first-child):not(:last-child):not(:only-child) .card-footer {
-    border-radius: 0;
-  }
-}
-
-.card-columns .card {
-  margin-bottom: 0.75rem;
-}
-
-@media (min-width: 576px) {
-  .card-columns {
-    -webkit-column-count: 3;
-    -moz-column-count: 3;
-    column-count: 3;
-    -webkit-column-gap: 1.25rem;
-    -moz-column-gap: 1.25rem;
-    column-gap: 1.25rem;
-    orphans: 1;
-    widows: 1;
-  }
-  .card-columns .card {
-    display: inline-block;
-    width: 100%;
-  }
-  }
  
 <!--list css!-->
 
@@ -694,9 +465,9 @@ $(document).ready(function () {
 	<div class="out2" style="width: 1500px; height: 50px; 	margin-top:150px;	">
 	<div class="in2">
 		<font size="5" style="align: center;"><a href="../schedule/schedule_list.do" style="color: black;">#여행기</a></font>&nbsp;&nbsp;
-		<font size="5" style="align: center;"><a href="#" style="color: black;">#맛집</a></font>&nbsp;&nbsp;
-		<font size="5"style="align: center;"><a href="#" style="color: black;">#관광지</a></font>&nbsp;&nbsp;
-		<font size="5" style="align: center;"><a href="#" style="color: black;">#숙소</a></font>
+		<font size="5" style="align: center;"><a href="../food/foodcontent.do" style="color: black;">#맛집</a></font>&nbsp;&nbsp;
+		<font size="5"style="align: center;"><a href="../tour/tourcontent.do" style="color: black;">#관광지</a></font>&nbsp;&nbsp;
+		<font size="5" style="align: center;"><a href="../hotel/hotelContent.do" style="color: black;">#숙소</a></font>
 	
 	</div>
 	
@@ -708,7 +479,7 @@ $(document).ready(function () {
 	<div id="FilterButton">
 	<div id="Content">
 	
-		<div id="buttons">
+		<div id="buttons" style="margin-bottom:50px;">
 		<center>
 	 		<a href="#" class="btn purple">최신순</a>
 	 		<a href="#" class="btn green">인기순</a>
@@ -725,31 +496,37 @@ $(document).ready(function () {
    <div class="container" style="margin: 10px; padding: auto;">
   	<div id="sjlist">
   	  <div class="gallery">
-		<a href="#">
-		 <img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/14/enhanced/webdr01/original-9161-1439317330-3.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-		</a>
-		<div style="margin-bottom: 20px; margin-top: 0px; font-size: 20px;">
-		 <span>제주카페</span>
-		</div>
-<img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/15/enhanced/webdr08/original-13354-1439321173-3.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-		<img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/15/enhanced/webdr08/original-13354-1439321173-3.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-		<img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/15/enhanced/webdr04/original-25740-1439321209-5.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-		<img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/15/enhanced/webdr08/original-9292-1439319916-3.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-		<img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/14/enhanced/webdr05/original-6710-1439319334-17.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
+  	  <!-- 업체리뷰 출력 -->
+  	   <c:forEach var="crv" items="${list }">
+  	    <c:choose >
+  	     <c:when test="${crv.cate=='맛집' }">
+  	     	<a href="../food/fooddetailcontent.do?id=${crv.cid }">
+  	     	<img src="../FoodReivewImg/${crv.review_img }" alt="" width="100%" height="auto" class="gallery-img" />
+   	    	</a>
+   	     </c:when>
+  	     <c:when test="${crv.cate=='관광' }">
+  	        <a href="../tour/tourdetailcontent.do?id=${crv.cid }">
+  	     	<img src="../tourReviewImg/${crv.review_img }" alt="" width="100%" height="auto" class="gallery-img" />
+  	     	</a>
+  	     </c:when>
+  	     <c:when test="${crv.cate=='숙박' }">  	     
+  	        <a href="../hotel/hotelDetailContent.do?no=${crv.cid }">
+  	        <img src="../hotelReivewImg/${crv.review_img }" alt="" width="100%" height="auto" class="gallery-img" />
+  	     	</a>
+  	     </c:when>
+  	    </c:choose>
 
-		<img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/15/enhanced/webdr02/original-16901-1439320287-3.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-		<img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/15/enhanced/webdr04/original-29345-1439321306-8.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-		<img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/15/enhanced/webdr15/original-20286-1439320376-10.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-    <img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/14/enhanced/webdr02/original-6989-1439317507-15.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-    <img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/14/enhanced/webdr11/original-8867-1439317446-6.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
-    <img src="https://img.buzzfeed.com/buzzfeed-static/static/2015-08/11/14/enhanced/webdr03/original-22498-1439319085-3.jpg?downsize=715:*&output-format=auto&output-quality=auto" alt="" width="100%" height="auto" class="gallery-img" />
+		<div style="margin-bottom: 20px; margin-top: 0px; font-size: 18px;">
+		 <span>${crv.review_subject }</span>
+		</div>
+		</c:forEach>
 	</div> 
 
 
       <!-- Pagination -->
       
     </div>
-    <div id=page class="text-center">
+<!--     <div id=page class="text-center">
     <ul class="pagination justify-content-center">
         <li class="page-item">
           <a class="page-link" href="#" aria-label="Previous">
@@ -794,7 +571,7 @@ $(document).ready(function () {
           </a>
         </li>
       </ul>
-    </div>
+    </div> -->
     <!-- /.container -->
    </div>
    

@@ -6,10 +6,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.sist.category.dao.Cate_ReviewVO;
+import com.sist.category.dao.FoodDAO;
+import com.sist.category.dao.FoodReviewVO;
+import com.sist.category.dao.HotelDAO;
+import com.sist.category.dao.TourDAO;
+import com.sist.category.dao.tourreviewVO;
 import com.sist.controller.RequestMapping;
 import com.sist.member.dao.MemberDAO;
 import com.sist.member.dao.MemberVO;
 import com.sist.member.dao.NoticeVO;
+import com.sist.schedule.dao.ScheduleDAO;
+import com.sist.schedule.dao.ScheduleVO;
 import com.oreilly.servlet.*;
 import com.oreilly.servlet.multipart.*;
 import java.util.*;
@@ -78,6 +86,15 @@ public class MemberModel {
 	 HttpSession session=req.getSession();
 	 String userid=(String)session.getAttribute("userid");
 	 MemberVO vo = MemberDAO.joinDetail(userid);
+	 // 여행기리뷰 출력
+	 List<ScheduleVO> sclist = ScheduleDAO.myScReviewData(userid);
+	 req.setAttribute("sclist", sclist);
+	 req.setAttribute("sc_count", sclist.size());
+	 // 맛광숙리뷰 출력
+	 List<Cate_ReviewVO> fthlist = HotelDAO.myfthReviewData(userid);
+	 req.setAttribute("fthlist", fthlist);
+	 req.setAttribute("fth_count", fthlist.size());	 
+	 
 	 req.setAttribute("vo", vo);
 	 req.setAttribute("main_jsp", "../member/mypage.jsp");
 	 return "../main/main.jsp";
@@ -213,7 +230,7 @@ public class MemberModel {
 	  return "redirect:../main/main.do";
   }
   
-  // 찜,좋아요
+/*  // 찜,좋아요
   @RequestMapping("member/wishlike.do")
   public String member_wishlike(HttpServletRequest req,HttpServletResponse res)
   {
@@ -223,14 +240,18 @@ public class MemberModel {
 	  req.setAttribute("profile", vo.getProfile_img());
 	  req.setAttribute("main_jsp", "../member/wishlike.jsp");
 	  return "../main/main.jsp";
-  }
+  }*/
   
   
   // 공지사항
   // 공지사항 목록 출력
   @RequestMapping("member/notice_list.do")
   public String member_notice_list(HttpServletRequest req,HttpServletResponse res)
-  {
+  {	 
+	  HttpSession session=req.getSession();
+	  String userid=(String)session.getAttribute("userid");
+	  MemberVO vo = MemberDAO.joinDetail(userid); // 관리자여부 
+	  req.setAttribute("mvo", vo);
 	  String page = req.getParameter("page");
 	  if(page==null)
 		  page="1";
@@ -255,6 +276,11 @@ public class MemberModel {
   @RequestMapping("member/notice_detail.do")
   public String member_notice_detail(HttpServletRequest req,HttpServletResponse res)
   {
+	  
+	  HttpSession session=req.getSession();
+	  String userid=(String)session.getAttribute("userid");
+	  MemberVO mvo = MemberDAO.joinDetail(userid); // 관리자여부 
+	  req.setAttribute("mvo", mvo);
 	  String id = req.getParameter("id");
 	  NoticeVO vo = MemberDAO.noticeDetailData(Integer.parseInt(id));
 	  req.setAttribute("vo", vo);
@@ -352,7 +378,7 @@ public class MemberModel {
 	  return "redirect:../member/notice_list.do";
   }
   
-  
+
 }
 
 

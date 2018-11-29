@@ -203,9 +203,8 @@ body {
             style="margin-top: 0px;">홈</a></li>
          <li id="licenter_jeju"><a href="#" style="margin-top: 0px;">제주소개</a></li>
          <li id="licenter_tour"><a href="../tour/tourcontent.do" style="margin-top: 0px;">관광지</a></li>
-         <li id="licenter_rogo"><a href="shareMain.jsp" style="margin-top: 0px;">로고</a></li>
          <li id="licenter_tasty"><a href="../food/foodcontent.do?map=%C1%A6%C1%D6%BD%C3" style="margin-top: 0px;">맛집</a></li>
-         <li id="licenter_hotels"><a href="../hotel/hotelContent.do" style="margin-top: 0px;">숙소</a></li>
+         <li id="licenter_hotels"><a href="../hotel/hotelContent.do" style="margin-top: 0px;">숙박</a></li>
          <li id="licenter_schedule"><a href="../schedule/schedule_main.do" style="margin-top: 0px;">여행기</a></li>
          
          
@@ -229,8 +228,9 @@ body {
                <!-- dropdown-menu는 home_clider.jsp에서 스타일을 새로 지정해줬다 안해주면 안됨 아믄 안됨 -->
                <!-- 충돌 안나게하려고 다른건 다 home_붙여서 새로 만들어줬는데 얘만 안됨...용서하기싫은데  건들수가없네 -->
                <div class="dropdown-menu" style="margin-top: 7px;">
-                  <a class="dropdown-item" href="../member/mypage.do">마이페이지</a><br> 
-                  <a class="dropdown-item" href="../member/wishlike.do">찜/좋아요</a><br>
+                <c:if test="${sessionScope.userid!=null }">
+                 <a class="dropdown-item" href="../member/mypage.do" id="myBtn">마이페이지</a><br> 
+                </c:if>                  
                   <a class="dropdown-item" href="../member/notice_list.do">공지사항</a><br>
                </div>
             </div>

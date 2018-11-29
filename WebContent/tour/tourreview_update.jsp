@@ -1,71 +1,88 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>Share JEJU</title>
 <style type="text/css">
 #review_write{
   width:50%;
   margin:0 auto;
   margin-top:50px;
   text-align:center;
+  border: 1px solid black;
   border-color:black;
   color:gray;
 }
 #review_write th{
   padding:10px;
-  background-color:orange;
+  background-color:#54d9cd;
   color:white;
 }
 #review_write td{
-  padding:10px;
+  padding:10px;  
 }
-h3 
-{ 
+.btn_color:hover
+{
+color: #54d9cd; 
+border-color:#54d9cd;
+background-color:#fff;
+}
+
+.btn_color
+{
+color: #fff; 
+background-color:#54d9cd;
+border-color:#54d9cd;
+}
+h1
+{
 text-align:center;
 }
 </style>
 </head>
-<body style="background-color:white">
-  <div>
-    <h3>»ƒ±‚ºˆ¡§</h3>
-    <form method="post" action="../tour/tourreview_update_ok.do">
-      <input type="hidden" name="cid" value="${vo.cid }">
-      <input type="hidden" name="cid" value="${vo.review_id }">
-    <table class="table table-hover" id="review_write">
-      <tr>
-       <th width=15% class="text-center">¡¶∏Ò</th>
-	    <td width=85% class="text-left" colspan="5">
-	      <input type=text name=review_subject size=50 value="${vo.review_subject}">
-	      
-	    </td>
-      </tr>
-      
-      <tr>
-	    <th style="vertical-align:middle" class="text-center">»ƒ±‚</th>
-	    <td width=85% class="text-left" colspan="5">
-	      <textarea rows="10" cols="50" name=review_content>${vo.review_content }</textarea>
-	    </td>
-	  </tr>
-	  
-      <tr>
-       <th width=15% class="text-center">ªÁ¡¯ æ˜∑ŒµÂ</th>
-       <td width=85% class="text-left">
-        <input type=file name=upload size=10 id="upload">
-        
-       </td>
-      </tr>
-      
-      <tr>
-       <td class="text-center" colspan="2">
-        <input type=submit value="ºˆ¡§" disabled id="writeBtn" class="btn btn-sm btn-primary">
-        <input type=button value="√Îº“" class="btn btn-sm btn-primary" onclick="javascript:history.back()">
-       </td>
-      </tr>
-      
-    </table>
-  </div>
-</body>
+<body class="homepage" style="background-color: white ">
+   <!-- Header -->
+      <div>
+      <br>
+      <br>
+      <h1 style="font-weight:bold;color:#54d9cd;">Î¶¨Î∑∞ ÏàòÏ†ï</h1>
+      <form method="post" action="../tour/tourreview_update_ok.do">
+       <input type="hidden" name="cid" value="${vo.cid}">
+       <input type="hidden" name="review_id" value="${vo.review_id }">
+         <table class="table-bordered table-hover" id="review_write">
+         <tr>
+          <th width=20% class="text-center">Ï†úÎ™©</th>
+          <td class="text-center"><input type=text name=review_subject style="width:100%"
+              value="${vo.review_subject }">
+          </td>
+          <th class="text-center">ÌååÏùºÏ≤®Î∂Ä</th>
+          <td class="text-center"><input type=file name=upload size=30 style="width:100%"
+              value="${vo.review_userid }">
+          </td>
+         </tr>
+         
+         
+         
+         <tr>
+          <th style="vertical-align:middle" class="text-center">ÌõÑÍ∏∞</th>
+          <td class="text-center" colspan="5">
+          <textarea style="width:100%" rows="20" name="review_content">
+           ${vo.review_content }
+          </textarea>
+          </td>
+         </tr>
+		 <tr>
+		  <td class="text-center" colspan="4">
+		  <input type="submit" value="Î¶¨Î∑∞ ÏàòÏ†ï"
+		         id="writeBtn" class="btn btn-sm btn_color">
+		  <input type=button value="Ï∑®ÏÜå" class="btn btn-sm btn_color"
+		         onclick="javascript:history.back()">
+		 </tr>
+       </table>
+       </form>
+     </div> 
+
+
+   </body>
 </html>

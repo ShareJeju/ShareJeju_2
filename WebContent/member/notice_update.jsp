@@ -21,20 +21,20 @@ input[type=file] {
 </style>
 </head>
 <body>
-	<div class="container" style="margin-top:100px">
+	<div class="container" style="margin-top:100px; margin-bottom: 100px">
 	  	<h3 class="text-center">공지글 수정</h3>
 		<div class="row">
 		<form method="post" action="../member/notice_update_ok.do">
 			<table class="table table-hover">
 				<tr>
-					<th width=20% class="text-center success">제목</th>
+					<th width=20% class="text-center success" style="background-color: rgb(242, 238, 238);">제목</th>
 					<td colspan="5"><input type=text name=title size=70
 					 value="${vo.title }">
 					 <input type="hidden" name="id" value="${vo.id }">
 					 </td>
 				</tr>
 				<tr>
-					<th width=20% class="text-center success">공지/뉴스 구분</th>
+					<th width=20% class="text-center success" style="background-color: rgb(242, 238, 238);">공지/뉴스 구분</th>
 					<td colspan="3">
 			          <input type="radio" class="form-check-input" name=news value="0" ${vo.news==0?"checked":"" }
 			          style="margin-left:10px">
@@ -45,11 +45,11 @@ input[type=file] {
 					</td>
 				</tr>
 				<tr>
-					<th width=20% class="text-center success">내용</th>
+					<th width=20% class="text-center success" style="background-color: rgb(242, 238, 238);">내용</th>
 					<td colspan="3"><textarea rows="20" cols="100" name=contents>${vo.contents }</textarea></td>
 				</tr>
 				<tr>
-					<th width=20% class="text-center success">첨부파일</th>
+					<th width=20% class="text-center success" style="background-color: rgb(242, 238, 238);">첨부파일</th>
 					<td colspan="3">
 				        <input type="file" name=files value="${vo.files }">
 					</td>

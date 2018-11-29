@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -287,7 +288,7 @@ $(function(){
   	  <div class="row tags" style="display:block;">
   	    <span style="font-size:20px; width:10%;">Tags</span>
   	    <c:forEach var="tag" items="${hashtag }">
-  	      <input type=button class="btn btn-sm tagging" value="${tag }">
+  	      <input type=button class="btn btn-md tagging" value="${tag }">
   	    </c:forEach>
   	  </div>	
 
@@ -305,8 +306,17 @@ $(function(){
 	  	       </ul>
    	   </div>
    	    <div class="row">
-		<a href="../schedule/schedule_list.do"><input type=button class="btn btn-md btn-danger" value="목록으로"
-		 style="position:absolute; right:445px;"></a>
+ 		<c:if test="${vo.userid==sessionScope.userid}">
+	   	    <a href="../schedule/schedule_delete.do?id=${vo.id}"><input type=button class="btn btn-md btn-danger" value="삭제"
+			 style="position:absolute; right:405px;"></a>
+			 
+			 <a href="../schedule/schedule_update.do?id=${vo.id}"><input type=button class="btn btn-md btn-success" value="수정"
+			 style="position:absolute; right:345px;">
+			 <input type=hidden name="${vo.id}" value="${vo.id }">
+			 </a>
+		</c:if>
+			<a href="../schedule/schedule_list.do"><input type=button class="btn btn-md btn-info" value="목록"
+		 style="position:absolute; right:285px;"><input type=hidden name="id" value="${vo.id }"></a>
    	     </div>
  		<div class="row like"> <!-- todo: 좋아요 구현 -->
 			<input type=button class="img-button">
@@ -314,7 +324,7 @@ $(function(){
 		
 	<!-- 댓글 -->	
  	  	<div class="row">
-   	      <a class="link_profile"><img src="../images/icon/girl.png" width="64" height="64"
+   	      <a class="link_profile"><img src="../member/${profile }" width="64" height="64"
  	       style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" ></a>		
 		</div>
 
@@ -330,11 +340,13 @@ $(function(){
 				<c:forEach var="rvo" items="${list }">
 		 	  	    <li class="item">
 		 	  	     <div class="comments">
-		 	  	      <a class="link_profile"><img src="../images/icon/girl.png" width="42" height="42"
+		 	  	      <a class="link_profile"><img src="../member/${rvo.profile }" width="42" height="42"
 		 	  	       style="border-radius: 50px; border: 0 none;"></a>
 		 	  	      <div class="cont_info">
 		 	  	       <div class="info_append">  	  
-		 	  	        <strong>${rvo.name} ${rvo.created_at }</strong>	       
+		 	  	        <strong>${rvo.name}<br>
+		 	             <fmt:formatDate value="${rvo.updated_at }" pattern="yyyy. MM. dd HH:mm:ss"/>
+		 	  	        </strong>	       
 		 	  	       </div>
 		 	  	       <p class="desc_comment">
 		 	  	       	${rvo.content }
@@ -354,8 +366,9 @@ $(function(){
 			          <form method="post" action="../schedule/reply_update.do">
 				        <input type="hidden" name="sid" value="${vo.id }"> <!-- bno : 게시물번호 -->
 				        <input type="hidden" name="id" value="${rvo.id }">
-				       <textarea rows="2" cols="80" name="content" style="float:left">${rvo.content }</textarea>
-				       <input type=submit value="댓글수정" style="height:50px;float:left" class="btn btn-sm btn-success">
+				       <textarea rows="2" cols="80" name="content" style="margin-left:190px; height:100px; margin-top:20px;">${rvo.content }</textarea>
+				       <input type=submit value="수정" style="height: 33px; float: right; margin-right: 206px; margin-top: 50px;" 
+				        class="btn btn-md btn-success">
 				      </form>
 			          </div>
 			         </li>

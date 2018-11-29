@@ -1,6 +1,7 @@
 package com.sist.model;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
 import com.oreilly.servlet.*;
 import com.oreilly.servlet.multipart.*;
@@ -43,8 +44,8 @@ public class TourModel {
       int totalpage=TourDAO.tourTotalpage(); 
       req.setAttribute("curpage", curpage);
       req.setAttribute("totalpage", totalpage);
-      /*req.setAttribute("start", start);
-      req.setAttribute("end", end);*/
+      req.setAttribute("start", start);
+      req.setAttribute("end", end);
        req.setAttribute("main_jsp", "../tour/tourcontent.jsp");
        return "../main/main.jsp";
    }
@@ -57,12 +58,11 @@ public class TourModel {
       String id=req.getParameter("id");
       System.out.println("id="+id);
       
-      
       // DB연동
       CategoryVO vo=TourDAO.tourDetailData(Integer.parseInt(id));
       req.setAttribute("vo1", vo);
       
-      String cid=id;
+      String cid=id;   
       List<tourreviewVO> list = TourDAO.tourreviewListData(Integer.parseInt(cid));
       req.setAttribute("list", list);
       req.setAttribute("count", list.size());
@@ -86,28 +86,54 @@ public class TourModel {
        
    }
     
+    
     @RequestMapping("tour/tourreview_insert_ok.do")
-    public String tour_tourreview_insert_ok(HttpServletRequest req,HttpServletResponse res)
+    public String tour_tourreview_insert_ok(HttpServletRequest req,HttpServletResponse res)throws ServletException
     {
-       try
-      {
-         req.setCharacterEncoding("EUC-KR");
-      }catch(Exception ex){}
-       
-   
-       String cid=req.getParameter("cid");
-       String review_userid=req.getParameter("review_userid");
-       String review_content=req.getParameter("review_content");
-       String review_subject=req.getParameter("review_subject");     
-       
-       tourreviewVO vo = new tourreviewVO();
-       vo.setCid(Integer.parseInt(cid));
-       vo.setReview_userid(review_userid);
-       vo.setReview_content(review_content);
-       vo.setReview_subject(review_subject);
-       // 데이터베이스 연결
-       TourDAO.tourreviewInsert(vo);
-       return "redirect:../tour/tourdetailcontent.do?id="+cid;
+    	HttpSession session=req.getSession();
+        String userid=(String)session.getAttribute("userid"); 
+        
+        MultipartRequest mr=null;
+        
+        try
+        {
+        	req.setCharacterEncoding("EUC-KR");
+        	
+        	// 업로드한 프로필 사진 데이터 받기
+        	ServletContext context=req.getServletContext();
+            String path=context.getRealPath("/")+"tourReviewImg";
+            int size=1000*1024*1024; //파일 크기
+            String enctype="EUC-KR"; //파일이 한글명일때
+ 
+            mr=new MultipartRequest(
+            		req,
+            		path,
+            		size,
+            		enctype,
+            		new DefaultFileRenamePolicy());
+            
+        }catch(Exception ex)
+        {
+        	ex.printStackTrace();
+        }
+        
+        String review_img=mr.getOriginalFileName("upload");
+        
+        String cid=mr.getParameter("cid");
+        String review_content=mr.getParameter("review_content");
+        String review_subject=mr.getParameter("review_subject");    
+        String profile_img=mr.getParameter("profile_img");
+        
+        tourreviewVO vo = new tourreviewVO();
+        vo.setCid(Integer.parseInt(cid));
+        vo.setReview_userid(userid);
+        vo.setReview_content(review_content);
+        vo.setReview_subject(review_subject);
+        vo.setReview_img(review_img);
+        
+        // 데이터베이스 연결
+        TourDAO.tourreviewInsert(vo);
+        return "redirect:../tour/tourdetailcontent.do?id="+cid;
     }
     
      // 리뷰 수정
@@ -115,6 +141,7 @@ public class TourModel {
     public String tour_tourreview_update(HttpServletRequest req,HttpServletResponse res)
     {
        String review_id=req.getParameter("review_id");
+
        
        tourreviewVO vo = TourDAO.tourreviewUpdateData(Integer.parseInt(review_id));
        req.setAttribute("vo", vo);
@@ -127,6 +154,10 @@ public class TourModel {
     @RequestMapping("tour/tourreview_update_ok.do")
     public String tour_tourreview_update_ok(HttpServletRequest req,HttpServletResponse res)
     {
+        
+       HttpSession session=req.getSession();
+       String userid=(String)session.getAttribute("userid");
+    	
        try
        {
           req.setCharacterEncoding("EUC-KR");
@@ -141,9 +172,11 @@ public class TourModel {
        // DB연결
        tourreviewVO vo=new tourreviewVO();
        vo.setReview_id(Integer.parseInt(review_id));
+       vo.setReview_userid(userid);
        vo.setCid(Integer.parseInt(cid));
        vo.setReview_subject(review_subject);
        vo.setReview_content(review_content);
+       
        
        TourDAO.tourreviewUpdate(vo);
        return "redirect:../tour/tourdetailcontent.do?id="+cid;
@@ -156,12 +189,14 @@ public class TourModel {
     public String tour_tourreview_delete(HttpServletRequest req,HttpServletResponse res)
     {
        String review_id=req.getParameter("review_id");
-       String cid=req.getParameter("id");
+       System.out.println("review_id="+review_id);
+       String cid=req.getParameter("cid");
        
        TourDAO.tourreviewDelete(Integer.parseInt(review_id));
        
        return "redirect:../tour/tourdetailcontent.do?id="+cid;
     }
+    
     
     
     

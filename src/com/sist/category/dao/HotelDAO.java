@@ -188,6 +188,83 @@ public class HotelDAO {
 			   session.close();
 		   }
 	   }
+	public static List<JjimVO> jjimData(String userid){
+		List<JjimVO> list=new ArrayList<JjimVO>();
+		SqlSession session=null;
+		try{
+			session=ssf.openSession();
+			list=session.selectList("jjimData", userid);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return list;
 	}
+	public static void jjimInsert(JjimVO vo){
+		try{
+			SqlSession session=ssf.openSession(true);
+			session.insert("jjimInsert", vo);
+			session.close();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	public static List<CategoryVO> myPageJjimData(Map map){
+		List<CategoryVO> list=new ArrayList<CategoryVO>();
+		SqlSession session=null;
+		try{
+			session=ssf.openSession();
+			list=session.selectList("myPageJjimData",map);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return list;
+	}
+	
+   // 여행기메인에 출력
+   public static List<Cate_ReviewVO> scheduleReviewMain()
+   {
+	   List<Cate_ReviewVO> list=new ArrayList<Cate_ReviewVO>();
+	   SqlSession session=null;
+	   try{
+		   session=ssf.openSession();
+		   list=session.selectList("scheduleReviewMain");
+		   
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   //disConnection()
+		   session.close();
+	   }
+	   return list;
+   }
+   
+   // 마이페이지 리뷰 출력
+   public static List<Cate_ReviewVO> myfthReviewData(String userid)
+   {
+	   List<Cate_ReviewVO> list=
+			   new ArrayList<Cate_ReviewVO>();
+	   SqlSession session=null;
+	   try
+	   {
+		   session=ssf.openSession();
+		   list=session.selectList("myfthReviewData",userid);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close();
+	   }
+	   return list;
+   }
+}
 	
 

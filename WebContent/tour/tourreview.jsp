@@ -109,6 +109,14 @@ border-color:#54d9cd;
         vertical-align: middle;
 }
 </style>
+<script type="text/javascript">
+$(function(){
+	$('.delbtn').click(function(){
+		var id=$(this).attr('value');
+		$('#reid').val(id);
+	});
+})
+</script>
 </head>
 <body>
 
@@ -116,11 +124,6 @@ border-color:#54d9cd;
 <ul class="text-center">
 <li><img src="../images/icon/like.png" width=30% ><br><br>좋아요</li>
 <li><img src="../images/icon/heart.png" width=30% ><br><br>찜</li>
-<li><img src="../images/icon/review.png" width=30% ><br><br>리뷰 쓰기</li>
-<li><img src="../images/icon/write.png" width=30% ><br><br>일정 등록</li>
-<li><img src="../images/icon/map.png" width=30% ><br><br>방문했어요</li>
-<li><img src="../images/icon/view.png" width=30% ><br><br>조회</li>
-<li><img src="../images/icon/share.png" width=30% ><br><br>SNS 공유</li>
 </ul>
 
 </div>
@@ -132,9 +135,9 @@ border-color:#54d9cd;
 		 <h2 style="font-weight:bold;color:#54d9cd;">여행가의 리뷰(숫자)</h2>
 	  </td>
 	  <td width=5%>
-		
+		<c:if test="${sessionScope.userid!=null }">
 		  <a href="../tour/tourreview_insert.do?id=${id}" class="btn btn-md btn_color">리뷰 쓰기</a>
-		<%-- </c:if> --%>
+		</c:if>
 	  </td>
 	</tr>
     <tr>
@@ -146,11 +149,11 @@ border-color:#54d9cd;
 <table class="reviewtable">
 <c:forEach var="vo" items="${ list }">
 	<tr>
-	  <td width="15%" style="float:left;"><img src="../images/profile1.jpg" width=100px style="border-radius:50%;" ></td>
+	  <td width="15%" style="float:left;"><img src="../member/${vo.profile_img }" width=100px style="border-radius:50%;" > </td>
 		<td width=75% rowspan="3" style="text-align:left;">
 		 <h3 style="font-weight:bold;color:#54d9cd;"> <!-- 제목 영역 --> ${vo.review_subject }</h3>
 		 <!-- 리뷰영역 --> ${vo.review_content }
-		 <br><!-- 사진 영역 -->
+		 <br><!-- 사진 영역 --> <img src="../tourReviewImg/${vo.review_img }">
 		</td>
 	  <td id="likes" width=25% rowspan="4"><img src="../images/icon/likeicon.png" width=20px> 1 </td>
 	</tr>
@@ -158,15 +161,15 @@ border-color:#54d9cd;
       <td><!-- 아이디 영역 --> ${vo.review_userid }</td>
     </tr>
     <tr>
-      <td ><!-- 날짜영역 --> ${vo.review_regdate }</td>
+      <td ><!-- 날짜영역 --><fmt:formatDate value="${vo.review_regdate }" pattern="yyyy-MM-dd"/></td>
     </tr>
     <tr>
       <td colspan="5" class="text-right">
-      <%-- <c:if test="${sessionScope.review_id==vo.userid }"> <!-- 로그인이 됐을 때 --> --%>
-       <button type="button" class="btn btn-xs btn_color"
+       <c:if test="${sessionScope.userid==vo.review_userid }"> <!-- 로그인이 됐을 때 -->
+       <button type="button" class="btn btn-xs btn_color delbtn" value="${vo.review_id}" 
        data-toggle="modal" data-target="#deleteconfirm">삭제</button>
-       <a href="../tour/tourreview_update.do?id=${id}&review_id=${vo.review_id}" class="btn btn-xs btn_color">수정</a>
-      <%-- </c:if> --%>
+         <a href="../tour/tourreview_update.do?id=${vo.cid}&review_id=${vo.review_id}" class="btn btn-xs btn_color">수정</a>
+      </c:if>
       </td>
     </tr>
     <tr>
@@ -187,7 +190,10 @@ border-color:#54d9cd;
     <p>정말 삭제하시겠습니까 ?</p>
    </div>
    <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">예</button>
+   <form method="post" action="../tour/tourreview_delete.do">
+    <input type="hidden" name="review_id" value="${vo.review_id }" id="reid"><!--  -->
+    <input type="hidden" name="cid" value="${id }">
+    <input type="submit" class="btn btn-default" value=예>
     <button type="button" class="btn btn-default" data-dismiss="modal">아니요</button>
    </div>
   </div>

@@ -32,28 +32,36 @@
   </select>
 <select id="FoodReviewListData" resultType="FoodReviewVO" parameterType="int"> <!--데이터 받는 게 2개이상이라 Map!-->
 <!-- 리뷰 목록 출력 -->
-SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate
+
+SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate,nvl(to_char(review_img),' ')review_img,
+(SELECT sj_member.profile_img FROM sj_member WHERE sj_cate_review.review_userid=sj_member.userid) as profile_img
 FROM sj_cate_review
 WHERE cid=#{cid}
+ORDER BY review_id DESC
 </select>
+
+
+
+
 <!-- 리뷰 쓰기 -->
   <insert id="FoodReviewInsert" parameterType="FoodReviewVO">
    <!-- 리뷰 번호 (자동 증가) -->
    <selectKey keyProperty="review_id" resultType="int" order="BEFORE">
      SELECT NVL(MAX(review_id)+1,1) as review_id FROM sj_cate_review
    </selectKey>
-   INSERT INTO sj_cate_review(review_id,cid,review_userid,review_content,review_subject,review_regdate) VALUES(
+   INSERT INTO sj_cate_review(review_id,cid,review_userid,review_content,review_subject,review_regdate,review_img) VALUES(
      #{review_id},
      #{cid},
      #{review_userid},
      #{review_content},
      #{review_subject},
-     SYSDATE
+     SYSDATE,
+     #{review_img}
    )
   </insert>
-  <select id="FoodReviewOneData" resultType="FoodReviewVO" parameterType="int"> <!--데이터 받는 게 2개이상이라 Map!-->
-<!-- 리뷰 목록 출력 -->
-SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate
+  <!-- 리뷰 1개 데이터 -->
+  <select id="FoodReviewOneData" resultType="FoodReviewVO" parameterType="int"> 
+SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate,review_img
 FROM sj_cate_review
 WHERE review_id=#{review_id}
 ORDER BY review_id DESC

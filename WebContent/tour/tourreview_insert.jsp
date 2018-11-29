@@ -47,14 +47,15 @@ text-align:center;
       <br>
       <br>
       <h1 style="font-weight:bold;color:#54d9cd;">리뷰 쓰기</h1>
-      <form method="post" action="../tour/tourreview_insert_ok.do">
+      <form method="post" action="../tour/tourreview_insert_ok.do"
+      enctype="multipart/form-data">
        <input type="hidden" name="cid" value="${id}">
          <table class="table-bordered table-hover" id="review_write">
          <tr>
           <th width=20% class="text-center">제목</th>
           <td class="text-center"><input type=text name=review_subject style="width:100%"></td>
-          <th class="text-center">아이디</th>
-          <td class="text-center"><input type=text name=review_userid style="width:100%"></td>
+          <th class="text-center">파일첨부</th>
+          <td class="text-center"><input type=file name=upload size=30 style="width:100%"></td>
          </tr>
          
          

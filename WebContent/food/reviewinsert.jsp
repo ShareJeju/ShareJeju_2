@@ -10,8 +10,6 @@
   margin:0 auto;
   margin-top:50px;
   text-align:center;
-  border: 1px solid black;
-  border-color:black;
   color:gray;
 }
 #review_write th{
@@ -47,24 +45,24 @@ text-align:center;
       <br>
       <br>
       <h1 style="font-weight:bold;color:#54d9cd;">리뷰 쓰기</h1>
-      <form method="post" action="../food/reviewinsert_ok.do">
+      <form method="post" action="../food/reviewinsert_ok.do"  enctype="multipart/form-data">
        <input type="hidden" name="cid" value="${id}">
-  	    <table class="table-bordered table-hover" id="review_write">
+  	    <table class="table table-hover" id="review_write">
 	      <tr>
 	       <th width=20% class="text-center">제목</th>
 	       <td class="text-center"><input type=text name=review_subject style="width:100%"></td>
-	       <th class="text-center">아이디</th>
-	       <td class="text-center"><input type=text name=review_userid style="width:100%"></td>
 	      </tr>
-	      
-	      
-	      
 	      <tr>
 	       <th style="vertical-align:middle" class="text-center">후기</th>
-	       <td class="text-center" colspan="5">
+	       <td class="text-center">
 	       <textarea style="width:100%" rows="20" name="review_content"></textarea>
 	       </td>
 	      </tr>
+	       <tr>
+	       <th width=20% class="text-center">사진</th>
+	       <td class="text-center"><input type=file name=review_img style="width:100%"></td>
+	      </tr>
+	      
 <tr>
 <td class="text-center" colspan="4">
 <input type="submit" value="리뷰 쓰기"

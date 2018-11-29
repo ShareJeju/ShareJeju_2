@@ -39,7 +39,14 @@ public class CategoryVO {
 	private String website;
 	private String category;
 	private String map;
+	private boolean bjjim;
 	
+	public boolean isBjjim() {
+		return bjjim;
+	}
+	public void setBjjim(boolean bjjim) {
+		this.bjjim = bjjim;
+	}
 	public int getId() {
 		return id;
 	}

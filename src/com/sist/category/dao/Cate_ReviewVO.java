@@ -27,6 +27,15 @@ public class Cate_ReviewVO {
   private String dbday;
   private String review_img;
   private String review_img_size;
+  private String profile;
+  private String cate; // 카테고리 변수 필요하여 삽입
+  
+public String getCate() {
+	return cate;
+}
+public void setCate(String cate) {
+	this.cate = cate;
+}
 public int getReview_id() {
 	return review_id;
 }
@@ -81,7 +90,12 @@ public String getReview_img_size() {
 public void setReview_img_size(String review_img_size) {
 	this.review_img_size = review_img_size;
 }
- 
+public String getProfile() {
+	return profile;
+}
+public void setProfile(String profile) {
+	this.profile = profile;
+}
 
   
 }

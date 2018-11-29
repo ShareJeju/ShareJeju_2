@@ -2,11 +2,14 @@ package com.sist.model;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import java.util.*;
 
 import com.sist.category.dao.Cate_ReviewVO;
 import com.sist.category.dao.CategoryVO;
 import com.sist.category.dao.HotelDAO;
+import com.sist.category.dao.JjimVO;
 import com.sist.controller.RequestMapping;
 
 
@@ -14,7 +17,7 @@ public class HotelModel {
 	@RequestMapping("hotel/hotelContent.do")
 	public String hotel_hotelContent(HttpServletRequest req, HttpServletResponse res){
 		
-		
+		String jejumap=req.getParameter("map");
 		String page=req.getParameter("page");
 		if(page==null){
 			page="1";
@@ -29,6 +32,7 @@ public class HotelModel {
 		Map map=new HashMap();
 		map.put("start", start);
 		map.put("end",end);
+		//map.put("map",jejumap);
 		List<CategoryVO> list=HotelDAO.hotelAllData(map);
 		List<CategoryVO> listHotel=HotelDAO.hotelData(map);
 		List<CategoryVO> listPension=HotelDAO.pensionData(map);
@@ -82,13 +86,40 @@ public class HotelModel {
 			String str=vo.getText();
 			vo.setText(str.substring(0,250)+"...");
 		}
+		
+		HttpSession session=req.getSession();
+		String userid=(String)session.getAttribute("userid");
+		
+		if(userid!=null){
+		List<JjimVO> jList=HotelDAO.jjimData(userid);
+		
+		
+			for(JjimVO jvo:jList){
+				if(Integer.parseInt(id)==jvo.getRno()){
+					vo.setBjjim(true);
+				}
+			}
+		}
 		req.setAttribute("list", list);
 		//int totalpage=HotelDAO.hotelReviewToTalpage();
 		req.setAttribute("vo", vo);
 		req.setAttribute("curpage", curpage);
+		
 		//req.setAttribute("totalpage", totalpage);
 		req.setAttribute("main_jsp", "../hotel/hotelDetailContent.jsp");
 		return "../main/main.jsp";
+	}
+	@RequestMapping("hotel/jjim.do")
+	public String hotel_jjim(HttpServletRequest req,HttpServletResponse res){
+		String id=req.getParameter("id");
+		HttpSession session=req.getSession();
+		String userid=(String)session.getAttribute("userid");
+		JjimVO vo=new JjimVO();
+		vo.setUserid(userid);
+		vo.setRno(Integer.parseInt(id));
+		HotelDAO.jjimInsert(vo);
+		return "../hotel/hotelDetailContent.do";
+		
 	}
 	
 }

@@ -17,7 +17,7 @@ $(function(){
    $('.bxslider').bxSlider({
       mode:'fade',
       auto:true,
-      pause:8000,
+      pause:3000,
       captions:true
    });
 });
@@ -77,8 +77,8 @@ $(function(){
 } */
 
 .content{
-     position: fixed;
-     top:55%;
+     position: absolute;
+     top:31%;
      left:50%;
      transform: translate(-50%, -50%);                                                                   
      font-size:5rem;
@@ -88,10 +88,10 @@ $(function(){
 }
 
 /* //////////////////////////////////////// */
-	 .dropdown-menu {
+    .dropdown-menu {
    position: absolute;
    top: 100%;
-   left: -50%;
+   left: -10%;
    z-index: 1000;
    display: none;
    float: left;
@@ -117,11 +117,11 @@ $(function(){
 }
  
 .open>a{
-	margin-top: 0px;
+   margin-top: 0px;
 }
 
 .btn{
-	margin-top: 0px;
+   margin-top: 0px;
 }
 .bx-wrapper{
  margin-top:-54px;
@@ -150,105 +150,43 @@ $(function(){
 </style>
 </head>
 <body>
+   <div class="content">
+      <div class="container">
+         <div class="row">
+
+            <div class="col-sm-6 col-sm-offset-3">
+               <form>
+                  <div id="imaginary_container">
+                     <div class="input-group stylish-input-group">
+                        <input type="text" class="form-control" placeholder="Search"
+                           style="background-color: rgba(255, 255, 255, 0.0); color: black;">
+                        <span class="input-group-addon">
+                           <button type="submit">
+                              <span class="glyphicon glyphicon-search"></span>
+                           </button>
+                        </span>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+   </div>
    <ul class="bxslider">
       <li>
          <div class="img1" >
-            <div class="content">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-sm-6 col-sm-offset-3">
-                        <form>
-                           <div id="imaginary_container">
-                              <div class="input-group stylish-input-group">
-                                 <input type="text" class="form-control" placeholder="Search"
-                                    style="background-color: rgba(255, 255, 255, 0.0); color:black;">
-                                 <span class="input-group-addon">
-                                    <button type="submit">
-                                       <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                 </span>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
          </div>
       </li>
      <li>
          <div class="img2">
-            <div class="content">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-sm-6 col-sm-offset-3">
-                        <form>
-                           <div id="imaginary_container">
-                              <div class="input-group stylish-input-group">
-                                 <input type="text" class="form-control" placeholder="Search"
-                                    style="background-color: rgba(255, 255, 255, 0.0); color:black;">
-                                 <span class="input-group-addon">
-                                    <button type="button">
-                                       <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                 </span>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
          </div>
       </li>
       <li>
          <div class="img3">
-            <div class="content">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-sm-6 col-sm-offset-3">
-                        <form>
-                           <div id="imaginary_container">
-                              <div class="input-group stylish-input-group">
-                                 <input type="text" class="form-control" placeholder="Search"
-                                    style="background-color: rgba(255, 255, 255, 0.0); color:black;">
-                                 <span class="input-group-addon">
-                                    <button type="submit">
-                                       <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                 </span>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
          </div>
       </li>
       <li>
          <div class="img4">
-            <div class="content">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-sm-6 col-sm-offset-3">
-                        <form>
-                           <div id="imaginary_container">
-                              <div class="input-group stylish-input-group">
-                                 <input type="text" class="form-control" placeholder="Search"
-                                    style="background-color: rgba(255, 255, 255, 0.0); color:black;">
-                                 <span class="input-group-addon">
-                                    <button type="submit">
-                                       <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                 </span>
-                              </div>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div>
-            </div>
          </div>
       </li>
    </ul>

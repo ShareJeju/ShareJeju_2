@@ -408,7 +408,7 @@ margin-top:200px;
 	 
 	 
 	</div>
-	<div class="category">
+<!-- 	<div class="category">
 	<ul>
 	 <li><img src="../images/icon/menu1.png" width=80px> <br>전체</li>
 	 <li><img src="../images/icon/menu2.png" width=80px> <br>한식</li>
@@ -416,7 +416,7 @@ margin-top:200px;
 	 <li><img src="../images/icon/menu4.png" width=80px> <br>카페</li>
 	 <li><img src="../images/icon/menu5.png" width=80px> <br>기타</li>
 	</ul>	
-	</div>
+	</div> -->
 
   
 <div class="container">
@@ -432,7 +432,7 @@ margin-top:200px;
               <h4 class="card-title">
                 <a href="fooddetailcontent.do?id=${vo.id }">${vo.name }</a>
               </h4>
-           <div><input type="hidden" name="map" value="${vo.map}">${vo.map}</div>
+          <%--  <div><input type="hidden" name="map" value="${vo.map}">${vo.map}</div> --%>
             </div>
           </div>
         </div>
@@ -444,10 +444,10 @@ margin-top:200px;
         
       </div>
       
-      <div id="sjlist_jeju2">
+<%--       <div id="sjlist_jeju2">
   <table class="table">
      <c:forEach var="vo" items="${list }">
-<%-- <c:if test="vo.map== '제주시'"> --%>
+<c:if test="vo.map== '제주시'">
 		
         <div class="col-lg-4 col-sm-6">
           <div class="card h-100">
@@ -460,27 +460,47 @@ margin-top:200px;
             </div>
           </div>
         </div>
-<%--        </c:if> --%>
+       </c:if>
        </c:forEach> 
         
        </table> 
         
         
-      </div>
+      </div> --%>
       <!-- /.row -->
 
       <!-- Pagination -->
       
     </div>
-  <div id=page class="text-center">
+    <table style="width:100%;text-align:center;border:0;">
+   <tr>
+   <td>
+    <a  href="foodcontent.do?map=%C1%A6%C1%D6%BD%C3&page=${curpage>1?curpage-1:curpage }" >
+    <img src="../images/icon/pre.png" width="30px">
+    </a>
+  
+   </td>
+  
+    <td>
+     <a  href="foodcontent.do?map=%C1%A6%C1%D6%BD%C3&page=${curpage<totalpage?curpage+1:curpage }" >
+    <img src="../images/icon/next.png" width="30px">
+    </a>
+    </td>
+   </tr>
+    </table>
+    
+    
+  <%-- <div id=page class="text-center">
     <ul class="pagination justify-content-center">
         <li class="page-item">
-          <a class="page-link" href="foodcontent.do?page=${curpage>1?curpage-1:curpage }" aria-label="Previous">
+          <a  href="foodcontent.do?map=${vo.map }&page=${curpage>1?curpage-1:curpage }">
             <span aria-hidden="true">&laquo;</span>
             <span class="sr-only">이전</span>
           </a>
         </li>
-        <li class="page-item">
+      
+        
+      <li class="page-item">
           <a class="page-link" href="#">1</a>
         </li>
         <li class="page-item">
@@ -509,12 +529,18 @@ margin-top:200px;
         </li>
         <li class="page-item">
           <a class="page-link" href="#">10</a>
-        </li>
+        </li> 
         <li class="page-item">
-          <a class="page-link" href="foodcontent.do?page=${curpage<totalpage?curpage+1:curpage }" aria-label="Next">
+        
+
+
+          <a class="page-link" href="foodcontent.do?map=%C1%A6%C1%D6%BD%C3&page=${curpage<totalpage?curpage+1:curpage }" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
             <span class="sr-only">다음</span>
           </a>
+  --%>
+      
+   
         </li>
       </ul>
     </div> 

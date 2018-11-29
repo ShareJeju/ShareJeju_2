@@ -332,22 +332,7 @@ $(function(){
 	  <div class="tab-content" style="margin-top: 20px; margin-left: 20px">	  
   			<!-- START review TAB -->
 		    <div id="wish" class="tab-pane fade in active">
-			 	<div class="row">
-					<span class="pull-right">
-					      <form>
-						    <div class="form-group">
-						      <label for="exampleSelect1">보기</label>
-						      <select class="form-control" id="exampleSelect1">
-						        <option>1</option>
-						        <option>2</option>
-						        <option>3</option>
-						        <option>4</option>
-						        <option>5</option>
-						      </select>
-					    	</div>
-					      </form>
-			 		    </span>
-				</div>
+
 				<div class="row">
 			         <div class="col-lg-4">
 			              <div class="card h-100">
@@ -408,22 +393,6 @@ $(function(){
 	      
 	      <!-- START reserve TAB -->
 	      <div id="like" class="tab-pane fade">
-			<div class="row">
-			<span class="pull-right">
-			      <form>
-				    <div class="form-group">
-				      <label for="exampleSelect1">보기</label>
-				      <select class="form-control" id="exampleSelect1">
-				        <option>1</option>
-				        <option>2</option>
-				        <option>3</option>
-				        <option>4</option>
-				        <option>5</option>
-				      </select>
-			    	</div>
-			      </form>
-	 		    </span>
-			</div>
 			<div class="row">
 	         <div class="col-lg-4">
 	              <div class="card h-100">

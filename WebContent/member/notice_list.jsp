@@ -18,13 +18,15 @@
   </style>
 </head>
 <body>
-	<div class="container" style="margin-top:100px">
+	<div class="container" style="margin-top:100px; margin-bottom:100px;">
 		<div class="row">
 			<h3 class="text-center">공지사항</h3>
 			<hr class="nhr">
 			<p align=center>제주도의 공지사항과 뉴스를 알려드립니다</p>
 			<div class="row">
+			 <c:if test="${mvo.admin==0 && sessionScope.userid!=null }">
 	     		<a href="../member/notice_insert.do" class="btn btn-sm btn-success">새글</a>
+			 </c:if>
 			</div>
 			<table class="table table-hover" style="margin-top:20px">
 			 <tr style="background-color: rgb(242, 238, 238);">
@@ -62,7 +64,7 @@
 			     </td>
 			    </tr>
 			   </table>
-			   	<div class="text-center"  style="margin-top:30px">
+<!-- 			   	<div class="text-center"  style="margin-top:30px">
 				  <ul class="pagination pagination-sm">
 				    <li class="page-item disabled">
 				      <a class="page-link" href="#">&laquo;</a>
@@ -86,7 +88,7 @@
 				      <a class="page-link" href="#">&raquo;</a>
 				    </li>
 				  </ul>
-				 </div>
+				 </div> -->
      </div>
   </div>
 </body>

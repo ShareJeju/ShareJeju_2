@@ -46,6 +46,13 @@ UPDATED_AT             DATE
 	private Date created_at;
 	private Date updated_at;
 	private String userid;
+	private String profile;
+	public String getProfile() {
+		return profile;
+	}
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
 	public int getId() {
 		return id;
 	}

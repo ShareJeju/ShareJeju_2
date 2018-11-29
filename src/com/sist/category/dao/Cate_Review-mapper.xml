@@ -4,37 +4,39 @@
  <mapper namespace="com.sist.board.dao.Cate_Review-mapper">
  <!-- 댓글 목록 출력 -->
  <select id="reviewListData" resultType="Cate_ReviewVO" parameterType="int">
- 	SELECT review_id,cid,review_userid,review_content,review_subject,review_img,TO_CHAR(review_regdate, 'YYYY-MM-DD HH24:MI:SS') as dbday,review_img,review_img_size
- 	FROM sj_cate_review
- 	WHERE cid=#{cid}
- 	ORDER BY review_id DESC
- 	
+    SELECT review_id,cid,review_userid,review_content,review_subject,review_img,TO_CHAR(review_regdate, 'YYYY-MM-DD HH24:MI:SS') as dbday,review_img,review_img_size,
+    (SELECT sj_member.profile_img FROM sj_member 
+     WHERE sj_member.userid=sj_cate_review.review_userid) as profile
+    FROM sj_cate_review
+    WHERE cid=#{cid}
+    ORDER BY review_id DESC
+    
  </select>
 <select id="hotelReviewData" resultType="CategoryVO" parameterType="int">
-		SELECT * FROM  sj_company
- 		WHERE id=#{id}
+      SELECT * FROM  sj_company
+       WHERE id=#{id}
 </select>
 
  <!-- 댓글 추가 -->
  <insert id="cateReviewInsert" parameterType="Cate_ReviewVO">
- 	<selectKey keyProperty="review_id" resultType="int" order="BEFORE">
- 	SELECT NVL(MAX(review_id)+1,1) as review_id FROM sj_cate_review
- 	</selectKey>
- 	INSERT INTO sj_cate_review VALUES(
- 		#{review_id},
- 		#{cid},
- 		#{review_userid},
- 		#{review_content},
- 		#{review_subject}, 
- 		SYSDATE,	
- 		#{review_img},
- 		#{review_img_size}
- 		
- 	
- 		)
- 		
+    <selectKey keyProperty="review_id" resultType="int" order="BEFORE">
+    SELECT NVL(MAX(review_id)+1,1) as review_id FROM sj_cate_review
+    </selectKey>
+    INSERT INTO sj_cate_review VALUES(
+       #{review_id},
+       #{cid},
+       #{review_userid},
+       #{review_content},
+       #{review_subject}, 
+       SYSDATE,   
+       #{review_img},
+       #{review_img_size}
+       
+    
+       )
+       
  
- 	
+    
  </insert>
  <!-- 댓글 수정1 -->
  <select id="reviewAllData" resultType="Cate_ReviewVO" parameterType="int" >
@@ -53,9 +55,25 @@
  </update>
  <!-- 댓글 삭제 -->
  <delete id="reviewDelete" parameterType="int">
- 	DELETE FROM sj_cate_review
- 	WHERE review_id=#{review_id}
+    DELETE FROM sj_cate_review
+    WHERE review_id=#{review_id}
  </delete>
  
 
-  </mapper>
+ <!-- 여행기 메인  -->
+ 	<select id="scheduleReviewMain" resultType="Cate_ReviewVO">
+	 SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate,review_img, 
+	 (SELECT sj_company.category FROM sj_company WHERE sj_company.id=sj_cate_review.cid) as cate
+	 FROM sj_cate_review
+	 ORDER BY review_regdate DESC
+ 	</select>
+ 	
+ <!-- 마이페이지 맛광숙 리뷰 출력 -->
+  <select id="myfthReviewData" resultType="Cate_ReviewVO" parameterType="String">
+   SELECT review_id,cid,review_userid,review_content,review_subject,review_regdate,review_img,
+   (SELECT sj_company.category FROM sj_company WHERE sj_company.id=sj_cate_review.cid) as cate
+   FROM sj_cate_review
+   WHERE review_userid=#{userid} 
+   ORDER BY review_regdate DESC 
+  </select>
+ </mapper>

@@ -24,27 +24,7 @@ public class ScheduleDAO {
 		   {
 			   System.out.println(ex.getMessage());
 		   }
-	   }
-	   //메인에 상위 여행기리뷰 4개  뿌리기
-	   public static List<ScheduleVO> scheduleMainList()
-	   {
-		   SqlSession session=null;
-		   List<ScheduleVO> list=new ArrayList<ScheduleVO>();
-		   try
-		   {
-			   session=ssf.openSession();//autocommit
-			   list=session.selectList("scheduleMainList");
-			   session.commit();
-		   }catch(Exception ex)
-		   {
-			   ex.printStackTrace();
-		   }
-		   finally
-		   {
-			   session.close();// 반환
-		   }
-		   return list;
-	   }
+	   }	   
 	   
 	   //메인에 업체리뷰 상위 4개 뿌리기
 	   public static List<CategoryVO> categoryMainList()
@@ -67,7 +47,26 @@ public class ScheduleDAO {
 		   return list;
 	   }
 	   
-	   
+	   //메인에 상위 리뷰 4개  뿌리기
+	   public static List<ScheduleVO> scheduleMainList()
+	   {
+		   SqlSession session=null;
+		   List<ScheduleVO> list=new ArrayList<ScheduleVO>();
+		   try
+		   {
+			   session=ssf.openSession();//autocommit
+			   list=session.selectList("scheduleMainList");
+			   session.commit();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   session.close();// 반환
+		   }
+		   return list;
+	   }
 	//게시글 추가
 	   public static void scheduleInsert(ScheduleVO vo)
 	   {
@@ -107,7 +106,8 @@ public class ScheduleDAO {
 		   }
 		   return maxId;
 	   }
-	   
+	  
+
 	 //리스트 뿌리기
 	 public static List<ScheduleVO> scheduleList()
 	 {
@@ -148,10 +148,42 @@ public class ScheduleDAO {
 		return vo; 
 	}
 	//게시글 수정
-	
-	   
-	//게기슬 삭제
-	
+		public static void scheduleUpdate(ScheduleVO vo)
+		{
+			//ScheduleVO vo = new ScheduleVO();
+			SqlSession session=null;
+			try {
+				session=ssf.openSession(true);
+				vo=session.selectOne("scheduleUpdate",vo);
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			finally
+			{
+				session.close();
+			}
+		}
+		   
+		//게시글 삭제
+		public static void scheduleDelete(int id)
+		{
+			 SqlSession session=null;
+			   try
+			   {
+				   session=ssf.openSession();
+				   session.delete("scheduleReplyAllDelete", id); // 참조하고 있는 댓글 삭제	
+				   session.delete("scheduleDelete", id); //실제 게시물 삭제   
+				   session.commit();
+			   }catch(Exception ex)
+			   {
+				   ex.printStackTrace();
+			   }
+			   finally
+			   {
+				   session.close();
+			   }
+		}
 	// 리뷰댓글출력
 	public static List<CommentVO> scheduleReplyList(int sid)
 	{
@@ -219,5 +251,25 @@ public class ScheduleDAO {
 	   {
 		   session.close();
 	   }
+   }
+   
+   // 마이페이지-리뷰출력
+   public static List<ScheduleVO> myScReviewData(String userid)
+   {
+	   SqlSession session=null;
+	   List<ScheduleVO> list=new ArrayList<ScheduleVO>();
+	   try
+	   {
+		   session=ssf.openSession();
+		   list=session.selectList("myScReviewData", userid);
+	   }catch(Exception ex)
+	   {
+		   ex.printStackTrace();
+	   }
+	   finally
+	   {
+		   session.close();// 반환
+	   }
+	   return list;
    }
 }

@@ -11,7 +11,7 @@
 	<select id="scheduleList" resultType="ScheduleVO">
 		SELECT id,main_img,title,day,likes,hashtag,userid FROM sj_tourreview ORDER BY likes DESC
 	</select>
-
+		
 	<!-- 여행기 리뷰 입력 -->
 	<insert id="scheduleInsert" parameterType="ScheduleVO">
 		<!-- 자동증가번호 -->
@@ -34,14 +34,39 @@
 		#{userid}
 		)
 	</insert>
+	
+	<!-- 여행 리뷰 수정 -->
+	<update id="scheduleUpdate" parameterType="ScheduleVO">
+		UPDATE sj_tourreview SET
+		main_img=#{main_img},
+		title=#{title},
+		day=#{day},
+		text=#{text},
+		hashtag=#{hashtag},
+		updated_at=SYSDATE
+		WHERE id=#{id}
+	</update>
+	
+	<!-- 여행 리뷰 삭제 -->
+	<delete id="scheduleDelete" parameterType="int">
+		DELETE FROM sj_tourreview
+		WHERE id=#{id}
+	</delete>
+	
+	<!-- 여행 리뷰 댓글 삭제  -->
+	<delete id="scheduleReplyAllDelete" parameterType="int">
+		DELETE FROM sj_comment
+   		WHERE sid=#{id}
+	</delete> 
+	
  <!-- 여행기, 메인에 리뷰 상위 4개 뿌리기 -->
 	<select id="scheduleMainList" resultType="ScheduleVO">
-		SELECT * FROM(SELECT * FROM sj_tourreview ORDER BY likes DESC) WHERE ROWNUM BETWEEN 1 AND 4
+		SELECT * FROM(SELECT * FROM sj_tourreview ORDER BY likes DESC) WHERE ROWNUM BETWEEN 1 AND 8
 	</select>
 	
 	 <!-- 업체, 메인에 리뷰 랜덤 4개 뿌리기 -->
 	<select id="categoryMainList" resultType="CategoryVO">
-		SELECT * FROM(SELECT * FROM sj_company ORDER BY DBMS_RANDOM.RANDOM) WHERE ROWNUM BETWEEN 1 AND 4
+		SELECT * FROM(SELECT * FROM sj_company ORDER BY DBMS_RANDOM.RANDOM) WHERE ROWNUM BETWEEN 1 AND 8
 	</select>
 	<!-- 
 		select * from( 
@@ -49,17 +74,18 @@
     order by DBMS_RANDOM.RANDOM 
 ) where rownum < 10;
 	 -->
-	
  <!-- 리뷰디테일 -->
  <select id="scheduleDetail" resultType="ScheduleVO" parameterType="int">
-	SELECT id,main_img,img,title,day,likes,text,hashtag,created_at,updated_at,userid
+	SELECT id,main_img,img,title,day,likes,text,hashtag,created_at,updated_at,userid,
+	 (SELECT sj_member.profile_img FROM sj_member WHERE sj_tourreview.userid=sj_member.userid) as profile
 	FROM sj_tourreview
 	WHERE id=#{id}
  </select>
  <!-- 댓글 -->
   <!-- 댓글보기 -->
   <select id="scheduleReplyList" resultType="CommentVO" parameterType="int">
-	SELECT id,sid,content,created_at,updated_at,userid,(SELECT sj_member.name FROM sj_member WHERE sj_comment.userid=sj_member.userid) as name
+	SELECT id,sid,content,created_at,updated_at,userid,(SELECT sj_member.name FROM sj_member WHERE sj_comment.userid=sj_member.userid) as name,
+	 (SELECT sj_member.profile_img FROM sj_member WHERE sj_comment.userid=sj_member.userid) as profile
 	FROM sj_comment
   	WHERE sid=#{sid}
   </select>
@@ -88,5 +114,14 @@
    DELETE FROM sj_comment
    WHERE id=#{id}
   </delete>
+  
+  
+  
+<!-- 마이페이지-리뷰출력 -->
+  <select id="myScReviewData" resultType="ScheduleVO" parameterType="String">
+   SELECT id, main_img, title, day, likes, text, hashtag, created_at, updated_at, userid
+   FROM sj_tourreview
+   WHERE userid=#{userid}  
+  </select>
 	
 </mapper>

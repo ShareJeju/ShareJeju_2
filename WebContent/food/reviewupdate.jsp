@@ -10,8 +10,6 @@
   margin:0 auto;
   margin-top:50px;
   text-align:center;
-  border: 1px solid black;
-  border-color:black;
   color:gray;
 }
 #review_write th{

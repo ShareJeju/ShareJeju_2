@@ -55,7 +55,7 @@ public class FoodReviewDAO {
 		   }
 		   return reviewlist;
 	   }
-	   //목록 출력
+/*	   //리뷰 목록 출력
 	   public static int FoodReviewTotalPage()
 	   {
 		   SqlSession session=null;
@@ -74,7 +74,7 @@ public class FoodReviewDAO {
 			   session.close();
 		   }
 		   return total;
-	   }
+	   }*/
 	   // 리뷰 쓰기
 	   
 	   public static void FoodReviewInsert(FoodReviewVO vo)

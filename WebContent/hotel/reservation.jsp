@@ -54,6 +54,8 @@
   }
 </style>
 <title>Insert title here</title>
+<!-- 예약에만 필요한 link -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script type="text/javascript">
 $(function(){
 	$('#datepicker-checkIn').datepicker();

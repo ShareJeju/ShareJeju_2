@@ -311,6 +311,13 @@ input[type=file]{
 .jumbotron p{
 	font-size:20px;
 }
+.tab-content .row{
+	margin-bottom:40px;
+}
+.row .col-lg-4
+{
+	padding-bottom: 20px;
+}
 </style>
 <script type="text/javascript">
 $(function(){
@@ -365,19 +372,12 @@ $(document).ready(function() {
 			   <div class="small-12 medium-2 large-2 columns" style="padding-left:950px">
 			    <div class="profile-img">
 			     <div class="circle" style="background-color: #f5b634;">
-			       <img class="profile-pic" src="../member/${vo.profile_img }">	
-			       
-<%--        			<c:if test="${vo.profile_img!=null }">
-			       <img class="profile-pic" src="../member/${vo.profile_img }">		
-			    </c:if>
-			    <c:if test="${vo.profile_img==null }">
-			     <c:if test="${vo.sex==M }">
-			       <img class="profile-pic" src="../images/icon/boy.png">
-			     </c:if>
-			     <c:if test="${vo.sex==F }">
-			       <img class="profile-pic" src="../images/icon/girl.png">
-			     </c:if>
-			    </c:if>	 --%>
+					 <c:if test="${empty vo.profile_img }">
+					 <img class="profile-pic" src="../images/icon/girl.png">
+					 </c:if>
+					 <c:if test="${!empty vo.profile_img }">
+					 <img class="profile-pic" src="../member/${vo.profile_img }">
+					 </c:if>
 				</div>
  			    </div>
 
@@ -397,7 +397,8 @@ $(document).ready(function() {
 	<div id="content" class="container">
 		  <ul class="nav nav-pills">
 		    <li class="active"><a data-toggle="pill" href="#review">REVIEW</a></li>
-		    <li><a data-toggle="pill" href="#reserve">RESERVATION</a></li>
+		    <li><a data-toggle="pill" href="#wish">Âò</a></li>
+		    <li><a data-toggle="pill" href="#like">ÁÁ¾Æ¿ä</a></li>
 		  </ul>		  
 	  <!-- START tab-content -->	  
 	  <div class="tab-content" style="margin-top: 20px; margin-left: 20px">	  
@@ -406,95 +407,91 @@ $(document).ready(function() {
 			 <div id="content" class="container">
 			  <ul class="nav nav-pills" style="margin-bottom:20px">
 			    <li class="active"><a data-toggle="pill" href="#trip">¿©Çà±â</a></li>
-			    <li><a data-toggle="pill" href="#s_review">¸À±¤¼÷</a></li>
-				<span class="pull-right">
-				<li>
-			      <form>
-				    <div class="form-group">
-				      <label for="exampleSelect1">º¸±â</label>
-				      <select class="form-control" id="exampleSelect1">
-				        <option>1</option>
-				        <option>2</option>
-				        <option>3</option>
-				        <option>4</option>
-				        <option>5</option>
-				      </select>
-			    	</div>
-			      </form>
-	   		    </li>
-	   		    </span>
+			    <li><a data-toggle="pill" href="#s_review">°ü±¤Áö /¸ÀÁý /¼÷¹Ú</a></li>
 			  </ul>		  
 			</div>
 		  		<!-- START CARD -->
 			<div class="tab-content">
 			 <div id="trip" class="tab-pane fade in active">
 				<div class="row">
+				<c:if test="${sc_count==0}">
+				 <p>ÀÛ¼ºÇÑ ¸®ºä°¡ ¾ø½À´Ï´Ù.</p>
+				</c:if>
+				<c:if test="${sc_count!=0}">
+				<c:forEach var="slist" items="${sclist }">
+
 		         <div class="col-lg-4">
 		              <div class="card h-100">
-		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+	                  <a href="#">
+		                <c:if test="${slist.main_img==null }">
+		                  <img class="card-img-top" src="../images/noimage.jpg" alt="" width="700" height="250">
+		                </c:if>
+		                <c:if test="${slist.main_img!=null }">
+		                  <a href="../schedule/schedule_detail.do?id=${slist.id }"><img class="card-img-top" src="../schedule_upload/${slist.main_img }" alt="${slist.title }"
+		                   width="700" height="250"></a>
+		                </c:if>
+		                </a>
 		                <div class="card-body">
 		                  <h4 class="card-title">
-		                    <a href="#">¿©Çà±â</a>
+		                    <a href="../schedule/schedule_detail.do?id=${slist.id }">${slist.title }</a>
 		                  </h4>
-		                  <p>¼³¸í</p>
-		                </div>
-		                <div class="card-footer">
-		                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+		                  <p>${slist.hashtag }</p>
 		                </div>
 		              </div>
 		          </div>
-		          <div class="col-lg-4">
-		              <div class="card h-100">
-		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-		                <div class="card-body">
-		                  <h4 class="card-title">
-		                    <a href="#">¿©Çà±â</a>
-		                  </h4>
-		                  <p>¼³¸í</p>
-		                </div>
-		                <div class="card-footer">
-		                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-		                </div>
-		              </div>
-		          </div>
+		          </c:forEach>
+		          </c:if>
 		        </div>
 			 </div>
-			 
+	 <!-- ¸À±¤¼÷¸®ºä -->
 	 	 <div id="s_review" class="tab-pane fade">
 		  <div class="row">
-           <div class="col-lg-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">¸À±¤¼÷</a>
-                  </h4>
-                  <p>¼³¸í</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-          </div>
-            <div class="col-lg-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                <div class="card-body">
-                  <h4 class="card-title">
-                    <a href="#">¸À±¤¼÷</a>
-                  </h4>
-                  <p>¼³¸í</p>
-                </div>
-                <div class="card-footer">
-                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                </div>
-              </div>
-          </div>
+			<c:if test="${fth_count==0}">
+			 <p>ÀÛ¼ºÇÑ ¸®ºä°¡ ¾ø½À´Ï´Ù.</p>
+			</c:if>
+			<c:if test="${fth_count!=0}">
+			 <!-- Food -->
+			<c:forEach var="flist" items="${fthlist }">
+	         <div class="col-lg-4">
+	              <div class="card h-100">
+	                <c:if test="${flist.review_img==null }">
+	                  <img class="card-img-top" src="../images/noimage.jpg" alt="" width="700" height="250">
+	                </c:if>
+	                <c:if test="${flist.review_img!=null }">
+	                 <c:choose >
+  	     			   <c:when test="${flist.cate=='¸ÀÁý' }">
+	                    <a href="../food/fooddetailcontent.do?id=${flist.cid }">
+	                    <img class="card-img-top" src="../FoodReivewImg/${flist.review_img }" alt="${flist.review_subject }"
+	                   width="700" height="250"></a>
+	                   </c:when>
+	                   <c:when test="${flist.cate=='°ü±¤' }">
+                        <a href="../tour/tourdetailcontent.do?id=${flist.cid }">
+	                    <img class="card-img-top" src="../tourReviewImg/${flist.review_img }" alt="${flist.review_subject }"
+	                   width="700" height="250"></a>
+	                   </c:when>
+	                   <c:when test="${flist.cate=='¼÷¹Ú' }">
+                         <a href="../hotel/hotelDetailContent.do?no=${flist.cid }">
+	                    <img class="card-img-top" src="../hotelReivewImg/${flist.review_img }" alt="${flist.review_subject }"
+	                   width="700" height="250"></a>
+	                   </c:when>
+	                  </c:choose>
+	                </c:if>
+	                <div class="card-body">
+	                  <h4 class="card-title">
+	                    <a href="../food/fooddetailcontent.do?id=${flist.cid }">${flist.review_subject }</a>
+	                  </h4>
+	                  <p>ÀÛ¼ºÀÏ : ${flist.review_regdate }</p>
+	                </div>
+	              </div>
+	          </div>
+	          </c:forEach>
+	          </c:if>
          </div>
 			 </div>
+			 
 			</div>
 				<!-- END CARD -->
-			<div class="text-center" style="margin-top:30px">
+<!-- 			<div class="text-center" style="margin-top:30px">
 			  <ul class="pagination pagination-sm">
 			    <li class="page-item disabled">
 			      <a class="page-link" href="#">&laquo;</a>
@@ -518,27 +515,11 @@ $(document).ready(function() {
 			      <a class="page-link" href="#">&raquo;</a>
 			    </li>
 			  </ul>
-			 </div>
+			 </div> -->
 
 	        </div>
 	        
             <div id="reserve" class="tab-pane fade">
-           	 <div class="row">
-				<span class="pull-right">
-				      <form>
-					    <div class="form-group">
-					      <label for="exampleSelect1">º¸±â</label>
-					      <select class="form-control" id="exampleSelect1">
-					        <option>1</option>
-					        <option>2</option>
-					        <option>3</option>
-					        <option>4</option>
-					        <option>5</option>
-					      </select>
-				    	</div>
-				      </form>
-		 		    </span>
-			 </div>
 			<div class="row">
 	 	         <div class="col-lg-4">
 		              <div class="card h-100">
@@ -548,9 +529,6 @@ $(document).ready(function() {
 		                    <a href="#">¿¹¾à</a>
 		                  </h4>
 		                  <p>¼³¸í</p>
-		                </div>
-		                <div class="card-footer">
-		                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
 		                </div>
 		              </div>
 		          </div>
@@ -563,13 +541,10 @@ $(document).ready(function() {
 		                  </h4>
 		                  <p>¼³¸í</p>
 		                </div>
-		                <div class="card-footer">
-		                  <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-		                </div>
 		              </div>
 		          </div>
 		        </div>
-		       	<div class="text-center"  style="margin-top:30px">
+<!-- 		       	<div class="text-center"  style="margin-top:30px">
 				  <ul class="pagination pagination-sm">
 				    <li class="page-item disabled">
 				      <a class="page-link" href="#">&laquo;</a>
@@ -593,8 +568,62 @@ $(document).ready(function() {
 				      <a class="page-link" href="#">&raquo;</a>
 				    </li>
 				  </ul>
-				 </div>	
-		    </div>		    
+				 </div>	 -->
+		    </div>		
+		    
+           <div id="wish" class="tab-pane fade">
+			<div class="row">
+	 	         <div class="col-lg-4">
+		              <div class="card h-100">
+		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <div class="card-body">
+		                  <h4 class="card-title">
+		                    <a href="#">Âò</a>
+		                  </h4>
+		                  <p>¼³¸í</p>
+		                </div>
+		              </div>
+		          </div>
+		          <div class="col-lg-4">
+		              <div class="card h-100">
+		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <div class="card-body">
+		                  <h4 class="card-title">
+		                    <a href="#">Âò</a>
+		                  </h4>
+		                  <p>¼³¸í</p>
+		                </div>
+		              </div>
+		          </div>
+		        </div>  
+		       </div> 
+		       
+           <div id="like" class="tab-pane fade">
+			<div class="row">
+	 	         <div class="col-lg-4">
+		              <div class="card h-100">
+		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <div class="card-body">
+		                  <h4 class="card-title">
+		                    <a href="#">ÁÁ¾Æ¿ä</a>
+		                  </h4>
+		                  <p>¼³¸í</p>
+		                </div>
+		              </div>
+		          </div>
+		          <div class="col-lg-4">
+		              <div class="card h-100">
+		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+		                <div class="card-body">
+		                  <h4 class="card-title">
+		                    <a href="#">ÁÁ¾Æ¿ä</a>
+		                  </h4>
+		                  <p>¼³¸í</p>
+		                </div>
+		              </div>
+		          </div>
+		        </div>  
+		      </div>  
       </div><!-- END TAB-CONTENT -->
     </div> <!-- END CONTENT -->
 </body>

@@ -4237,13 +4237,13 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 #licenter_jeju{
 	float: left;
     position: absolute;
-    left: 28%;
+    left: 25%;
 }
 
 #licenter_tour{
 	float: left;
     position: absolute;
-    left: 33%;
+    left: 38%;
 }
 
 #licenter_rogo{
@@ -4255,35 +4255,32 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 #licenter_tasty{
 	float: left;
     position: absolute;
-    left: 44%;
+    left: 50%;
 }
 
 #licenter_hotels{
 	float: left;
     position: absolute;
-    left: 49%;
+    right: 36%;
 }
 
 #licenter_schedule{
+	float: left;
 	position: absolute;
-	left: 20%;
+	left: 72%;
 }
 
 #licenter_login{
 	float: right;
-	position: relative;
-    left: -10%;
+    position: absolute;
+    right: 8%;
 }
 
 #licenter_MY{
 	float: right;
-	position: relative;
-    left: -3%;
+	position: absolute;
+    right: 5%;
 }
-
-
-
-
 .nav>li>a {
 	position: relative;
 	display: block;

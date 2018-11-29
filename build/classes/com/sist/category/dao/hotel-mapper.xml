@@ -5,12 +5,12 @@
  
  <select id="hotelAllData" resultType="CategoryVO" parameterType="java.util.Map">
  	
-SELECT id, name, img, num
+SELECT id,name,img,num
 FROM (SELECT id,name,img,rownum as num
 FROM (SELECT id,name,img
 FROM sj_company   
 ORDER BY id ASC ))
-WHERE num BETWEEN #{start} AND #{end}
+WHERE num BETWEEN #{start} AND #{end} 
  </select>
  <!-- 호텔 -->
  <select id="hotelData" resultType="CategoryVO" parameterType="java.util.Map">
@@ -65,7 +65,24 @@ WHERE id BETWEEN 1 AND 255
 		SELECT * FROM  sj_company
  		WHERE id=#{id}
 </select>
+<!-- 찜 -->
+<select id="jjimData" resultType="JjimVO" parameterType="String">
+	SELECT * FROM sj_jjim
+	WHERE userid=#{userid}
+</select>
+<insert id="jjimInsert" parameterType="JjimVO">
+	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		SELECT NVL(MAX(no)+1,1) as no FROM sj_jjim
+	</selectKey>
+	INSERT INTO sj_jjim VALUES(#{no},#{userid},#{rno},SYSDATE)
+</insert>
 
-
+<select id="myPageJjimData" resultType="CategoryVO" parameterType="java.util.HashMap">
+ SELECT * FROM sj_company
+ WHERE id in
+ <foreach collection="rno_list" item="item" index="index" separator="," open="(" close=")">
+ #{item}
+ </foreach>
+</select>
  
  </mapper>

@@ -9,8 +9,9 @@
 <body style="background-color: black;">
 	<section>
 		<header >
-			<h2 >Get in touch</h2>
-			<span class="byline" >Integer sit amet pede vel arcu aliquet pretium</span>
+			<h2>Share JEJU</h2>
+			<span class="byline" style="font-size:20px;" >Yoonji Iseul Jeongil Joohyung Inyeong</span>
+			<span class="byline" style="font-size:15px; margin-top: 0;" >½Ö¿ë°­ºÏ±³À°¼¾ÅÍ 2Â÷ÇÁ·ÎÁ§Æ®</span>
 		</header>
 		<ul class="contact">
 			<li><a href="#" class="fa fa-twitter" ><span>Twitter</span></a></li>

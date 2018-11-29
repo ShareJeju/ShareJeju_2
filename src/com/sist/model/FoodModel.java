@@ -1,9 +1,12 @@
 package com.sist.model;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.sist.category.dao.*;
 
 import com.sist.controller.RequestMapping;
@@ -21,7 +24,7 @@ public class FoodModel {
 		  page="1";
 	  
 	  int curpage=Integer.parseInt(page);
-	  int rowSize=9;
+	  int rowSize=12;
 	  int start=(curpage*rowSize)-(rowSize-1);
 	  // rownum ==> 시작 1번 
 	  int end=curpage*rowSize;
@@ -73,8 +76,11 @@ public class FoodModel {
  @RequestMapping("food/reviewinsert.do")
  public String food_reviewinsert(HttpServletRequest req,HttpServletResponse res)
  {
+	 
 	 String id = req.getParameter("id");
 	 req.setAttribute("id", id);
+
+	 
 	 req.setAttribute("main_jsp", "../food/reviewinsert.jsp");
 	 return "../main/main.jsp";
 	 
@@ -84,27 +90,43 @@ public class FoodModel {
 @RequestMapping("food/reviewinsert_ok.do")
  public String food_reviewinsert_ok(HttpServletRequest req,HttpServletResponse res)
  {
-	 try
-	  {
-		  req.setCharacterEncoding("EUC-KR");
-	  }catch(Exception ex){}
-	 
+	MultipartRequest mr=null;
+	try{
+		req.setCharacterEncoding("EUC-KR");
+		
+		 // 업로드한 사진 데이터 받기		 
+		 ServletContext context = req.getServletContext();
+		 String path = context.getRealPath("/")+"FoodReivewImg"; // 사용자에게 전송받은 파일을 브라우저에서 보여주기위해서 필요
+	 	 int max = 100*128*128;
+		 String enctype="EUC-KR";
+		 // 업로드
+		 mr = new MultipartRequest(
+				req,
+				path,
+				max,
+				enctype,
+				new DefaultFileRenamePolicy());
+	}catch(Exception ex){
+		ex.printStackTrace();
+		}
 	 // 데이터 값 받기
-	  String cid=req.getParameter("cid");
-	  String review_userid=req.getParameter("review_userid");
-	  String review_content=req.getParameter("review_content");
-	  String review_subject=req.getParameter("review_subject");
-
+	  String cid=mr.getParameter("cid");
 	  HttpSession session=req.getSession();
-	  String name=(String)session.getAttribute("name");
-	  String id=(String)session.getAttribute("id");
-
+	  
+	  String userid=(String)session.getAttribute("userid");
+	  String review_content=mr.getParameter("review_content");
+	  String review_subject=mr.getParameter("review_subject");
+	  String review_img=mr.getOriginalFileName("review_img");
+	  String profile_img=mr.getParameter("profile_img");
 	  
 	  FoodReviewVO vo=new FoodReviewVO();
 	  vo.setCid(Integer.parseInt(cid));
-	  vo.setReview_userid(review_userid);
 	  vo.setReview_content(review_content);
 	  vo.setReview_subject(review_subject);
+	  vo.setReview_userid(userid);
+	  vo.setReview_img(review_img);
+	  vo.setProfile_img(profile_img);
+	  
 
 	  // DB연동 ==> mapper(SQL) ==> DAO에서 호출
 	 FoodReviewDAO.FoodReviewInsert(vo);

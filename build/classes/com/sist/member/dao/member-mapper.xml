@@ -50,7 +50,7 @@
   
   <!-- 내정보수정 정보페이지 -->
   <select id="joinDetail" resultType="MemberVO" parameterType="String">
-  	SELECT userid,pw,name,email,phone,sex,birth,region,profile_img,intro
+  	SELECT userid,pw,name,email,phone,sex,birth,region,profile_img,intro,admin
   	FROM sj_member
   	WHERE userid=#{userid}
   </select>
@@ -69,8 +69,12 @@
     updated_at=SYSDATE
   	WHERE userid=#{userid}
   </update>
-    
-  
+   
+   
+  <!-- 마이페이지 -->
+<!--   
+  <select id="myCateReviewData" resultType=""></select>
+   -->
   <!-- 공지사항 -->
   <!-- 목록출력 -->
    <sql id="where-id">

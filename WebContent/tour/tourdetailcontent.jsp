@@ -124,9 +124,6 @@ ${vo1.addr }<br>
 ${vo1.cost }<br>
 ${vo1.time }<br>
 ${vo1.tel }<br>
-웹사이트<br>
-맛집<br>
-휴무
 </div>
 
 <jsp:include page="tourreview.jsp"></jsp:include>

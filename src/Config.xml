@@ -15,6 +15,7 @@
     <typeAlias type="com.sist.category.dao.FoodReviewVO" alias="FoodReviewVO"/>
     <typeAlias type="com.sist.category.dao.Cate_ReviewVO" alias="Cate_ReviewVO"/>
     <typeAlias type="com.sist.category.dao.tourreviewVO" alias="tourreviewVO"/>
+    <typeAlias type="com.sist.category.dao.JjimVO" alias="JjimVO"/>   
 
     
   </typeAliases>
