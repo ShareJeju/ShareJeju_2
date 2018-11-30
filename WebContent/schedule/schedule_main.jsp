@@ -292,7 +292,7 @@ text-align:center;
 text-align:right;
 padding-right:350px;
 padding-top:50px;
-font-size: 15px;
+font-size: 13px;
 }
 .page
 {
@@ -354,7 +354,7 @@ margin-top:200px;
     width: 100%; 
     height: auto;
     transition: 500ms;
-    margin-bottom: 10px;
+    margin-bottom: -27px;
     opacity: 0.8;
     page-break-inside: avoid; /* For Firefox. */
     -webkit-column-break-inside: avoid; /* For Chrome & friends. */
@@ -500,25 +500,42 @@ $(document).ready(function () {
   	   <c:forEach var="crv" items="${list }">
   	    <c:choose >
   	     <c:when test="${crv.cate=='맛집' }">
-  	     	<a href="../food/fooddetailcontent.do?id=${crv.cid }">
-  	     	<img src="../FoodReivewImg/${crv.review_img }" alt="" width="100%" height="auto" class="gallery-img" />
+            <div class="panel">
+               <a href="../food/fooddetailcontent.do?id=${crv.cid }"> 
+  	    	 	<img src="../FoodReivewImg/${crv.review_img }" alt="" width="100%" height="auto" class="gallery-img" />
+               </a>
+            </div>
    	    	</a>
    	     </c:when>
   	     <c:when test="${crv.cate=='관광' }">
+  	      <div class="panel">
   	        <a href="../tour/tourdetailcontent.do?id=${crv.cid }">
   	     	<img src="../tourReviewImg/${crv.review_img }" alt="" width="100%" height="auto" class="gallery-img" />
   	     	</a>
+  	      </div>
   	     </c:when>
-  	     <c:when test="${crv.cate=='숙박' }">  	     
+  	     <c:when test="${crv.cate=='숙박' }">  	
+  	       <div class="panel">    
   	        <a href="../hotel/hotelDetailContent.do?no=${crv.cid }">
   	        <img src="../hotelReivewImg/${crv.review_img }" alt="" width="100%" height="auto" class="gallery-img" />
   	     	</a>
+  	       </div>
   	     </c:when>
   	    </c:choose>
-
-		<div style="margin-bottom: 20px; margin-top: 0px; font-size: 18px;">
-		 <span>${crv.review_subject }</span>
-		</div>
+        <div class="panel-heading" style="text-align: middle">
+          ${crv.review_subject }
+        </div>
+		</c:forEach>
+	   <!-- 여행기리뷰 출력 -->
+  	   <c:forEach var="slist" items="${sclist }">
+  	    <div class="panel">
+  	     <a href="../schedule/schedule_detail.do?id=${slist.id }">
+  	      <img src="../schedule_upload/${slist.main_img }" alt="" width="100%" height="auto" class="gallery-img" />
+   	     </a>
+   	    </div>
+        <div class="panel-heading" style="text-align: middle">
+          ${slist.title }
+        </div>
 		</c:forEach>
 	</div> 
 

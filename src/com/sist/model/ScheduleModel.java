@@ -23,6 +23,10 @@ public class ScheduleModel {
 	@RequestMapping("schedule/schedule_main.do")
 	public String schedule_main(HttpServletRequest req,HttpServletResponse res)
 	{
+		// ¿©Çà±â¸®ºä
+		List<ScheduleVO> sclist = ScheduleDAO.scheduleList();
+		req.setAttribute("sclist", sclist);
+		// ¸À±¤¼÷¸®ºä
 		List<Cate_ReviewVO> list = HotelDAO.scheduleReviewMain();
 		req.setAttribute("list", list);
 		req.setAttribute("main_jsp", "../schedule/schedule_main.jsp");
