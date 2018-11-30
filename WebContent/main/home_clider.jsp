@@ -91,7 +91,7 @@ $(function(){
 	 .dropdown-menu {
    position: absolute;
    top: 100%;
-   left: -10%;
+   left: -83%;
    z-index: 1000;
    display: none;
    float: left;

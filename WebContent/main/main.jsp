@@ -23,7 +23,7 @@
 .dropdown-menu {
    position: absolute;
    top: 100%;
-   left: -50%;
+   left: -83%;
    z-index: 1000;
    display: none;
    float: left;
