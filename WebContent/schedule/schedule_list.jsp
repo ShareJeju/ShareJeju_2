@@ -54,11 +54,11 @@ td{
 					</tr>
 
 					<tr>
-						<td width=30% class="text-left"
+						<td width=30% class="text-center"
 							style="padding: 0; border: hidden;">${vo.userid }</td>
 						<td width=40% class="text-center"
 							style="padding: 0; border: hidden;">${vo.day } <img
-							src="../images/icon/like.png" width="20px" height="20px"
+							src="../images/icon/s_heart.png" width="20px" height="20px"
 							style="float: right"></td>
 					</tr>
 				</table>
