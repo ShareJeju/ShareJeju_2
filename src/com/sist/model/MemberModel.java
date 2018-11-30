@@ -7,9 +7,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.category.dao.Cate_ReviewVO;
+import com.sist.category.dao.CategoryVO;
 import com.sist.category.dao.FoodDAO;
 import com.sist.category.dao.FoodReviewVO;
 import com.sist.category.dao.HotelDAO;
+import com.sist.category.dao.JjimVO;
 import com.sist.category.dao.TourDAO;
 import com.sist.category.dao.tourreviewVO;
 import com.sist.controller.RequestMapping;
@@ -86,6 +88,16 @@ public class MemberModel {
 	 HttpSession session=req.getSession();
 	 String userid=(String)session.getAttribute("userid");
 	 MemberVO vo = MemberDAO.joinDetail(userid);
+	 //Âò Ãâ·Â
+	 List<JjimVO> jList=HotelDAO.jjimData(userid);
+	 List<Integer> list=new ArrayList<Integer>();
+	 for(JjimVO vo2:jList){
+		 list.add(vo2.getRno());
+	 }
+	 Map map=new HashMap();
+	 map.put("rno_list", list);
+	 List<CategoryVO> reList=HotelDAO.myPageJjimData(map);
+	 req.setAttribute("list", reList);
 	 // ¿©Çà±â¸®ºä Ãâ·Â
 	 List<ScheduleVO> sclist = ScheduleDAO.myScReviewData(userid);
 	 req.setAttribute("sclist", sclist);

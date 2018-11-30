@@ -571,32 +571,23 @@ $(document).ready(function() {
 				 </div>	 -->
 		    </div>		
 		    
+		    <!-- Âò -->
            <div id="wish" class="tab-pane fade">
 			<div class="row">
-	 	         <div class="col-lg-4">
-		              <div class="card h-100">
-		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-		                <div class="card-body">
-		                  <h4 class="card-title">
-		                    <a href="#">Âò</a>
-		                  </h4>
-		                  <p>¼³¸í</p>
-		                </div>
-		              </div>
-		          </div>
-		          <div class="col-lg-4">
-		              <div class="card h-100">
-		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-		                <div class="card-body">
-		                  <h4 class="card-title">
-		                    <a href="#">Âò</a>
-		                  </h4>
-		                  <p>¼³¸í</p>
-		                </div>
-		              </div>
-		          </div>
-		        </div>  
-		       </div> 
+      <c:forEach var="vo" items="${list}">
+        <div class="col-lg-4 col-sm-6">
+          <div class="card h-100">
+            <a href="../hotel/hotelDetailContent.do?no=${vo.id }"><img class="card-img-top" src="${vo.img }" height="283px" width="358px" ></a>
+            <div class="card-body">
+              <h4 class="card-title">
+                <a href="../hotel/hotelDetailContent.do?no=${vo.id }">${vo.name }</a>
+              </h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+        </c:forEach>
+      </div> 
 		       
            <div id="like" class="tab-pane fade">
 			<div class="row">
