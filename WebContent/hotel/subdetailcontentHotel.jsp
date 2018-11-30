@@ -161,12 +161,23 @@ ${vo.tel }
 <table>
 <tr>
 	<!-- 사용자 정보 -->
-	<td width="15%"><img src="../member/${rvo.profile }" width=150px style="border-radius:50%;" >
+	<c:if test="${empty rvo.profile }">
+		<td width="15%"><img src="../images/icon/boy.png" width=150px style="border-radius:50%;" >
 		<br>
 		${rvo.review_userid }
 		<br>
 		${rvo.dbday }
-	</td>
+		</td>
+    </c:if>
+    <c:if test="${!empty rvo.profile }">
+	    <td width="15%"><img src="../member/${rvo.profile }" width=150px style="border-radius:50%;" >
+	    <br>
+		${rvo.review_userid }
+		<br>
+		${rvo.dbday }
+		</td>
+    </c:if>
+
 
 <!-- 리뷰 작성 내용 (content) -->
 	<td width=75% rowspan="4" style="text-align:left;">

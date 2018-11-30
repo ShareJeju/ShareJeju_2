@@ -118,7 +118,7 @@ p {
 }
 .events-detail img { 
     display: inline-block;
-    margin: 20px -20px 50px 100px;
+    margin: 20px -20px 35px 108px;
 }
 .tags span{
 	font-size: 20px;
@@ -262,9 +262,9 @@ $(function(){
 	</div>
 		<div style="font-size:20px;">
 		  <div class="middle">
-		    <h1 style="color:black;">${vo.title }</h1>
+		    <h1 style="color:white; font-style:bold; margin-bottom:20px;">${vo.title }</h1>
 		    <hr>
-		    <p style="color:black;">${vo.day }</p>
+		    <p style="color:white; font-style:bold; margin-top:10px;">${vo.day }</p>
 		  </div>
 		</div>
 	<div class="container"> 
@@ -276,7 +276,7 @@ $(function(){
 	  </li>	  
 	  <li class= "events">
 	    <ul class="events-detail">	    	
-	       <img src="../schedule_upload/${img[status.index]}" width=700px; height=500px;/>   
+	       <img src="../schedule_upload/${img[status.index]}" width=550px;  height=400px;/>   
    		   <p>${t}</p>
    	    </ul>  
    	   </li>   
@@ -293,11 +293,11 @@ $(function(){
   	  </div>	
 
  	    <div class=" row comment" style="display:block; margin-top:70px;">
-		 <span style="font-size:20px; width:100%; padding:20 0 10 40;">작가의 다른 여행기 보기</span>  
+		 <span style="font-size:20px; width:100%; padding:20 0 10 40;">다른 여행기 보기</span>  
  	  	    <ul class="list_comment"  style="list-style: none; border-top: none;">	  
  	  	    <li class="item" style="border-bottom: none;">
 	  	     <div class="comments">
-	  	        <span><a href="../schedule/schedule_detail.do?id=${vo.id-1}">이전글클릭</a></span>	       
+	  	        <span><a href="../schedule/schedule_detail.do?id=${vo.id-1}">이전글클릭 </a></span>	       
 	  	     </div>
 	  	     <div class="comments" style="margin-top:15px;"> 
 	  	        <span><a href="../schedule/schedule_detail.do?id=${vo.id+1}">다음글클릭</a></span>	       
@@ -324,8 +324,17 @@ $(function(){
 		
 	<!-- 댓글 -->	
  	  	<div class="row">
-   	      <a class="link_profile"><img src="../member/${vo.profile }" width="64" height="64"
- 	       style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" ></a>		
+   	      <a class="link_profile">
+   	      <c:if test="${empty vo.profile }">
+   	      <img src="../images/icon/girl.png" width="64" height="64"
+ 	       style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" >
+   	      </c:if>
+   	      <c:if test="${!empty vo.profile }">
+   	      <img src="../member/${vo.profile }" width="64" height="64"
+ 	       style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" >
+ 	      </c:if>
+ 	       </a>		
+		  
 		</div>
 		<h4 style="margin-top: 60px;   text-align: center; margin-left: 100px;">${vo.userid }</h4>
 

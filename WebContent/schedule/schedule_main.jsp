@@ -5,6 +5,8 @@
 <head>
 <title>Insert title here</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <style type="text/css">
 .out{
 	text-align:center;
@@ -18,9 +20,9 @@
  }
  
 .out2{
-	text-align:center;
-	margin: 20px;
-
+width: 1500px;
+height: 50px;
+margin-top: 25px;
 	
 }
 .in2 {
@@ -427,6 +429,31 @@ margin-top:200px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+   border-right:0; 
+   box-shadow:0 0 0; 
+   border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+.btn{
+	margin-top: 0px;
+}
+.bx-wrapper{
+ margin-top:-54px;
+ margin-bottom: 0px;
+ -webkit-box-shadow:0 0 0px #ccc;
+ border: 0px;
+}
+ .bx-wrapper img {
+    max-width: 100%;
+    height:450px;
+} 
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
@@ -442,47 +469,44 @@ $(document).ready(function () {
 <body style="background-color:#36b1bf;">
 
 	<!-- 검색창 -->
-<!-- 	<div class="out" style="width: 1500px; height: 50px;">
-	
-	<div class="inn">
-		<div class="col-sm-12 col-sm-offset-3">
-								<form>
-	<div class="input-group stylish-input-group">
-		<input type="text" class="form-control" placeholder="Search" style="background-color: rgba(255, 255, 255, 0.0); color:black;">
-			<span class="input-group-addon">
-				<button type="submit">
-			<span class="glyphicon glyphicon-search"></span>
-				</button>
-			</span>
-	</div>
-	</form>
-	</div>
-	</div>
-	</div> -->
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3" style="margin-top: 70px;">
+					<form action="." method="post">
+						<div id="imaginary_container" style="width: 500px; margin-left: 200px;">
+							<div class="input-group stylish-input-group">
+								<input type="text" class="form-control" placeholder="Search" name="name"
+									style="background-color: rgba(255, 255, 255, 0.0); color: black;">
+								<span class="input-group-addon">
+									<button type="submit">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+								</span>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 	<!-- Hashtag -->
 	
 	<center>
-	<div class="out2" style="width: 1500px; height: 50px; 	margin-top:150px;	">
-	<div class="in2">
-		<font size="5" style="align: center;"><a href="../schedule/schedule_list.do" style="color: black;">#여행기</a></font>&nbsp;&nbsp;
-		<font size="5" style="align: center;"><a href="../food/foodcontent.do" style="color: black;">#맛집</a></font>&nbsp;&nbsp;
-		<font size="5"style="align: center;"><a href="../tour/tourcontent.do" style="color: black;">#관광지</a></font>&nbsp;&nbsp;
-		<font size="5" style="align: center;"><a href="../hotel/hotelContent.do" style="color: black;">#숙소</a></font>
-	
-	</div>
-	
-	</div>
+		<div class="out2">
+		<div class="in2">
+		   <a href="../schedule/schedule_list.do"><input type=button class="btn btn-md btn-warning" value="여행기 리스트"></a>
+		   <a href="../schedule/schedule_insert.do"><input type=button class="btn btn-md btn-danger" value="여행기 작성"></a>
+		</div>
+		
+		</div>
 	
 	</center>
 	
 	<!-- 정렬 -->
-	<div id="FilterButton">
-	<div id="Content">
+	<div id="FilterButton"  style="margin-bottom: -10px; margin-left: 900px; margin-top:-60px;">
+	<div id="Content" style=" margin-top: 90px;">
 	
-		<div id="buttons" style="margin-bottom:50px;">
+		<div id="buttons">
 		<center>
-	 		<a href="#" class="btn purple">최신순</a>
-	 		<a href="#" class="btn green">인기순</a>
+	 		<a href="#" class="btn btn-sm btn-info">최신순</a>
+	 		<a href="#" class="btn btn-sm btn-info">인기순</a>
 		</center>
 		</div>
 	
