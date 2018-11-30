@@ -41,5 +41,8 @@
 	<mapper resource="com/sist/category/dao/hotel-mapper.xml"/>
  	<mapper resource="com/sist/category/dao/tour-mapper.xml"/>
  	<mapper resource="com/sist/category/dao/Cate_Review-mapper.xml"/>
+ 	<mapper resource="com/sist/category/dao/search-mapper.xml"/>
+
+
   </mappers>
 </configuration>
