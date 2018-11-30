@@ -617,5 +617,6 @@ $(document).ready(function() {
 		      </div>  
       </div><!-- END TAB-CONTENT -->
     </div> <!-- END CONTENT -->
+    </div>
 </body>
 </html>

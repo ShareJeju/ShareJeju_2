@@ -324,9 +324,10 @@ $(function(){
 		
 	<!-- ´ñ±Û -->	
  	  	<div class="row">
-   	      <a class="link_profile"><img src="../member/${profile }" width="64" height="64"
+   	      <a class="link_profile"><img src="../member/${vo.profile }" width="64" height="64"
  	       style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" ></a>		
 		</div>
+		<h4 style="margin-top: 60px;   text-align: center; margin-left: 100px;">${vo.userid }</h4>
 
  	    <div class="row comment" style="display:block; margin-top:80px;">
 		 <span style="font-size:20px; width:100%; padding:20 0 10 40;">´ñ±Û <strong>${count }</strong></span>
