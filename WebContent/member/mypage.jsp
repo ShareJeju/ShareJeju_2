@@ -574,7 +574,7 @@ $(document).ready(function() {
 		    <!-- Âò -->
            <div id="wish" class="tab-pane fade">
 			<div class="row">
-      <c:forEach var="vo" items="${list}">
+      <c:forEach var="vo" items="${list }">
         <div class="col-lg-4 col-sm-6">
           <div class="card h-100">
             <a href="../hotel/hotelDetailContent.do?no=${vo.id }"><img class="card-img-top" src="${vo.img }" height="283px" width="358px" ></a>
