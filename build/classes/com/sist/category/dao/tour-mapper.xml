@@ -77,7 +77,25 @@
         SELECT CEIL(COUNT(*)/10) FROM sj_company
     </select>
     
+    <!-- 찜 -->
+    <select id="tourjjimData" resultType="JjimVO" parameterType="String">
+        SELECT * FROM sj_jjim
+        WHERE userid=#{userid}
+    </select>
+    <insert id="tourjjimInsert" parameterType="JjimVO">
+      <selectKey keyProperty="no" resultType="int" order="BEFORE">
+        SELECT NVL(MAX(no)+1,1) AS no FROM sj_jjim
+      </selectKey>
+        INSERT INTO sj_jjim VALUES(#{no},#{userid},#{rno},SYSDATE)
+    </insert>
     
+    <select id="mypagetourJjimData" resultType="CategoryVO" parameterType="java.util.HashMap">
+        SELECT * FROM sj_company
+        WHERE id in
+       <foreach collection="rno_list" item="item" index="index" separator="," open="(" close=")">
+        #{item}
+       </foreach>
+    </select>
    <!-- 사진 업로드 
     <update id="profileUpload" parameterType="MemberVO">
         UPDATE sj_member

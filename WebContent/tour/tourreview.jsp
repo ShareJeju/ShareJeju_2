@@ -116,14 +116,37 @@ $(function(){
 		$('#reid').val(id);
 	});
 })
+
+$(function(){
+$('.jjim').click(function(){
+	var id=$(this).attr("value");
+	$.ajax({
+		type:'post',
+		url:'../tour/jjim.do',
+		data:{"id":id},
+		success:function(res){
+			location.href="../tour/tourdetailcontent.do?id="+id;
+		}
+	});
+	});
+});
 </script>
 </head>
 <body>
 
 <div id=detail_bar>
 <ul class="text-center">
-<li><img src="../images/icon/like.png" width=30% ><br><br>좋아요</li>
-<li><img src="../images/icon/heart.png" width=30% ><br><br>찜</li>
+
+<c:if test="${sessionScope.userid!=null }">
+<!-- <li><img src="../images/icon/like.png" width=30% ><br><br>좋아요</li> -->
+<c:if test="${vo2.bjjim==false }">
+<li class="jjim" value="${vo2.id}"><img src="../images/icon/s_heart.png" width=64px; height=64px; ><br><br></li>
+</c:if>
+<c:if test="${vo2.bjjim==true }">
+<li class="jjim" value="${vo2.id }"><img src="../images/icon/s_heart1.png" width=64px; height=64px; ><br><br></li>
+</c:if>
+</c:if>
+
 </ul>
 
 </div>
@@ -149,11 +172,19 @@ $(function(){
 <table class="reviewtable">
 <c:forEach var="vo" items="${ list }">
 	<tr>
-	  <td width="15%" style="float:left;"><img src="../member/${vo.profile_img }" width=100px style="border-radius:50%;" > </td>
+	<c:if test="${empty vo.profile_img }">
+	  <td width="15%" style="float:left;"><img src="../images/icon/girl.png" width="64" height="64"
+           style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" ></td>
+    </c:if>       
+    <c:if test="${!empty vo.profile_img }">
+      <td width="15%" style="float:left;"><img src="../member/${vo.profile_img }" width="64" height="64"
+           style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" ></td>
+    </c:if>
+    
 		<td width=75% rowspan="3" style="text-align:left;">
 		 <h3 style="font-weight:bold;color:#54d9cd;"> <!-- 제목 영역 --> ${vo.review_subject }</h3>
 		 <!-- 리뷰영역 --> ${vo.review_content }
-		 <br><!-- 사진 영역 --> <img src="../tourReviewImg/${vo.review_img }">
+		 <br><!-- 사진 영역 --> <img src="../tourReviewImg/${vo.review_img }" width=600px height=300px>
 		</td>
 	  <td id="likes" width=25% rowspan="4"><img src="../images/icon/likeicon.png" width=20px> 1 </td>
 	</tr>
@@ -193,7 +224,7 @@ $(function(){
    <form method="post" action="../tour/tourreview_delete.do">
     <input type="hidden" name="review_id" value="${vo.review_id }" id="reid"><!--  -->
     <input type="hidden" name="cid" value="${id }">
-    <input type="submit" class="btn btn-default" value=예>
+    <input type="submit" class="btn btn-default" value="예">
     <button type="button" class="btn btn-default" data-dismiss="modal">아니요</button>
    </div>
   </div>

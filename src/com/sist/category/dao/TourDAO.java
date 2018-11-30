@@ -206,5 +206,55 @@ public class TourDAO {
 		}
 	}
 	
+	// Âò ÇÏ±â !
+	public static List<JjimVO> tourjjimData(String userid)
+	{
+		List<JjimVO> list=new ArrayList<JjimVO>();
+		SqlSession session = null;
+		try
+		{
+			session=ssf.openSession();
+			list=session.selectList("tourjjimData", userid);
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			session.close();
+		}
+		return list;
+	}
+	public static void tourjjimInsert(JjimVO vo)
+	{
+		try
+		{
+			SqlSession session=ssf.openSession(true);
+			session.insert("tourjjimInsert",vo);
+			session.close();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+	}
+	public static List<CategoryVO> mypagetourJjimData(Map map)
+	{
+		List<CategoryVO> list=new ArrayList<CategoryVO>();
+		SqlSession session = null;
+		try
+		{
+			session=ssf.openSession();
+			list=session.selectList("mypagetourJjimData",map);
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		finally
+		{
+			session.close();
+		}
+		return list;
+	}
+	
 	
 }

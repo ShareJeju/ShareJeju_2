@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sist.category.dao.CategoryVO;
+import com.sist.category.dao.HotelDAO;
+import com.sist.category.dao.JjimVO;
 import com.sist.category.dao.TourDAO;
 import com.sist.category.dao.tourreviewVO;
 import com.sist.controller.RequestMapping;
@@ -29,6 +31,10 @@ public class TourModel {
       if(page==null)
          page="1";
       
+      if(jejumap==null)
+      {
+    	  jejumap="제주시";
+      }
       int curpage=Integer.parseInt(page);
       int rowSize=9;
       int start=(curpage*rowSize)-(rowSize-1);
@@ -53,23 +59,45 @@ public class TourModel {
    // 상세페이지 출력 + 리뷰 목록 출력
    @RequestMapping("tour/tourdetailcontent.do") 
    public String tour_tourdetailcontent(HttpServletRequest req, HttpServletResponse res)
-   {   
-      // tour/tourdetailcontent.do?id=${vo.id}
-      String id=req.getParameter("id");
-      System.out.println("id="+id);
-      
+   { 
+	  // tour/tourdetailcontent.do?id=${vo.id}
+	  String id=req.getParameter("id");
+	  
       // DB연동
       CategoryVO vo=TourDAO.tourDetailData(Integer.parseInt(id));
       req.setAttribute("vo1", vo);
+      req.setAttribute("vo2", vo);
       
       String cid=id;   
       List<tourreviewVO> list = TourDAO.tourreviewListData(Integer.parseInt(cid));
+      if(vo.getText().length()>200)
+      {
+    	  String str=vo.getText();
+    	  vo.setText(str.substring(0,200)+".....");
+      }
+      
+      HttpSession session=req.getSession();
+	  String userid=(String)session.getAttribute("userid");
+	  
+	  if(userid!=null)
+	  {
+		  List<JjimVO> jList=TourDAO.tourjjimData(userid);
+		  
+		  for(JjimVO jvo:jList){
+			  if(Integer.parseInt(id)==jvo.getRno())
+			  {
+				  vo.setBjjim(true);
+			  }
+		  }
+	  }
+
       req.setAttribute("list", list);
       req.setAttribute("count", list.size());
       req.setAttribute("id", id);
+      //req.setAttribute("review_id", arg1);
       
        req.setAttribute("main_jsp", "../tour/tourdetailcontent.jsp");
-      // req.setAttribute("tourreview_jsp", "../tour/tourreview.jsp");
+       //req.setAttribute("tourreview_jsp", "../tour/tourreview.jsp");
        return "../main/main.jsp";
    }
    
@@ -197,7 +225,19 @@ public class TourModel {
        return "redirect:../tour/tourdetailcontent.do?id="+cid;
     }
     
-    
+	@RequestMapping("tour/jjim.do")
+	public String tour_jjim(HttpServletRequest req,HttpServletResponse res){
+		String id=req.getParameter("id");
+		HttpSession session=req.getSession();
+		String userid=(String)session.getAttribute("userid");
+		JjimVO vo=new JjimVO();
+		vo.setUserid(userid);
+		vo.setRno(Integer.parseInt(id));
+		TourDAO.tourjjimInsert(vo);
+		return "../tour/tourdetailcontent.do";
+		
+	}
+	
     
     
     /*@RequestMapping("member/profile_upload_ok.do")

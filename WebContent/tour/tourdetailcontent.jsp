@@ -18,7 +18,7 @@ width:75%;
 margin-top:100px;
 background-color:red;
 width:50%;
-height:400px;
+height:500px;
 float:left;
 }
 #detail_info  
@@ -26,7 +26,7 @@ float:left;
 margin-top:100px;
 display:inline-block;
 width:50%;
-height:400px;
+height:500px;
 padding:20px;
 background-color:#54d9cd;
 }

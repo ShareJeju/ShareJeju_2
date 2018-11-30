@@ -446,9 +446,9 @@ margin-top:200px;
     </div>
     <div id=page class="text-center">
      <td class="text-center">
-      <a href="../tour/tourcontent.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-xs btn-success">이전</a>
+      <a href="../tour/tourcontent.do?map=%BC%AD%B1%CD%C6%F7%BD%C3%20%C1%DF%B9%AE&page=${curpage>1?curpage-1:curpage }" class="btn btn-xs btn-success">이전</a>
       ${curpage } page / ${totalpage } pages
-      <a href="../tour/tourcontent.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-xs btn-success">다음</a>
+      <a href="../tour/tourcontent.do?map=%BC%AD%B1%CD%C6%F7%BD%C3%20%C1%DF%B9%AE&page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-xs btn-success">다음</a>
      </td>
     <!-- <ul class="pagination justify-content-center">
         <li class="page-item">

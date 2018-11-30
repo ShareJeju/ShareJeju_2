@@ -68,7 +68,7 @@ text-align:center;
          </tr>
 		 <tr>
 		  <td class="text-center" colspan="4">
-		  <input type="submit" value="리뷰 쓰기"
+		  <input type="submit" value="등록"
 		         id="writeBtn" class="btn btn-sm btn_color">
 		  <input type=button value="취소" class="btn btn-sm btn_color"
 		         onclick="javascript:history.back()">
