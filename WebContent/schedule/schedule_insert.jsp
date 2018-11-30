@@ -930,8 +930,8 @@ $(function() {
 	<form id="myForm" method="post" action="../schedule/schedule_insert_ok.do"
 			enctype="multipart/form-data">
 	<div class="container"
-		style="height: 525px; background-color: rgb(242,255,253); width: 100%; margin-top: 0px">
-		<input type="text" name=title id="subject" class="hc vc" style="font-size: 15px">
+		style="height: 525px; background-color: rgb(242,255,253); width: 100%; margin-top: 0px;">
+		<input type="text" name=title id="subject" class="hc vc" style="font-size: 25px; color: black;">
 		<div id="date" style="padding-top: 290px; padding-left: 780px;">
 			<input type=date class="da" name=date1> ~ <input type="date" class="da" name=date2>
 		</div>

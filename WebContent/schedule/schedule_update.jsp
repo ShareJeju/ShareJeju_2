@@ -939,7 +939,7 @@ $(function() {
 			enctype="multipart/form-data">
 	<div class="container"
 		style="height: 525px;width: 100%; margin-top: 0px; background: url('../schedule_upload/${vo.main_img}');">
-		<input type="text" name=title id="subject" class="hc vc" style="font-size: 15px" value="${vo.title }">
+		<input type="text" name=title id="subject" class="hc vc" style="font-size: 25px; color: black;" value="${vo.title }">
 		<div id="date" style="padding-top: 290px; padding-left: 780px;">
 			<input type=date class="da" name=date1 value="${start }"> ~ <input type="date" class="da" name=date2 value="${end}">
 		</div>
