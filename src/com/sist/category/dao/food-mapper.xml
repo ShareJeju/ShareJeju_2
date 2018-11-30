@@ -78,4 +78,23 @@ ORDER BY review_id DESC
     DELETE FROM sj_cate_review
     WHERE review_id=#{review_id}
   </delete>
+  
+  <select id="foodjjimData" resultType="JjimVO" parameterType="String">
+	SELECT * FROM sj_jjim
+	WHERE userid=#{userid}
+</select>
+<insert id="foodjjimInsert" parameterType="JjimVO">
+	<selectKey keyProperty="no" resultType="int" order="BEFORE">
+		SELECT NVL(MAX(no)+1,1) as no FROM sj_jjim
+	</selectKey>
+	INSERT INTO sj_jjim VALUES(#{no},#{userid},#{rno},SYSDATE)
+</insert>
+
+<select id="myPagefoodJjimData" resultType="CategoryVO" parameterType="java.util.HashMap">
+ SELECT * FROM sj_company
+ WHERE id in
+ <foreach collection="rno_list" item="item" index="index" separator="," open="(" close=")">
+ #{item}
+ </foreach>
+</select>
  </mapper>

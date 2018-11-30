@@ -6,6 +6,27 @@
 <html>
 <head>
 <title>Insert title here</title>
+<script type="text/javascript">
+
+$(function(){
+$('.jjimBtn').click(function(){
+	var id=$(this).attr("value");
+	$.ajax({
+		type:'post',
+		url:'../food/jjim.do',
+		data:{"id":id},
+		success:function(res){
+			location.href="../food/fooddetailcontent.do?id="+id;
+		}
+	});
+	});
+});
+</script>
+<style type="text/css">
+.jjimBtn {
+list-style: none;
+}
+</style>
 </head>
 <body>
 <!-- 리뷰 -->
@@ -19,15 +40,26 @@
 <td style="margin-left:70px" width=87%>
 <h2 style="font-weight:bold;color:#54d9cd;">여행가의 리뷰</h2>
 </td>
+ <c:if test="${sessionScope.userid!=null }">
 <td width=5%>
-	 <c:if test="${sessionScope.userid!=null }"> <!-- 로그인이 됐을 때 --> 
+	 <!-- 로그인이 됐을 때 --> 
 	
 	<a href="../food/reviewinsert.do?id=${id }" class="btn btn-md btn_color">리뷰 쓰기</a> 
-	</c:if> 
+	 
 </td>
+</c:if>
+ <c:if test="${sessionScope.userid!=null }">
 <td width=8%>
-<a href="#">찜 <img src="../images/icon/like (2).png" width=30px></a> 
+<c:if test="${dvo.bjjim==false }">
+ <li class="jjimBtn" value="${dvo.id }"><a href="#">찜<img src="../images/icon/heart1.png" width=30px></a></li>
+</c:if>
+<c:if test="${dvo.bjjim==true }">
+<a href="#">찜 <img src="../images/icon/heart2.png" width=30px></a>
+</c:if>
 </td>
+</c:if>
+
+
 </tr>
 <!-- <tr>
 <td colspan="2"><h4>최신 | 추천 | 평가</h4></td>
@@ -38,7 +70,19 @@
 
 <tr>
 
-<td width="15%"><img src="../member/${vo.profile_img }" width=100px style="border-radius:50%;" ></td>
+<td width="15%">
+
+   <c:if test="${empty vo.profile_img }">
+            <img src="../images/icon/girl.png" width=100px style="border-radius:50%;" >
+            </c:if>
+ <c:if test="${!empty vo.profile_img }">
+
+<img src="../member/${vo.profile_img }" width=100px style="border-radius:50%;" >
+<br><br><!-- 아이디 영역 -->  ${vo.review_userid } 
+<br><!-- 날짜영역 -->  <fmt:formatDate value="${vo.review_regdate }" 
+            pattern="yyyy-MM-dd"/>
+            </c:if>
+</td>
 <td width=75% rowspan="3" style="text-align:left; ">
 <h3 style="font-weight:bold;color:#54d9cd;"> <!-- 제목 영역 --> ${vo.review_subject }</h3>
 <!-- 리뷰영역 --> ${vo.review_content }
@@ -62,9 +106,8 @@
 
 </tr>
 <%-- <tr><td><!-- 리뷰 번호 --> ${vo.review_id } </td></tr> --%>
-<tr><td><!-- 아이디 영역 -->  ${vo.review_userid } </td></tr>
-<tr><td ><!-- 날짜영역 -->  <fmt:formatDate value="${vo.review_regdate }" 
-            pattern="yyyy-MM-dd"/></td></tr>
+<tr><td></td></tr>
+<tr><td ></td></tr>
 <tr>
 <!-- <td colspan="3" style="text-align:left; ">
 

@@ -432,6 +432,8 @@ margin-top:200px;
               <h4 class="card-title">
                 <a href="fooddetailcontent.do?id=${vo.id }">${vo.name }</a>
               </h4>
+             
+              
           <%--  <div><input type="hidden" name="map" value="${vo.map}">${vo.map}</div> --%>
             </div>
           </div>

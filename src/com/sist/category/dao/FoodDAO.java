@@ -101,6 +101,45 @@ public class FoodDAO {
 	   }
 	   return dvo;
    }
+   
+   //Âò
+   
+   public static List<JjimVO> foodjjimData(String userid){
+		List<JjimVO> list=new ArrayList<JjimVO>();
+		SqlSession session=null;
+		try{
+			session=ssf.openSession();
+			list=session.selectList("foodjjimData", userid);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return list;
+	}
+	public static void foodjjimInsert(JjimVO vo){
+		try{
+			SqlSession session=ssf.openSession(true);
+			session.insert("foodjjimInsert", vo);
+			session.close();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	public static List<CategoryVO> myPagefoodJjimData(Map map){
+		List<CategoryVO> list=new ArrayList<CategoryVO>();
+		SqlSession session=null;
+		try{
+			session=ssf.openSession();
+			list=session.selectList("myPagefoodJjimData",map);
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}finally{
+			session.close();
+		}
+		return list;
+	}
+	
 }
 
 

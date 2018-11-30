@@ -44,7 +44,7 @@ public class FoodModel {
 	  req.setAttribute("totalpage", totalpage);
 	  
 	  
-	 
+	
 	 req.setAttribute("main_jsp", "../food/foodcontent.jsp");
 	 return "../main/main.jsp";
  }
@@ -62,7 +62,22 @@ public class FoodModel {
 	  
 	  String cid=id;
 	  String review_id=req.getParameter("review_id");
-	  System.out.println(cid);
+	  
+
+		HttpSession session=req.getSession();
+		String userid=(String)session.getAttribute("userid");
+		
+		if(userid!=null){
+		List<JjimVO> jList=FoodDAO.foodjjimData(userid);
+		
+		
+			for(JjimVO jvo:jList){
+				if(Integer.parseInt(id)==jvo.getRno()){
+					dlist.setBjjim(true);
+				}
+			}
+		}
+	  //System.out.println(cid);
 	  List<FoodReviewVO> reviewlist=FoodReviewDAO.FoodReviewListData(Integer.parseInt(cid));
 	  req.setAttribute("reviewlist", reviewlist);    
 	  req.setAttribute("id", id);
@@ -191,5 +206,17 @@ public class FoodModel {
 	  FoodReviewDAO.FoodReviewDelete(Integer.parseInt(review_id));
 	  return "redirect:../food/fooddetailcontent.do?id="+cid;
  }
+ @RequestMapping("food/jjim.do")
+	public String food_jjim(HttpServletRequest req,HttpServletResponse res){
+		String id=req.getParameter("id");
+		HttpSession session=req.getSession();
+		String userid=(String)session.getAttribute("userid");
+		JjimVO vo=new JjimVO();
+		vo.setUserid(userid);
+		vo.setRno(Integer.parseInt(id));
+		FoodDAO.foodjjimInsert(vo);
+		return "redirect:../food/fooddetailcontent.do";
+		
+	}
  
 }
