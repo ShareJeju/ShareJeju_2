@@ -10,7 +10,7 @@
 	<section>
 		<header >
 			<h2>Share JEJU</h2>
-			<span class="byline" style="font-size:20px;" >Yoonji Iseul Jeongil Joohyung Inyeong</span>
+			<span class="byline" style="font-size:20px; font-color:white;" >Yoonji Iseul Jeongil Joohyung Inyeong</span>
 			<span class="byline" style="font-size:15px; margin-top: 0;" >½Ö¿ë°­ºÏ±³À°¼¾ÅÍ 2Â÷ÇÁ·ÎÁ§Æ®</span>
 		</header>
 		<ul class="contact">

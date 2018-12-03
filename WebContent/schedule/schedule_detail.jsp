@@ -350,8 +350,14 @@ $(function(){
 				<c:forEach var="rvo" items="${list }">
 		 	  	    <li class="item">
 		 	  	     <div class="comments">
-		 	  	      <a class="link_profile"><img src="../member/${rvo.profile }" width="42" height="42"
+  	        	       <c:if test="${empty rvo.profile }">
+       		 	  	      <a class="link_profile"><img src="../images/icon/girl.png" width="42" height="42"
 		 	  	       style="border-radius: 50px; border: 0 none;"></a>
+		 	    	   </c:if>
+   	 			       <c:if test="${!empty rvo.profile }">
+       		 	  	      <a class="link_profile"><img src="../member/${rvo.profile }" width="42" height="42"
+		 	  	       style="border-radius: 50px; border: 0 none;"></a>
+ 				       </c:if>
 		 	  	      <div class="cont_info">
 		 	  	       <div class="info_append">  	  
 		 	  	        <strong>${rvo.name}<br>

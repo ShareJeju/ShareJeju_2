@@ -18,6 +18,13 @@
 }
 
 </style>
+<script type="text/javascript">
+$(function(){
+	$('.confirm').click(function(){
+		alert("정상적으로 수정되었습니다.");
+	});
+});
+</script>
 <!-- 자바스크립트 ; 비밀번호 체크 구현 -->
 <body>
   <div id="title">
@@ -99,7 +106,7 @@
         	   
   			   <div class="form-group" style="margin-top:20px"> 
 			    <div class="text-center">
-			      <input type="submit" value="수정" class="btn btn-danger btn-md">
+			      <input type="submit" value="수정" class="btn btn-danger btn-md confirm">
 			      <input type="button" value="취소" class="btn btn-warning btn-md"
 						 onclick="javascript:history.back()">
 			    </div>

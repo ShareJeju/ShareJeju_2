@@ -155,7 +155,7 @@ $('.jjim').click(function(){
 <table style="margin-left:70px" width=90%;>
 	<tr>
 	  <td style="margin-left:70px" width=95%>
-		 <h2 style="font-weight:bold;color:#54d9cd;">여행가의 리뷰(숫자)</h2>
+		 <h2 style="font-weight:bold;color:#54d9cd;">여행가의 리뷰(${count })</h2>
 	  </td>
 	  <td width=5%>
 		<c:if test="${sessionScope.userid!=null }">
@@ -173,18 +173,16 @@ $('.jjim').click(function(){
 <c:forEach var="vo" items="${ list }">
 	<tr>
 	<c:if test="${empty vo.profile_img }">
-	  <td width="15%" style="float:left;"><img src="../images/icon/girl.png" width="64" height="64"
-           style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" ></td>
+	  <td width="15%" style="float:left;"><img src="../images/icon/girl.png" width=100px style="border-radius:50%;" ></td>
     </c:if>       
     <c:if test="${!empty vo.profile_img }">
-      <td width="15%" style="float:left;"><img src="../member/${vo.profile_img }" width="64" height="64"
-           style="border-radius: 50px; border: 0 none; margin-left: 540px; margin-bottom: -90px; margin-top: -30px;" ></td>
+      <td width="15%" style="float:left;"><img src="../member/${vo.profile_img }" width=100px style="border-radius:50%;" ></td>
     </c:if>
     
 		<td width=75% rowspan="3" style="text-align:left;">
 		 <h3 style="font-weight:bold;color:#54d9cd;"> <!-- 제목 영역 --> ${vo.review_subject }</h3>
 		 <!-- 리뷰영역 --> ${vo.review_content }
-		 <br><!-- 사진 영역 --> <img src="../tourReviewImg/${vo.review_img }" width=600px height=300px>
+		 <br><!-- 사진 영역 --> <img src="../tourReviewImg/${vo.review_img }" width=600px >
 		</td>
 	  <td id="likes" width=25% rowspan="4"><img src="../images/icon/likeicon.png" width=20px> 1 </td>
 	</tr>

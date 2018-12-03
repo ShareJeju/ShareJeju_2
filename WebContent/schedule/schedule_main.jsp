@@ -492,7 +492,9 @@ $(document).ready(function () {
 		<div class="out2">
 		<div class="in2">
 		   <a href="../schedule/schedule_list.do"><input type=button class="btn btn-md btn-warning" value="여행기 리스트"></a>
-		   <a href="../schedule/schedule_insert.do"><input type=button class="btn btn-md btn-danger" value="여행기 작성"></a>
+		   <c:if test="${sessionScope.userid!=null }">
+		    <a href="../schedule/schedule_insert.do"><input type=button class="btn btn-md btn-danger" value="여행기 작성"></a>
+		   </c:if>
 		</div>
 		
 		</div>
@@ -547,7 +549,7 @@ $(document).ready(function () {
   	     </c:when>
   	    </c:choose>
         <div class="panel-heading" style="text-align: middle">
-          ${crv.review_subject }
+          #${crv.cate } ${crv.review_subject }
         </div>
 		</c:forEach>
 	   <!-- 여행기리뷰 출력 -->
@@ -558,7 +560,7 @@ $(document).ready(function () {
    	     </a>
    	    </div>
         <div class="panel-heading" style="text-align: middle">
-          ${slist.title }
+			#여행기 ${slist.title }
         </div>
 		</c:forEach>
 	</div> 

@@ -25,6 +25,7 @@
        ,(SELECT sj_member.profile_img FROM sj_member WHERE sj_cate_review.review_userid=sj_member.userid) as profile_img
        FROM sj_cate_review
        WHERE cid=#{cid}
+       ORDER BY review_id DESC
     </select> 
     
     <!-- 업체별 리뷰 갯수 -->

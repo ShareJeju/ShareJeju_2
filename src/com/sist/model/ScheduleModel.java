@@ -173,7 +173,7 @@ public class ScheduleModel {
 			vo.setUserid(userid);
 			ScheduleDAO.scheduleInsert(vo);
 			
-			return "redirect:../schedule/schedule_list.do";
+			return "redirect:../schedule/schedule_detail.do?id="+vo.getId();
 		}
 		
 		// 상세페이지

@@ -388,7 +388,7 @@ $(document).ready(function() {
 			     </div>
 			  </div>
 			</div>
-			<p class="profile-p">${sessionScope.name } 님의 프로필사진을 올려주세요.</p>
+			<p class="profile-p">${vo.name } 님의 프로필사진을 올려주세요.</p>
 			 <a href="../member/modify.do" role="button">
 			 <img class="mod-profile" src="../images/icon/settings.png"></a>
 	    </form>
