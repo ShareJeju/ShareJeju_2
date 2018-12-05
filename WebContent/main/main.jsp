@@ -227,7 +227,7 @@ body {
                </a>
                <!-- dropdown-menu는 home_clider.jsp에서 스타일을 새로 지정해줬다 안해주면 안됨 아믄 안됨 -->
                <!-- 충돌 안나게하려고 다른건 다 home_붙여서 새로 만들어줬는데 얘만 안됨...용서하기싫은데  건들수가없네 -->
-               <div class="dropdown-menu" style="margin-top: 7px;">
+               <div class="dropdown-menu" style="margin-top: 7px;  left: -83%;">
                 <c:if test="${sessionScope.userid!=null }">
                  <a class="dropdown-item" href="../member/mypage.do" id="myBtn">마이페이지</a><br> 
                 </c:if>                  

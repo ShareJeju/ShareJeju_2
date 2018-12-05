@@ -223,6 +223,23 @@ $(function() {
 		fileIndex=fileIndex+1;
 	});
 	
+	/* $("#removeDay").click(function () {
+		var row = "<tr>";
+		row +="<th width=15% class='text-top'>"+day+"일차</th>";
+		row +="<td width=85% class='text-left'><textarea rows='15' cols='100' name=text></textarea></td>";
+		row +="</tr>";
+		row +="<tr>";
+		row +="<th width=15%/>";
+		row +="<td width=85%>";
+		row +="<input type=file name='file["+fileIndex+"]'>";
+		row +="</td>";
+		row +="</tr>";
+		
+		day--;
+		$("#my-tbody").remove(row);
+		fileIndex=fileIndex-1;
+	}); */
+	
 	//preview
 	$(document).ready(function(){
 		   var fileTarget = $('.filebox .upload-hidden');
@@ -951,7 +968,7 @@ $(function() {
 						  <input type="file" id="input_file" class="upload-hidden" name="file[0]"> 
 						</div>
 					</td>
-				
+		   		
 					<tr>
 						<th width=15% class="text-top">1일차</th>
 						<td width=85% class="text-left"><textarea rows="15"
@@ -970,7 +987,8 @@ $(function() {
 				<tr>
 					<td style="padding-left: 61px;" class="text-left" height="20px" colspan="2">
 						<input type="text" value="" data-role="tagsinput" placeholder="Add tags" name="hashtag"/>	
-						<input type=button value="+" id="addDay" class="btn btn-sm btn-primary" style="float: right;">		
+						<!-- <input type=button value="-" id="removeDay" class="btn btn-sm btn-primary" style="right: 370px;"> -->	
+						<div style="float: right;"><input type=button value="+" id="addDay" class="btn btn-sm btn-primary"></div>		
 					</td>
 				</tr>
 				<tr>

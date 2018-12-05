@@ -5,7 +5,10 @@
 <mapper namespace="com.sist.category.dao.search-mapper">
 	
 	<select id="mainSearch" parameterType="String" resultType="CategoryVO">
-		SELECT * FROM sj_company WHERE name LIKE '%'||#{name}||'%'
+		SELECT * FROM sj_company WHERE name LIKE '%'||#{name}||'%' AND ROWID IN(SELECT MAX(ROWID) FROM sj_company GROUP BY name)
 	</select>
-
+	
+	<select id="mainTSearch" parameterType="String" resultType="ScheduleVO">
+		SELECT * FROM sj_tourreview WHERE title LIKE '%'||#{title}||'%' AND ROWID IN(SELECT MAX(ROWID) FROM sj_tourreview GROUP BY title)
+	</select>
 </mapper>

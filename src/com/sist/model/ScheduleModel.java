@@ -33,7 +33,8 @@ public class ScheduleModel {
 		return "../main/main.jsp";
 	}	
 	
-	
+	//여행기 리스트
+	//최신순
 	@RequestMapping("schedule/schedule_list.do")
 	public String schedule_list(HttpServletRequest req,HttpServletResponse res)
 	{
@@ -42,6 +43,21 @@ public class ScheduleModel {
 		} catch (Exception e) {}
 				
 		List<ScheduleVO> list=ScheduleDAO.scheduleList();
+	
+		req.setAttribute("list", list); // 목록출력
+		
+		req.setAttribute("main_jsp", "../schedule/schedule_list.jsp");
+		return "../main/main.jsp";
+	}
+	//조회순
+	@RequestMapping("schedule/schedule_list_likes.do")
+	public String schedule_list_likes(HttpServletRequest req,HttpServletResponse res)
+	{
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (Exception e) {}
+				
+		List<ScheduleVO> list=ScheduleDAO.scheduleList_likes();
 	
 		req.setAttribute("list", list); // 목록출력
 		

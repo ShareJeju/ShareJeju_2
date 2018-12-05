@@ -7,6 +7,8 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.sist.schedule.dao.ScheduleVO;
 public class SearchDAO {
 	private static SqlSessionFactory ssf;
 	static{
@@ -27,6 +29,25 @@ public class SearchDAO {
 		   {
 			   session=ssf.openSession();//autocommit
 			   list=session.selectList("mainSearch", name);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   session.close();// ¹ÝÈ¯
+		   }
+		   return list;
+	}
+	
+	public static List<ScheduleVO> mainTSearch(String title)
+	{
+		SqlSession session=null;
+		   List<ScheduleVO> list=new ArrayList<ScheduleVO>();
+		   try
+		   {
+			   session=ssf.openSession();//autocommit
+			   list=session.selectList("mainTSearch", title);
 		   }catch(Exception ex)
 		   {
 			   ex.printStackTrace();

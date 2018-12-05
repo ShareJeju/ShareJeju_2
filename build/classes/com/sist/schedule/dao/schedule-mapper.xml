@@ -8,8 +8,14 @@
 	</select>
 	
 	<!-- 여행기 리스트 뿌리기 -->
+	<!-- 최신순  -->
 	<select id="scheduleList" resultType="ScheduleVO">
-		SELECT id,main_img,title,day,likes,hashtag,userid FROM sj_tourreview ORDER BY likes DESC
+		SELECT * FROM sj_tourreview ORDER BY CREATED_AT DESC
+	</select>
+	
+	<!-- 조회순  -->
+	<select id="scheduleList_likes" resultType="ScheduleVO">
+		SELECT * FROM sj_tourreview ORDER BY LIKES DESC
 	</select>
 		
 	<!-- 여행기 리뷰 입력 -->
@@ -75,6 +81,11 @@
 ) where rownum < 10;
 	 -->
  <!-- 리뷰디테일 -->
+ <update id="schedule_hitIncrement" parameterType="int">
+    UPDATE sj_tourreview SET
+    likes=likes+1
+    WHERE id=#{id}
+  </update>
  <select id="scheduleDetail" resultType="ScheduleVO" parameterType="int">
 	SELECT id,main_img,img,title,day,likes,text,hashtag,created_at,updated_at,userid,
 	 (SELECT sj_member.profile_img FROM sj_member WHERE sj_tourreview.userid=sj_member.userid) as profile

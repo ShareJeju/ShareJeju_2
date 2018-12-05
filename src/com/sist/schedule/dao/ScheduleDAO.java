@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.sist.category.dao.CategoryVO;
-import com.sist.member.dao.MemberVO;
 
 public class ScheduleDAO {
 	private static SqlSessionFactory ssf;
@@ -129,6 +128,26 @@ public class ScheduleDAO {
 		   return list;
 	 }
 	 
+	 public static List<ScheduleVO> scheduleList_likes()
+	 {
+		 SqlSession session=null;
+		 List<ScheduleVO> list=new ArrayList<ScheduleVO>();
+		   try
+		   {
+			   session=ssf.openSession();//autocommit
+			   list=session.selectList("scheduleList_likes");
+			   session.commit();
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   session.close();// 반환
+		   }
+		   return list;
+	 }
+	 
 	// 리뷰디테일
 	public static ScheduleVO scheduleDetail(int id)
 	{
@@ -136,6 +155,8 @@ public class ScheduleDAO {
 		SqlSession session=null;
 		try {
 			session=ssf.openSession();
+			session.update("schedule_hitIncrement",id);
+			session.commit();
 			vo=session.selectOne("scheduleDetail",id);
 		} 
 		catch (Exception e) {

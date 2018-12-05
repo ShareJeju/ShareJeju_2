@@ -26,8 +26,8 @@ td{
 	<div class="container" style="width: 700px;">
 		<h1 style="font-size: 30px; margin-bottom: 5px; color: #36b1bf">여행기 리뷰</h1>
 		<div style="margin-left: 5px; margin-bottom: 10px;">
-			<input type=button value="최신순" class="btn btn-xs btn-info" id="">
-			<input type=button value="인기순" class="btn btn-xs btn-primary active" id="">
+			<a href="../schedule/schedule_list.do"><input type=button value="최신순" class="btn btn-xs btn-info"></a>
+			<a href="../schedule/schedule_list_likes.do"><input type=button value="조회순" class="btn btn-xs btn-primary active"></a>
 			<c:if test="${sessionScope.userid!=null}">
 			<a href="../schedule/schedule_insert.do"><input type=button value="리뷰쓰기" class="btn btn-xs btn-primary active" style="float: right;"></a>
 			</c:if>

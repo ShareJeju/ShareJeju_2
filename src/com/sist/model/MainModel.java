@@ -40,7 +40,7 @@ public class MainModel {
 		System.out.println(name);
 		
 		List<CategoryVO> list =SearchDAO.mainSearch(name); 
-
+		List<ScheduleVO> Tlist=SearchDAO.mainTSearch(name);
 		int count=0;
 		for(int i=0; i<list.size(); i++)
 		{
@@ -49,6 +49,7 @@ public class MainModel {
 		
 		req.setAttribute("name", name);
 		req.setAttribute("list", list);
+		req.setAttribute("Tlist", Tlist);
 		req.setAttribute("count", count);
 		req.setAttribute("main_jsp", "main_search.jsp");
 		return "main.jsp";
