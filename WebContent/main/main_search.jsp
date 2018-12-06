@@ -30,7 +30,7 @@
 			<div class="col-sm-3">
 				<div class="panel">
 						<a href="../schedule/schedule_detail.do?id=${vo.id}"> <img
-							src="${vo.main_img}" width=100% height=200>
+							src="$../schedule_upload/${vo.main_img}" width=100% height=200>
 						</a>
 						<div class="panel-heading" style="text-align: right">
 							${fn:length(vo.title)>15?fn:substring(vo.title,0,15)+="...":vo.title }</div>
