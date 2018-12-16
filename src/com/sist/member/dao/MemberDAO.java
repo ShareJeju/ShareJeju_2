@@ -5,6 +5,9 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import com.sist.category.dao.CategoryVO;
+
 import java.io.*;
 public class MemberDAO {
    private static SqlSessionFactory ssf;
@@ -212,6 +215,28 @@ public class MemberDAO {
 	    }
 	   return  vo;
    }
+   
+   // 검색
+	public static List<NoticeVO> noticeSearch(Map map)
+	{
+	   List<NoticeVO> list=new ArrayList<NoticeVO>();
+	   SqlSession session=null;
+
+		   try
+		   {
+			   session=ssf.openSession(true);//autocommit
+			   list=session.selectList("noticeSearch", map);
+		   }catch(Exception ex)
+		   {
+			   ex.printStackTrace();
+		   }
+		   finally
+		   {
+			   session.close();// 반환
+		   }
+		   return list;
+	}
+   
    // 공지사항 작성
    public static void noticeInsert(NoticeVO vo)
    {

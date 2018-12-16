@@ -92,6 +92,12 @@
     SELECT CEIL(COUNT(*)/10) FROM sj_notice
   </select>
   
+  <!-- 검색 -->	
+  <select id="noticeSearch" resultType="NoticeVO" parameterType="java.util.HashMap">
+  	SELECT id, title, contents, created_at, hit
+  	FROM sj_notice  
+  	WHERE ${cate} LIKE '%'||#{data}||'%'
+  </select>
   <!-- 내용보기 -->
    <!--  조회수 증가  -->
    <update id="hitIncrement" parameterType="int">

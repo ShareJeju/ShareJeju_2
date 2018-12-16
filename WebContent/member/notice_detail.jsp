@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +30,9 @@ vertical-align: middle;
 						<td colspan="3" class="text-center">${vo.title }</td>
 				</tr>
 				<tr>
-					<td width=80% colspan="2" class="text-right">${vo.created_at }</td>
+					<td width=80% colspan="2" class="text-right">
+					<fmt:formatDate value="${vo.created_at }" pattern="yyyy년 MM월 dd일 hh:mm:ss"/>
+					</td>
 					<th class="text-center success"  style="background-color: rgb(242, 238, 238);">조회수</th>
 						<td class="text-center">${vo.hit }</td>
 				</tr>

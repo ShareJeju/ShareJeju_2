@@ -124,8 +124,7 @@
   <delete id="scheduleReplyDelete" parameterType="int">
    DELETE FROM sj_comment
    WHERE id=#{id}
-  </delete>
-  
+  </delete> 
   
   
 <!-- 마이페이지-리뷰출력 -->

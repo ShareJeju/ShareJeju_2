@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE HTML>
 
 <html>
@@ -398,7 +399,7 @@ $(document).ready(function() {
 		  <ul class="nav nav-pills">
 		    <li class="active"><a data-toggle="pill" href="#review">REVIEW</a></li>
 		    <li><a data-toggle="pill" href="#wish">찜</a></li>
-		    <li><a data-toggle="pill" href="#like">좋아요</a></li>
+		    <!-- <li><a data-toggle="pill" href="#like">좋아요</a></li> -->
 		  </ul>		  
 	  <!-- START tab-content -->	  
 	  <div class="tab-content" style="margin-top: 20px; margin-left: 20px">	  
@@ -480,7 +481,7 @@ $(document).ready(function() {
 	                  <h4 class="card-title">
 	                    <a href="../food/fooddetailcontent.do?id=${flist.cid }">${flist.review_subject }</a>
 	                  </h4>
-	                  <p>작성일 : ${flist.review_regdate }</p>
+	                  <p>작성일 : <fmt:formatDate value="${flist.review_regdate }" pattern="yyyy. MM. dd hh:mm:ss"/></p>
 	                </div>
 	              </div>
 	          </div>
@@ -571,9 +572,9 @@ $(document).ready(function() {
 				 </div>	 -->
 		    </div>		
 		    
-		    <!-- 찜 -->
-           <div id="wish" class="tab-pane fade">
-			<div class="row">
+    <!-- 찜 -->
+   <div id="wish" class="tab-pane fade">
+	<div class="row">
       <c:forEach var="vo" items="${list }">
         <div class="col-lg-4 col-sm-6">
           <div class="card h-100">
@@ -588,33 +589,34 @@ $(document).ready(function() {
         </div>
         </c:forEach>
       </div> 
-		       
-           <div id="like" class="tab-pane fade">
-			<div class="row">
-	 	         <div class="col-lg-4">
-		              <div class="card h-100">
-		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-		                <div class="card-body">
-		                  <h4 class="card-title">
-		                    <a href="#">좋아요</a>
-		                  </h4>
-		                  <p>설명</p>
-		                </div>
-		              </div>
-		          </div>
-		          <div class="col-lg-4">
-		              <div class="card h-100">
-		                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-		                <div class="card-body">
-		                  <h4 class="card-title">
-		                    <a href="#">좋아요</a>
-		                  </h4>
-		                  <p>설명</p>
-		                </div>
-		              </div>
-		          </div>
-		        </div>  
-		      </div>  
+     
+     <!-- 좋아요 -->		       
+<!--      <div id="like" class="tab-pane fade">
+		<div class="row">
+	         <div class="col-lg-4">
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#">좋아요</a>
+                  </h4>
+                  <p>설명</p>
+                </div>
+              </div>
+          </div>
+          <div class="col-lg-4">
+              <div class="card h-100">
+                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#">좋아요</a>
+                  </h4>
+                  <p>설명</p>
+                </div>
+              </div>
+          </div>
+        </div>  
+      </div> -->  
       </div><!-- END TAB-CONTENT -->
     </div> <!-- END CONTENT -->
     </div>

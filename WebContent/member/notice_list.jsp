@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,28 +40,31 @@
  			 <tr>
 			  <td width=10% class="text-center">${vo.id }</td>
 			  <td width=60% class="text-left"><a href="../member/notice_detail.do?id=${vo.id }">${vo.title }</a></td>
-			  <td width=20% class="text-center">${vo.created_at }</td>
+			  <td width=20% class="text-center">
+			  	<fmt:formatDate value="${vo.created_at }" pattern="yyyy년 MM월 dd일 hh:mm:ss"/>
+			  </td>
 			  <td width=10% class="text-center">${vo.hit }</td>
 			 </tr>
 			 </c:forEach>
           </table>
          	   <table class="table table-hover">
 			    <tr>
-			     <td class="text-left">
-			       Search:<select name=fs>
-			        <option value="subject">제목</option>
-			        <option value="content">내용</option>
+  			     <td class="text-left">
+  			      <form action="../member/notice_search.do" method="post">
+			       Search:<select name=cate>
+			        <option value="title">제목</option>
+			        <option value="contents">내용</option>
 			       </select>
-			       <input type=text name=ss size=15>
-			       <input type=button value=검색
+			       <input type=text name=data size=15>
+			       <input type=submit value=검색
 			        class="btn btn-xs btn-primary">
-			     </td>
-			     
+			     </form>
+   			     </td>
 			     <!-- 페이징처리 -->
 			     <td class="text-right">
-			      <a href="#" class="btn btn-xs btn-warning">이전</a>
+			      <a href="../member/notice_list.do?page=${curpage>1?curpage-1:curpage }" class="btn btn-xs btn-warning">이전</a>
 			       ${curpage } page / ${totalpage } pages
-			      <a href="#" class="btn btn-xs btn-warning">다음</a>
+			      <a href="../member/notice_list.do?page=${curpage<totalpage?curpage+1:curpage }" class="btn btn-xs btn-warning">다음</a>
 			     </td>
 			    </tr>
 			   </table>

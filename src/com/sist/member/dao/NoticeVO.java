@@ -21,6 +21,14 @@ public class NoticeVO {
 	private String file_size;
 	private Date created_at;
 	private Date updated_at;
+	
+	private String cate;
+	public String getCate() {
+		return cate;
+	}
+	public void setCate(String cate) {
+		this.cate = cate;
+	}
 	public int getId() {
 		return id;
 	}

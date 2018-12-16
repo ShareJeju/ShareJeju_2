@@ -300,6 +300,36 @@ public class MemberModel {
 	  return "../main/main.jsp";
   }
   
+  // 공지사항 검색
+  @RequestMapping("member/notice_search.do")
+  public String member_notice_search(HttpServletRequest req,HttpServletResponse res)
+  {
+	  try
+	  {
+		  req.setCharacterEncoding("EUC-KR");
+		  
+		  String cate = req.getParameter("cate");
+		  String data = req.getParameter("data");
+		  Map map = new HashMap();
+		  map.put("cate", cate);
+		  map.put("data", data);
+		  
+		  //System.out.println(map.get("cate"));
+		  //System.out.println(map.get("data"));
+		  List<NoticeVO> list = MemberDAO.noticeSearch(map);
+		  int count = list.size();
+
+		  req.setAttribute("count", count);
+		  req.setAttribute("list", list);
+		  
+
+	  }catch(Exception ex){
+		  ex.printStackTrace();
+	  }
+	 
+	  req.setAttribute("main_jsp", "../member/notice_find.jsp");
+	  return "../main/main.jsp";
+  }
   // 공지사항 작성
   @RequestMapping("member/notice_insert.do")
   public String member_notice_insert(HttpServletRequest req,HttpServletResponse res)
